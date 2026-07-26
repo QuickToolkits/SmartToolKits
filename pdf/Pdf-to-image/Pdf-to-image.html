@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF to Image - SmartToolKits</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h2>🚀 SmartToolKits</h2>
+    </header>
+
+    <section class="hero">
+
+        <h1>PDF to Image</h1>
+
+        <p>Convert PDF pages into JPG or PNG images.</p>
+
+        <input type="file" id="pdfInput" accept=".pdf">
+
+        <br><br>
+
+        <button id="convertBtn">
+            Convert to Images
+        </button>
+
+        <div id="output"></div>
+<button id="downloadBtn" style="display:none; margin-top:20px;">
+    Download JPG
+</button>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
