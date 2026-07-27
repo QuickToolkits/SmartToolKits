@@ -1,6 +1,7 @@
 const pdfInput = document.getElementById("pdfInput");
 const convertBtn = document.getElementById("convertBtn");
-const downloadBtn = document.getElementById("downloadBtn");
+const downloadAllBtn = document.getElementById("downloadAllBtn");
+
 convertBtn.addEventListener("click", () => {
 
     const file = pdfInput.files[0];
@@ -12,46 +13,118 @@ convertBtn.addEventListener("click", () => {
 
     const reader = new FileReader();
 
-reader.onload = async function () {
+    reader.onload = async function () {
 
-    const typedArray = new Uint8Array(reader.result);
+        const typedArray = new Uint8Array(reader.result);
 
-    const pdf = await pdfjsLib.getDocument(typedArray).promise;
+        const pdf = await pdfjsLib.getDocument(typedArray).promise;
 
-   const page = await pdf.getPage(1);
+        const output = document.getElementById("output");
+        output.innerHTML = "";
 
-const viewport = page.getViewport({ scale: 2 });
+        const zip = new JSZip();
 
-const canvas = document.createElement("canvas");
-const context = canvas.getContext("2d");
+        for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
 
-canvas.width = viewport.width;
-canvas.height = viewport.height;
+            const page = await pdf.getPage(pageNum);
 
-await page.render({
-    canvasContext: context,
-    viewport: viewport
-}).promise;
+            const viewport = page.getViewport({
+                scale: 2
+            });
 
-const output = document.getElementById("output");
+            const canvas = document.createElement("canvas");
+            const context = canvas.getContext("2d");
 
-output.innerHTML = "";
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
 
-output.appendChild(canvas);
-downloadBtn.style.display = "inline-block";
-downloadBtn.onclick = () => {
+            await page.render({
+                canvasContext: context,
+                viewport: viewport
+            }).promise;
 
-    const link = document.createElement("a");
+            output.appendChild(canvas);
 
-    link.download = "page1.jpg";
+            const downloadBtn = document.createElement("button");
+            downloadBtn.innerText = `Download Page ${pageNum}`;
 
-    link.href = canvas.toDataURL("image/jpeg", 1.0);
+            downloadBtn.style.display = "block";
+            downloadBtn.style.margin = "10px auto 30px";
 
-    link.click();
+            downloadBtn.onclick = () => {
 
-};
-};
+                const format = document.querySelector(
+                    'input[name="format"]:checked'
+                ).value;
 
-reader.readAsArrayBuffer(file);
+                const link = document.createElement("a");
+
+                if (format === "png") {
+
+                    link.download = `page${pageNum}.png`;
+                    link.href = canvas.toDataURL("image/png");
+
+                } else {
+
+                    link.download = `page${pageNum}.jpg`;
+                    link.href = canvas.toDataURL("image/jpeg", 1.0);
+
+                }
+
+                link.click();
+
+            };
+
+            output.appendChild(downloadBtn);
+
+            const format = document.querySelector(
+                'input[name="format"]:checked'
+            ).value;
+                        if (format === "png") {
+
+                zip.file(
+                    `page${pageNum}.png`,
+                    canvas.toDataURL("image/png").split(",")[1],
+                    {
+                        base64: true
+                    }
+                );
+
+            } else {
+
+                zip.file(
+                    `page${pageNum}.jpg`,
+                    canvas.toDataURL("image/jpeg", 1.0).split(",")[1],
+                    {
+                        base64: true
+                    }
+                );
+
+            }
+
+        }
+
+        downloadAllBtn.style.display = "inline-block";
+
+        downloadAllBtn.onclick = async () => {
+
+            const content = await zip.generateAsync({
+                type: "blob"
+            });
+
+            const link = document.createElement("a");
+
+            link.href = URL.createObjectURL(content);
+
+            link.download = "PDF-Images.zip";
+
+            link.click();
+
+            URL.revokeObjectURL(link.href);
+
+        };
+            };
+
+    reader.readAsArrayBuffer(file);
 
 });
