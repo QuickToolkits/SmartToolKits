@@ -9,15 +9,14 @@ const uploadBox = document.querySelector(".upload-box");
 
 let originalFile = null;
 let compressedBlob = null;
+let outputType = "image/jpeg";
 
 /*==============================
       Quality Slider
 ==============================*/
 
 qualitySlider.addEventListener("input", () => {
-
     qualityValue.textContent = qualitySlider.value + "%";
-
 });
 
 /*==============================
@@ -91,15 +90,11 @@ function loadImage(file){
             <img src="${e.target.result}" alt="Preview">
 
             <div class="preview-title">
-
                 Original Image
-
             </div>
 
             <div class="preview-size">
-
                 ${(file.size/1024/1024).toFixed(2)} MB
-
             </div>
 
         </div>
@@ -115,6 +110,7 @@ function loadImage(file){
     reader.readAsDataURL(file);
 
 }
+
 /*==========================================
         Compress Image
 ==========================================*/
@@ -149,6 +145,12 @@ compressBtn.addEventListener("click", () => {
 
             ctx.drawImage(img, 0, 0);
 
+            // PNG -> JPEG
+            outputType =
+                originalFile.type === "image/png"
+                    ? "image/jpeg"
+                    : originalFile.type;
+
             canvas.toBlob(
 
                 function (blob) {
@@ -164,15 +166,11 @@ compressBtn.addEventListener("click", () => {
                         <img src="${e.target.result}">
 
                         <div class="preview-title">
-
                             Original Image
-
                         </div>
 
                         <div class="preview-size">
-
                             ${(originalFile.size / 1024 / 1024).toFixed(2)} MB
-
                         </div>
 
                     </div>
@@ -182,15 +180,11 @@ compressBtn.addEventListener("click", () => {
                         <img src="${compressedURL}">
 
                         <div class="preview-title">
-
                             Compressed Image
-
                         </div>
 
                         <div class="preview-size">
-
                             ${(blob.size / 1024 / 1024).toFixed(2)} MB
-
                         </div>
 
                     </div>
@@ -198,13 +192,9 @@ compressBtn.addEventListener("click", () => {
                     `;
 
                     const saved = (
-
                         ((originalFile.size - blob.size) /
-
                             originalFile.size) *
-
                         100
-
                     ).toFixed(1);
 
                     resultInfo.innerHTML = `
@@ -212,15 +202,11 @@ compressBtn.addEventListener("click", () => {
                     <div class="result-card">
 
                         <div class="result-label">
-
                             Original Size
-
                         </div>
 
                         <div class="result-value">
-
                             ${(originalFile.size / 1024 / 1024).toFixed(2)} MB
-
                         </div>
 
                     </div>
@@ -228,15 +214,11 @@ compressBtn.addEventListener("click", () => {
                     <div class="result-card">
 
                         <div class="result-label">
-
                             Compressed Size
-
                         </div>
 
                         <div class="result-value">
-
                             ${(blob.size / 1024 / 1024).toFixed(2)} MB
-
                         </div>
 
                     </div>
@@ -244,26 +226,36 @@ compressBtn.addEventListener("click", () => {
                     <div class="result-card">
 
                         <div class="result-label">
-
                             Space Saved
-
                         </div>
 
                         <div class="result-value">
-
                             ${saved}%
-
                         </div>
 
                     </div>
+<div class="result-card">
 
+    <div class="result-label">
+
+        Conversion
+
+    </div>
+
+    <div class="result-value">
+
+        ${originalFile.type.split("/")[1].toUpperCase()} → ${outputType.split("/")[1].toUpperCase()}
+
+    </div>
+
+</div>
                     `;
 
                     downloadBtn.style.display = "block";
 
                 },
 
-                originalFile.type,
+                outputType,
 
                 quality
 
@@ -276,5 +268,32 @@ compressBtn.addEventListener("click", () => {
     };
 
     reader.readAsDataURL(originalFile);
+
+});
+
+/*==========================================
+          Download Image
+==========================================*/
+
+downloadBtn.addEventListener("click", () => {
+
+    if (!compressedBlob) return;
+
+    const link = document.createElement("a");
+
+    const url = URL.createObjectURL(compressedBlob);
+
+    const extension =
+        outputType === "image/jpeg"
+            ? "jpg"
+            : outputType.split("/")[1];
+
+    link.href = url;
+
+    link.download = `compressed-image.${extension}`;
+
+    link.click();
+
+    URL.revokeObjectURL(url);
 
 });
