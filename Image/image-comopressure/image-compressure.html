@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Image Compressor - SmartToolKits</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+
+        🖼️ SmartToolKits
+
+    </div>
+
+</header>
+
+<section class="hero">
+
+    <span class="badge">
+
+        IMAGE COMPRESSOR
+
+    </span>
+
+    <h1>
+
+        Compress Images Instantly
+
+    </h1>
+
+    <p>
+
+        Reduce image size while maintaining excellent quality.
+
+    </p>
+
+</section>
+
+<section class="compressor">
+
+    <div class="card">
+
+        <label class="upload-box" for="imageInput">
+
+            <div class="upload-icon">
+
+                📤
+
+            </div>
+
+            <h2>
+
+                Upload Image
+
+            </h2>
+
+            <p>
+
+                JPG • PNG • WEBP
+
+            </p>
+
+            <input
+                type="file"
+                id="imageInput"
+                accept="image/*"
+                hidden>
+
+        </label>
+
+        <div id="previewContainer"></div>
+
+        <div class="quality-box">
+
+            <label>
+
+                Compression Quality
+
+            </label>
+
+            <input
+                type="range"
+                id="quality"
+                min="10"
+                max="100"
+                value="80">
+
+            <span id="qualityValue">
+
+                80%
+
+            </span>
+
+        </div>
+
+        <div id="resultInfo"></div>
+
+        <div class="buttons">
+
+            <button id="compressBtn">
+
+                Compress Image
+
+            </button>
+
+            <button id="downloadBtn" style="display:none;">
+
+                Download
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
