@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Image Resizer | SmartToolKits</title>
+
+    <meta name="description"
+          content="Resize JPG, PNG and WEBP images online for free without losing quality.">
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+    <main class="container">
+
+        <!-- =========================
+                HERO
+        ========================== -->
+
+        <section class="hero">
+
+            <h1>Image Resizer</h1>
+
+            <p>
+
+                Resize JPG, PNG and WEBP images in seconds.
+                Maintain quality while choosing your own dimensions.
+
+            </p>
+
+        </section>
+
+        <!-- =========================
+            Upload Section
+        ========================== -->
+
+        <section class="upload-section">
+
+            <input
+                type="file"
+                id="imageInput"
+                accept="image/*"
+                hidden>
+
+            <label
+                for="imageInput"
+                class="upload-card">
+
+                <div class="upload-icon">
+
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                </div>
+
+                <h2>Select an Image</h2>
+
+                <p>
+
+                    Click to browse or drag & drop your image here
+
+                </p>
+
+                <span>
+
+                    Supports JPG • PNG • WEBP
+
+                </span>
+
+            </label>
+
+        </section>
+                <!-- =========================
+              Preview Section
+        ========================== -->
+
+        <section class="preview-section">
+
+            <!-- Original Image -->
+
+            <div class="preview-card">
+
+                <div class="card-title">
+
+                    <h3>Original Image</h3>
+
+                    <span>Input</span>
+
+                </div>
+
+                <div class="preview-box">
+
+                    <img
+                        id="originalPreview"
+                        alt="Original Image Preview">
+
+                    <div
+                        class="placeholder"
+                        id="originalPlaceholder">
+
+                        <i class="fa-regular fa-image"></i>
+
+                        <p>No image selected</p>
+
+                    </div>
+
+                </div>
+
+                <div class="image-details">
+
+                    <div>
+
+                        <small>Resolution</small>
+
+                        <strong id="originalResolution">
+
+                            0 × 0
+
+                        </strong>
+
+                    </div>
+
+                    <div>
+
+                        <small>File Size</small>
+
+                        <strong id="originalSize">
+
+                            0 KB
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Resized Image -->
+
+            <div class="preview-card">
+
+                <div class="card-title">
+
+                    <h3>Resized Image</h3>
+
+                    <span>Output</span>
+
+                </div>
+
+                <div class="preview-box">
+
+                    <img
+                        id="resizedPreview"
+                        alt="Resized Image Preview">
+
+                    <div
+                        class="placeholder"
+                        id="resizedPlaceholder">
+
+                        <i class="fa-regular fa-image"></i>
+
+                        <p>Preview will appear here</p>
+
+                    </div>
+
+                </div>
+
+                <div class="image-details">
+
+                    <div>
+
+                        <small>Resolution</small>
+
+                        <strong id="resizedResolution">
+
+                            0 × 0
+
+                        </strong>
+
+                    </div>
+
+                    <div>
+
+                        <small>File Size</small>
+
+                        <strong id="resizedSize">
+
+                            0 KB
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =========================
+             Resize Settings
+        ========================== -->
+
+        <section class="controls-section">
+
+            <div class="controls-header">
+
+                <h2>Resize Settings</h2>
+
+                <p>
+
+                    Enter your preferred image dimensions.
+
+                </p>
+
+            </div>
+
+            <div class="dimension-grid">
+
+                <div class="input-group">
+
+                    <label for="widthInput">
+
+                        Width (px)
+
+                    </label>
+
+                    <input
+                        type="number"
+                        id="widthInput"
+                        placeholder="1920">
+
+                </div>
+
+                <div class="input-group">
+
+                    <label for="heightInput">
+
+                        Height (px)
+
+                    </label>
+
+                    <input
+                        type="number"
+                        id="heightInput"
+                        placeholder="1080">
+
+                </div>
+
+            </div>
+
+            <label class="aspect-ratio">
+
+                <input
+                    type="checkbox"
+                    id="lockAspect"
+                    checked>
+
+                <span>
+
+                    Lock Aspect Ratio
+
+                </span>
+
+            </label>
+
+            <div class="preset-buttons">
+
+                <button
+                    type="button"
+                    class="preset-btn"
+                    data-width="1080"
+                    data-height="1080">
+
+                    Instagram
+
+                </button>
+
+                <button
+                    type="button"
+                    class="preset-btn"
+                    data-width="1280"
+                    data-height="720">
+
+                    YouTube
+
+                </button>
+
+                <button
+                    type="button"
+                    class="preset-btn"
+                    data-width="1920"
+                    data-height="1080">
+
+                    Full HD
+
+                </button>
+
+                <button
+                    type="button"
+                    class="preset-btn"
+                    data-width="800"
+                    data-height="800">
+
+                    Square
+
+                </button>
+
+            </div>
+
+        </section>
+                <!-- =========================
+              Action Buttons
+        ========================== -->
+
+        <section class="action-section">
+
+            <button
+                id="resizeBtn"
+                class="btn btn-primary">
+
+                <i class="fa-solid fa-expand"></i>
+
+                Resize Image
+
+            </button>
+
+            <button
+                id="downloadBtn"
+                class="btn btn-secondary"
+                disabled>
+
+                <i class="fa-solid fa-download"></i>
+
+                Download Image
+
+            </button>
+
+        </section>
+
+        <!-- =========================
+              Result Statistics
+        ========================== -->
+
+        <section class="stats-section">
+
+            <div class="stat-card">
+
+                <i class="fa-solid fa-ruler-horizontal"></i>
+
+                <h3 id="newWidth">0 px</h3>
+
+                <p>Width</p>
+
+            </div>
+
+            <div class="stat-card">
+
+                <i class="fa-solid fa-ruler-vertical"></i>
+
+                <h3 id="newHeight">0 px</h3>
+
+                <p>Height</p>
+
+            </div>
+
+            <div class="stat-card">
+
+                <i class="fa-solid fa-hard-drive"></i>
+
+                <h3 id="newSize">0 KB</h3>
+
+                <p>File Size</p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- =========================
+            Footer
+    ========================== -->
+
+    <footer>
+
+        <p>© 2026 SmartToolKits. All Rights Reserved.</p>
+
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

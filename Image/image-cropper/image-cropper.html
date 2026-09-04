@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Image Cropper | SmartToolKits</title>
+
+    <meta name="description"
+          content="Crop JPG, PNG and WEBP images online for free with custom aspect ratios.">
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+    <main class="container">
+
+        <!-- =========================
+                    HERO
+        ========================== -->
+
+        <section class="hero">
+
+            <h1>Image Cropper</h1>
+
+            <p>
+                Crop your images exactly the way you want.
+                Fast, private and completely free.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+                UPLOAD SECTION
+        ========================== -->
+
+        <section class="upload-section">
+
+            <input
+                type="file"
+                id="imageInput"
+                accept="image/jpeg,image/png,image/webp"
+                hidden>
+
+            <label
+                for="imageInput"
+                class="upload-card">
+
+                <div class="upload-icon">
+
+                    <i class="fa-solid fa-crop-simple"></i>
+
+                </div>
+
+                <h2>Select an Image</h2>
+
+                <p>
+                    Click to browse or drag & drop your image here
+                </p>
+
+                <span>
+                    JPG • PNG • WEBP
+                </span>
+
+            </label>
+
+        </section>
+                <!-- =========================
+              CROP WORKSPACE
+        ========================== -->
+
+        <section class="workspace-section">
+
+            <div class="workspace-header">
+
+                <div>
+                    <h2>Crop Workspace</h2>
+                    <p>Select the area you want to keep.</p>
+                </div>
+
+                <span class="workspace-badge">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    Live Crop
+                </span>
+
+            </div>
+
+
+            <!-- Crop Area -->
+
+            <div class="crop-workspace" id="cropWorkspace">
+
+                <img
+                    id="cropImage"
+                    alt="Image to crop">
+
+                <div
+                    class="workspace-placeholder"
+                    id="workspacePlaceholder">
+
+                    <i class="fa-regular fa-image"></i>
+
+                    <h3>No Image Selected</h3>
+
+                    <p>
+                        Upload an image to start cropping.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Original Image Information -->
+
+            <div class="image-info">
+
+                <div class="info-item">
+
+                    <span>Original Resolution</span>
+
+                    <strong id="originalResolution">
+                        0 × 0
+                    </strong>
+
+                </div>
+
+                <div class="info-item">
+
+                    <span>File Size</span>
+
+                    <strong id="originalSize">
+                        0 KB
+                    </strong>
+
+                </div>
+
+                <div class="info-item">
+
+                    <span>Format</span>
+
+                    <strong id="imageFormat">
+                        —
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+                CROP CONTROLS
+        ========================== -->
+
+        <section class="controls-section">
+
+            <div class="controls-header">
+
+                <h2>Crop Settings</h2>
+
+                <p>
+                    Choose an aspect ratio or crop freely.
+                </p>
+
+            </div>
+
+
+            <!-- Aspect Ratio Presets -->
+
+            <div class="ratio-section">
+
+                <span class="control-label">
+                    Aspect Ratio
+                </span>
+
+                <div class="ratio-buttons">
+
+                    <button
+                        type="button"
+                        class="ratio-btn active"
+                        data-ratio="free">
+
+                        <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+
+                        Free
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="ratio-btn"
+                        data-ratio="1">
+
+                        1 : 1
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="ratio-btn"
+                        data-ratio="1.333333">
+
+                        4 : 3
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="ratio-btn"
+                        data-ratio="1.777778">
+
+                        16 : 9
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Crop Dimensions -->
+
+            <div class="crop-details">
+
+                <div class="crop-detail">
+
+                    <span>Crop Width</span>
+
+                    <strong id="cropWidth">
+                        0 px
+                    </strong>
+
+                </div>
+
+                <div class="crop-detail">
+
+                    <span>Crop Height</span>
+
+                    <strong id="cropHeight">
+                        0 px
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+                <!-- =========================
+                ACTION BUTTONS
+        ========================== -->
+
+        <section class="action-section">
+
+            <button
+                type="button"
+                id="cropBtn"
+                class="btn btn-primary"
+                disabled>
+
+                <i class="fa-solid fa-crop-simple"></i>
+
+                Crop Image
+
+            </button>
+
+            <button
+                type="button"
+                id="resetBtn"
+                class="btn btn-secondary"
+                disabled>
+
+                <i class="fa-solid fa-rotate-left"></i>
+
+                Reset Crop
+
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+                RESULT SECTION
+        ========================== -->
+
+        <section
+            class="result-section"
+            id="resultSection">
+
+            <div class="result-header">
+
+                <div>
+
+                    <h2>Cropped Image</h2>
+
+                    <p>
+                        Preview your final image before downloading.
+                    </p>
+
+                </div>
+
+                <span class="result-badge">
+
+                    <i class="fa-solid fa-check"></i>
+
+                    Ready
+
+                </span>
+
+            </div>
+
+
+            <!-- Cropped Preview -->
+
+            <div class="result-preview">
+
+                <img
+                    id="croppedPreview"
+                    alt="Cropped Image Preview">
+
+                <div
+                    class="result-placeholder"
+                    id="resultPlaceholder">
+
+                    <i class="fa-solid fa-crop-simple"></i>
+
+                    <p>
+                        Your cropped image will appear here.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Output Information -->
+
+            <div class="result-stats">
+
+                <div class="result-stat">
+
+                    <i class="fa-solid fa-ruler-combined"></i>
+
+                    <div>
+
+                        <span>Resolution</span>
+
+                        <strong id="croppedResolution">
+                            0 × 0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="result-stat">
+
+                    <i class="fa-solid fa-hard-drive"></i>
+
+                    <div>
+
+                        <span>File Size</span>
+
+                        <strong id="croppedSize">
+                            0 KB
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="result-stat">
+
+                    <i class="fa-solid fa-file-image"></i>
+
+                    <div>
+
+                        <span>Format</span>
+
+                        <strong id="croppedFormat">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Download Button -->
+
+            <button
+                type="button"
+                id="downloadBtn"
+                class="download-btn"
+                disabled>
+
+                <i class="fa-solid fa-download"></i>
+
+                Download Cropped Image
+
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+                    FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            © 2026 SmartToolKits. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

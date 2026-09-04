@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Image to PDF - SmartToolKits</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+
+        🚀 SmartToolKits
+
+    </div>
+
+</header>
+
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span class="badge">
+
+            IMAGE TO PDF
+
+        </span>
+
+        <h1>
+
+            Convert Images into PDF
+
+        </h1>
+
+        <p>
+
+            Upload JPG, PNG or WEBP images and convert them into one high-quality PDF in seconds.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="upload-section">
+
+<div class="upload-card">
+
+<label for="imageInput" class="upload-box">
+
+<div class="upload-icon">
+
+📂
+
+</div>
+
+<h2>
+
+Drag & Drop Images
+
+</h2>
+
+<p>
+
+or click to browse
+
+</p>
+
+<input
+type="file"
+id="imageInput"
+accept="image/png,image/jpeg,image/webp"
+multiple
+hidden>
+
+</label>
+
+
+<div class="buttons">
+
+<button id="convertBtn">
+
+Convert to PDF
+
+</button>
+
+<button id="downloadBtn" style="display:none;">
+
+Download PDF
+
+</button>
+
+</div>
+
+
+<div id="preview">
+
+</div>
+
+</div>
+
+</section>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

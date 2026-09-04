@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Merge PDF - SmartToolKits</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+
+        🚀 SmartToolKits
+
+    </div>
+
+</header>
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span class="badge">
+
+            MERGE PDF
+
+        </span>
+
+        <h1>
+
+            Combine Multiple PDFs into One
+
+        </h1>
+
+        <p>
+
+            Upload two or more PDF files and merge them into a single PDF in seconds.
+
+        </p>
+
+    </div>
+
+</section>
+
+<section class="upload-section">
+
+    <div class="upload-card">
+
+        <label for="pdfInput" class="upload-box">
+
+            <div class="upload-icon">
+
+                📄
+
+            </div>
+
+            <h2>
+
+                Select PDF Files
+
+            </h2>
+
+            <p>
+
+                Click here to choose multiple PDF documents
+
+            </p>
+
+            <input
+                type="file"
+                id="pdfInput"
+                accept=".pdf,application/pdf"
+                multiple
+                hidden>
+
+        </label>
+
+        <div class="buttons">
+
+            <button id="mergeBtn">
+
+                Merge PDFs
+
+            </button>
+
+            <button id="downloadBtn" style="display:none;">
+
+                Download PDF
+
+            </button>
+
+        </div>
+
+        <div id="fileList">
+
+        </div>
+
+    </div>
+
+</section>
+<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+<script src="script.js"></script>
+</body>
+
+</html>

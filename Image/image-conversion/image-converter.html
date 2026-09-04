@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Image Converter | SmartToolKits</title>
+
+    <meta
+        name="description"
+        content="Convert JPG, JPEG, PNG, WEBP, AVIF, BMP, GIF, TIFF and ICO images online for free.">
+
+    <!-- Google Font -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+</head>
+
+<body>
+
+    <main class="container">
+
+        <!-- =========================
+                  HERO
+        ========================== -->
+
+        <section class="hero">
+
+            <span class="hero-badge">
+
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                Universal Image Converter
+
+            </span>
+
+            <h1>
+
+                Convert Any Image
+                Into Any Format
+
+            </h1>
+
+            <p>
+
+                Convert JPG, JPEG, PNG, WEBP, AVIF,
+                BMP, GIF, TIFF and ICO images
+                instantly without losing quality.
+
+            </p>
+
+        </section>
+
+        <!-- =========================
+              UPLOAD SECTION
+        ========================== -->
+
+        <section class="upload-section">
+
+            <input
+                type="file"
+                id="imageInput"
+                accept="image/*"
+                hidden>
+
+            <label
+                for="imageInput"
+                class="upload-card">
+
+                <div class="upload-icon">
+
+                    <i class="fa-solid fa-arrows-rotate"></i>
+
+                </div>
+
+                <h2>
+
+                    Select Your Image
+
+                </h2>
+
+                <p>
+
+                    Click to browse or drag &
+                    drop your image here
+
+                </p>
+
+                <span>
+
+                    JPG • PNG • WEBP • AVIF • BMP • GIF • TIFF • ICO
+
+                </span>
+
+            </label>
+
+        </section>
+                <!-- =========================
+              PREVIEW SECTION
+        ========================== -->
+
+        <section class="preview-section">
+
+            <!-- Original Image -->
+
+            <div class="preview-card">
+
+                <div class="card-header">
+
+                    <h2>Original Image</h2>
+
+                    <span class="badge input-badge">
+
+                        Input
+
+                    </span>
+
+                </div>
+
+                <div class="preview-box">
+
+                    <img
+                        id="originalPreview"
+                        alt="Original Image">
+
+                    <div
+                        class="placeholder"
+                        id="originalPlaceholder">
+
+                        <i class="fa-regular fa-image"></i>
+
+                        <p>
+
+                            No Image Selected
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="image-info">
+
+                    <div>
+
+                        <small>Resolution</small>
+
+                        <strong id="originalResolution">
+
+                            0 × 0
+
+                        </strong>
+
+                    </div>
+
+                    <div>
+
+                        <small>File Size</small>
+
+                        <strong id="originalSize">
+
+                            0 KB
+
+                        </strong>
+
+                    </div>
+
+                    <div>
+
+                        <small>Format</small>
+
+                        <strong id="originalFormat">
+
+                            —
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Convert Panel -->
+
+            <div class="convert-panel">
+
+                <div class="convert-icon">
+
+                    <i class="fa-solid fa-repeat"></i>
+
+                </div>
+
+                <h2>
+
+                    Convert To
+
+                </h2>
+
+                <p>
+
+                    Choose your desired output format.
+
+                </p>
+
+                <select id="formatSelect">
+
+                    <option value="jpg">
+
+                        JPG
+
+                    </option>
+
+                    <option value="png">
+
+                        PNG
+
+                    </option>
+
+                    <option value="webp">
+
+                        WEBP
+
+                    </option>
+
+                    <option value="avif">
+
+                        AVIF
+
+                    </option>
+
+                    <option value="bmp">
+
+                        BMP
+
+                    </option>
+
+                    <option value="tiff">
+
+                        TIFF
+
+                    </option>
+
+                    <option value="ico">
+
+                        ICO
+
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Converted Image -->
+
+            <div class="preview-card">
+
+                <div class="card-header">
+
+                    <h2>Converted Image</h2>
+
+                    <span class="badge output-badge">
+
+                        Output
+
+                    </span>
+
+                </div>
+
+                <div class="preview-box">
+
+                    <img
+                        id="convertedPreview"
+                        alt="Converted Image">
+
+                    <div
+                        class="placeholder"
+                        id="convertedPlaceholder">
+
+                        <i class="fa-solid fa-arrows-rotate"></i>
+
+                        <p>
+
+                            Converted preview will appear here
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="image-info">
+
+                    <div>
+
+                        <small>Resolution</small>
+
+                        <strong id="convertedResolution">
+
+                            0 × 0
+
+                        </strong>
+
+                    </div>
+
+                    <div>
+
+                        <small>File Size</small>
+
+                        <strong id="convertedSize">
+
+                            0 KB
+
+                        </strong>
+
+                    </div>
+
+                    <div>
+
+                        <small>Format</small>
+
+                        <strong id="convertedFormat">
+
+                            —
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+                <!-- =========================
+              ADVANCED SETTINGS
+        ========================== -->
+
+        <section class="settings-section">
+
+            <div class="settings-header">
+
+                <h2>Advanced Settings</h2>
+
+                <p>
+
+                    Customize your converted image before downloading.
+
+                </p>
+
+            </div>
+
+            <div class="settings-grid">
+
+                <!-- Quality -->
+
+                <div class="setting-card">
+
+                    <label for="qualitySlider">
+
+                        Image Quality
+
+                    </label>
+
+                    <input
+                        type="range"
+                        id="qualitySlider"
+                        min="10"
+                        max="100"
+                        value="95">
+
+                    <span id="qualityValue">
+
+                        95%
+
+                    </span>
+
+                </div>
+
+                <!-- Background -->
+
+                <div class="setting-card">
+
+                    <label for="backgroundColor">
+
+                        Background Color
+
+                    </label>
+
+                    <input
+                        type="color"
+                        id="backgroundColor"
+                        value="#ffffff">
+
+                </div>
+
+                <!-- Metadata -->
+
+                <div class="setting-card checkbox-card">
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            id="keepMetadata"
+                            checked>
+
+                        <span>
+
+                            Keep Metadata (if supported)
+
+                        </span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+              ACTION BUTTONS
+        ========================== -->
+
+        <section class="action-section">
+
+            <button
+                id="convertBtn"
+                class="btn btn-primary"
+                disabled>
+
+                <i class="fa-solid fa-arrows-rotate"></i>
+
+                Convert Image
+
+            </button>
+
+            <button
+                id="downloadBtn"
+                class="btn btn-secondary"
+                disabled>
+
+                <i class="fa-solid fa-download"></i>
+
+                Download
+
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+              RESULT STATS
+        ========================== -->
+
+        <section class="stats-section">
+
+            <div class="stat-card">
+
+                <i class="fa-solid fa-image"></i>
+
+                <h3 id="statFormat">
+
+                    —
+
+                </h3>
+
+                <p>
+
+                    Output Format
+
+                </p>
+
+            </div>
+
+            <div class="stat-card">
+
+                <i class="fa-solid fa-expand"></i>
+
+                <h3 id="statResolution">
+
+                    0 × 0
+
+                </h3>
+
+                <p>
+
+                    Resolution
+
+                </p>
+
+            </div>
+
+            <div class="stat-card">
+
+                <i class="fa-solid fa-hard-drive"></i>
+
+                <h3 id="statSize">
+
+                    0 KB
+
+                </h3>
+
+                <p>
+
+                    File Size
+
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+              FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+
+            © 2026 SmartToolKits. All Rights Reserved.
+
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+              JAVASCRIPT
+    ========================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

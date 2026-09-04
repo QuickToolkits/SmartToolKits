@@ -1,0 +1,1487 @@
+/*=========================================
+  SmartToolKits Image Compressor
+  CSS Part 1
+=========================================*/
+
+/*========== RESET ==========*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Poppins",sans-serif;
+    background:#0f172a;
+    color:#f8fafc;
+    line-height:1.6;
+    overflow-x:hidden;
+}
+
+/*========== VARIABLES ==========*/
+
+:root{
+
+    --primary:#f97316;
+    --primary-dark:#ea580c;
+
+    --bg:#0f172a;
+
+    --card:#1e293b;
+
+    --card-2:#273449;
+
+    --text:#f8fafc;
+
+    --text-light:#cbd5e1;
+
+    --border:rgba(255,255,255,.08);
+
+    --radius:22px;
+
+    --shadow:
+    0 10px 30px rgba(0,0,0,.20);
+
+    --speed:.25s;
+
+}
+
+/*========== GLOBAL ==========*/
+
+img{
+    display:block;
+    max-width:100%;
+}
+
+button,
+input,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+.container{
+
+    width:min(1200px,92%);
+
+    margin:auto;
+
+}
+
+section{
+
+    margin:80px 0;
+
+}
+
+/*========== HERO ==========*/
+
+.hero{
+
+    padding-top:70px;
+
+    text-align:center;
+
+}
+
+.hero-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    background:rgba(249,115,22,.12);
+
+    color:var(--primary);
+
+    font-weight:600;
+
+    margin-bottom:22px;
+
+    transition:
+    transform var(--speed);
+
+}
+
+.hero-badge:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.hero h1{
+
+    font-size:clamp(2.8rem,6vw,4.6rem);
+
+    font-weight:800;
+
+    margin-bottom:18px;
+
+}
+
+.hero p{
+
+    max-width:700px;
+
+    margin:auto;
+
+    color:var(--text-light);
+
+    font-size:1.08rem;
+
+}
+
+/*========== COMMON ==========*/
+
+.section-title{
+
+    text-align:center;
+
+    margin-bottom:42px;
+
+}
+
+.section-title h2{
+
+    font-size:2rem;
+
+    margin-bottom:12px;
+
+}
+
+.section-title p{
+
+    color:var(--text-light);
+
+}
+
+/*========== RESPONSIVE ==========*/
+
+@media(max-width:768px){
+
+    section{
+
+        margin:60px 0;
+
+    }
+
+    .hero{
+
+        padding-top:50px;
+
+    }
+
+    .hero h1{
+
+        font-size:2.3rem;
+
+    }
+
+    .hero p{
+
+        font-size:.95rem;
+
+    }
+
+}
+/*=========================================
+  CSS Part 2 - Upload Section
+=========================================*/
+
+.upload-section{
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+.upload-card{
+
+    width:100%;
+
+    max-width:760px;
+
+    background:linear-gradient(
+        180deg,
+        #1f2d44 0%,
+        #182435 100%
+    );
+
+    border:2px dashed rgba(249,115,22,.28);
+
+    border-radius:28px;
+
+    padding:60px 30px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+    transition:
+    transform var(--speed),
+    border-color var(--speed),
+    box-shadow var(--speed);
+
+}
+
+.upload-card:hover{
+
+    transform:translateY(-5px);
+
+    border-color:var(--primary);
+
+    box-shadow:
+    0 18px 45px rgba(0,0,0,.28);
+
+}
+
+.upload-card.drag-over{
+
+    border-color:var(--primary);
+
+    background:#22314a;
+
+}
+
+.upload-icon{
+
+    width:90px;
+
+    height:90px;
+
+    margin:0 auto 28px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:24px;
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary-dark)
+    );
+
+    color:#fff;
+
+    font-size:2rem;
+
+    transition:
+    transform .25s ease;
+
+}
+
+.upload-card:hover .upload-icon{
+
+    transform:translateY(-5px);
+
+}
+
+.upload-card h2{
+
+    font-size:2rem;
+
+    margin-bottom:12px;
+
+}
+
+.upload-card p{
+
+    color:var(--text-light);
+
+    margin-bottom:28px;
+
+}
+
+.upload-tags{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+}
+
+.upload-tags span{
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    color:var(--text-light);
+
+    font-size:.9rem;
+
+    transition:
+    transform var(--speed),
+    background var(--speed);
+
+}
+
+.upload-tags span:hover{
+
+    transform:translateY(-2px);
+
+    background:rgba(249,115,22,.12);
+
+}
+
+/*========== Mobile ==========*/
+
+@media(max-width:768px){
+
+    .upload-card{
+
+        padding:40px 22px;
+
+    }
+
+    .upload-card h2{
+
+        font-size:1.6rem;
+
+    }
+
+    .upload-icon{
+
+        width:72px;
+
+        height:72px;
+
+        font-size:1.6rem;
+
+    }
+
+}
+/*=========================================
+  CSS Part 3 - Preview Section
+=========================================*/
+
+.preview-section{
+
+    display:grid;
+
+    grid-template-columns:1fr 320px 1fr;
+
+    gap:24px;
+
+    align-items:stretch;
+
+}
+
+/*========== Preview Card ==========*/
+
+.preview-card{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow);
+
+    transition:
+    transform var(--speed),
+    border-color var(--speed);
+
+}
+
+.preview-card:hover{
+
+    transform:translateY(-5px);
+
+    border-color:rgba(249,115,22,.25);
+
+}
+
+/*========== Header ==========*/
+
+.card-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 22px;
+
+    border-bottom:1px solid rgba(255,255,255,.06);
+
+}
+
+.card-header h3{
+
+    font-size:1rem;
+
+    font-weight:600;
+
+}
+
+/*========== Status ==========*/
+
+.status{
+
+    padding:6px 14px;
+
+    border-radius:999px;
+
+    font-size:.72rem;
+
+    font-weight:600;
+
+    letter-spacing:.5px;
+
+}
+
+.status-input{
+
+    background:#1d4ed820;
+
+    color:#93c5fd;
+
+}
+
+.status-output{
+
+    background:#16a34a20;
+
+    color:#86efac;
+
+}
+
+/*========== Preview Box ==========*/
+
+.preview-box{
+
+    height:300px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:24px;
+
+}
+
+.preview-box img{
+
+    display:none;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:contain;
+
+}
+
+/*========== Placeholder ==========*/
+
+.placeholder{
+
+    text-align:center;
+
+}
+
+.placeholder i{
+
+    font-size:3rem;
+
+    color:var(--primary);
+
+    margin-bottom:18px;
+
+}
+
+.placeholder h4{
+
+    margin-bottom:8px;
+
+}
+
+.placeholder p{
+
+    color:var(--text-light);
+
+    font-size:.92rem;
+
+}
+
+/*========== Image Info ==========*/
+
+.image-info{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:12px;
+
+    padding:20px;
+
+}
+
+.info-item{
+
+    background:rgba(255,255,255,.04);
+
+    border-radius:16px;
+
+    padding:14px;
+
+    text-align:center;
+
+}
+
+.info-item span{
+
+    display:block;
+
+    color:var(--text-light);
+
+    font-size:.8rem;
+
+    margin-bottom:6px;
+
+}
+
+.info-item strong{
+
+    font-size:.95rem;
+
+}
+
+/*========== Compression Card ==========*/
+
+.compress-card{
+
+    background:linear-gradient(
+    180deg,
+    var(--card),
+    #182435);
+
+    border:1px solid var(--border);
+
+    border-radius:24px;
+
+    box-shadow:var(--shadow);
+
+    padding:28px 22px;
+
+    text-align:center;
+
+    transition:
+    transform var(--speed),
+    border-color var(--speed);
+
+}
+
+.compress-card:hover{
+
+    transform:translateY(-5px);
+
+    border-color:rgba(249,115,22,.25);
+
+}
+
+.compress-icon{
+
+    width:72px;
+
+    height:72px;
+
+    margin:0 auto 20px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:20px;
+
+    background:linear-gradient(
+    135deg,
+    var(--primary),
+    var(--primary-dark));
+
+    color:#fff;
+
+    font-size:1.7rem;
+
+}
+
+.compress-card h3{
+
+    margin-bottom:10px;
+
+}
+
+.compress-card p{
+
+    color:var(--text-light);
+
+    margin-bottom:22px;
+
+}
+
+/*========== Mode Buttons ==========*/
+
+.compress-mode{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-bottom:20px;
+
+}
+
+.mode-btn{
+
+    flex:1;
+
+    height:44px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:var(--card-2);
+
+    color:#fff;
+
+    transition:
+    transform var(--speed),
+    background var(--speed);
+
+}
+
+.mode-btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.mode-btn.active{
+
+    background:var(--primary);
+
+}
+
+/*========== Estimate ==========*/
+
+.estimate-box{
+
+    background:rgba(255,255,255,.04);
+
+    border-radius:16px;
+
+    padding:16px;
+
+}
+
+.estimate-box span{
+
+    display:block;
+
+    color:var(--text-light);
+
+    font-size:.85rem;
+
+    margin-bottom:8px;
+
+}
+
+.estimate-box strong{
+
+    font-size:1.35rem;
+
+}
+
+/*========== Responsive ==========*/
+
+@media(max-width:1050px){
+
+    .preview-section{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .compress-card{
+
+        order:-1;
+
+    }
+
+}
+
+@media(max-width:640px){
+
+    .preview-box{
+
+        height:220px;
+
+    }
+
+    .image-info{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+/*=========================================
+  CSS Part 4 - Settings & Buttons
+=========================================*/
+
+/*========== Settings ==========*/
+
+.settings-section{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:24px;
+
+    padding:40px;
+
+    box-shadow:var(--shadow);
+
+}
+
+.settings-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:24px;
+
+}
+
+.setting-card{
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(255,255,255,.06);
+
+    border-radius:18px;
+
+    padding:22px;
+
+    transition:
+    transform var(--speed),
+    border-color var(--speed);
+
+}
+
+.setting-card:hover{
+
+    transform:translateY(-3px);
+
+    border-color:rgba(249,115,22,.25);
+
+}
+
+.setting-card label{
+
+    display:block;
+
+    font-weight:600;
+
+    margin-bottom:14px;
+
+}
+
+/*========== Quality Slider ==========*/
+
+#qualitySlider{
+
+    width:100%;
+
+    accent-color:var(--primary);
+
+    cursor:pointer;
+
+}
+
+.slider-value{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-top:12px;
+
+}
+
+.slider-value span{
+
+    color:var(--text-light);
+
+}
+
+.slider-value strong{
+
+    color:var(--primary);
+
+}
+
+/*========== Target Input ==========*/
+
+.target-input{
+
+    display:grid;
+
+    grid-template-columns:1fr 90px;
+
+    gap:12px;
+
+}
+
+.target-input input{
+
+    width:100%;
+
+}
+
+.target-input input,
+.target-input select,
+#outputFormat{
+
+    width:100%;
+
+    height:48px;
+
+    background:var(--card-2);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:12px;
+
+    color:#fff;
+
+    padding:0 14px;
+
+    transition:border-color var(--speed);
+
+}
+
+.target-input input:focus,
+.target-input select:focus,
+#outputFormat:focus{
+
+    border-color:var(--primary);
+
+}
+
+.setting-card small{
+
+    display:block;
+
+    margin-top:10px;
+
+    color:var(--text-light);
+
+    font-size:.85rem;
+
+}
+
+/*========== Checkbox ==========*/
+
+.check-item{
+
+    display:flex !important;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:16px;
+
+    cursor:pointer;
+
+}
+
+.check-item:last-child{
+
+    margin-bottom:0;
+
+}
+
+.check-item input{
+
+    width:18px;
+
+    height:18px;
+
+    accent-color:var(--primary);
+
+}
+
+/*========== Buttons ==========*/
+
+.action-section{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:18px;
+
+}
+
+.btn{
+
+    min-width:180px;
+
+    height:54px;
+
+    border:none;
+
+    border-radius:14px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-weight:600;
+
+    transition:
+    transform var(--speed),
+    background var(--speed);
+
+}
+
+.btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.btn-primary{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+.btn-secondary{
+
+    background:#334155;
+
+    color:#fff;
+
+}
+
+.btn-outline{
+
+    background:transparent;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    color:#fff;
+
+}
+
+.btn:disabled{
+
+    opacity:.5;
+
+    cursor:not-allowed;
+
+    transform:none;
+
+}
+
+/*========== Responsive ==========*/
+
+@media(max-width:900px){
+
+    .settings-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media(max-width:640px){
+
+    .settings-section{
+
+        padding:24px;
+
+    }
+
+    .target-input{
+
+        flex-direction:column;
+
+    }
+
+    .btn{
+
+        width:100%;
+
+    }
+
+}
+/*=========================================
+  CSS Part 5 - Stats, Features, FAQ & Footer
+=========================================*/
+
+/*========== Statistics ==========*/
+
+.stats-section{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+
+}
+
+.stat-card{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:28px 20px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+    transition:
+    transform var(--speed),
+    border-color var(--speed);
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-4px);
+
+    border-color:rgba(249,115,22,.25);
+
+}
+
+.stat-card i{
+
+    font-size:2rem;
+
+    color:var(--primary);
+
+    margin-bottom:16px;
+
+}
+
+.stat-card h3{
+
+    font-size:1.8rem;
+
+    margin-bottom:8px;
+
+}
+
+.stat-card p{
+
+    color:var(--text-light);
+
+    font-size:.95rem;
+
+}
+
+/*========== Features ==========*/
+
+.features-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+
+}
+
+.feature-card{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:28px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+    transition:
+    transform var(--speed),
+    border-color var(--speed);
+
+}
+
+.feature-card:hover{
+
+    transform:translateY(-4px);
+
+    border-color:rgba(249,115,22,.25);
+
+}
+
+.feature-card i{
+
+    font-size:2rem;
+
+    color:var(--primary);
+
+    margin-bottom:18px;
+
+}
+
+.feature-card h3{
+
+    margin-bottom:12px;
+
+}
+
+.feature-card p{
+
+    color:var(--text-light);
+
+    font-size:.95rem;
+
+}
+
+/*========== FAQ ==========*/
+
+.faq-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+}
+
+.faq-list details{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+}
+
+.faq-list summary{
+
+    padding:20px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    list-style:none;
+
+    user-select:none;
+
+}
+
+.faq-list summary::-webkit-details-marker{
+
+    display:none;
+
+}
+
+.faq-list p{
+
+    padding:0 20px 20px;
+
+    color:var(--text-light);
+
+}
+
+/*========== Footer ==========*/
+
+.footer{
+
+    margin-top:80px;
+
+    padding:30px 20px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    text-align:center;
+
+    color:var(--text-light);
+
+}
+
+/*========== Tablet ==========*/
+
+@media(max-width:992px){
+
+    .stats-section{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .features-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+/*========== Mobile ==========*/
+
+@media(max-width:640px){
+
+    .stats-section{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .features-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+/*=========================================
+  CSS Part 6 - Final Polish
+=========================================*/
+
+/*========== Smooth Focus ==========*/
+
+button:focus,
+input:focus,
+select:focus{
+
+    outline:none;
+
+}
+
+/*========== Image ==========*/
+
+.preview-box img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:contain;
+
+}
+
+/*========== Scrollbar ==========*/
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#0f172a;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--primary);
+
+    border-radius:999px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:var(--primary-dark);
+
+}
+
+/*========== Selection ==========*/
+
+::selection{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+/*========== Performance ==========*/
+
+.preview-card,
+.compress-card,
+.setting-card,
+.stat-card,
+.feature-card,
+.upload-card{
+
+    will-change:transform;
+
+    backface-visibility:hidden;
+
+    transform:translateZ(0);
+
+}
+
+/*========== Better Animation ==========*/
+
+.preview-card,
+.compress-card,
+.setting-card,
+.stat-card,
+.feature-card,
+.upload-card,
+.btn{
+
+    transition:
+
+    transform .25s ease,
+
+    border-color .25s ease,
+
+    background-color .25s ease,
+
+    box-shadow .25s ease;
+
+}
+
+/*========== Disabled ==========*/
+
+button:disabled{
+
+    pointer-events:none;
+
+}
+
+/*========== Mobile ==========*/
+
+@media(max-width:480px){
+
+    .hero h1{
+
+        font-size:2rem;
+
+    }
+
+    .hero p{
+
+        font-size:.92rem;
+
+    }
+
+    .card-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:10px;
+
+    }
+
+    .upload-tags{
+
+        gap:8px;
+
+    }
+
+    .upload-tags span{
+
+        padding:8px 12px;
+
+        font-size:.75rem;
+
+    }
+
+    .compress-mode{
+
+        flex-direction:column;
+
+    }
+
+    .mode-btn{
+
+        width:100%;
+
+    }
+
+}
+
+/*========== Reduced Motion Support ==========*/
+
+@media (prefers-reduced-motion: reduce){
+
+    *{
+
+        animation:none !important;
+
+        transition:none !important;
+
+        scroll-behavior:auto !important;
+
+    }
+
+}

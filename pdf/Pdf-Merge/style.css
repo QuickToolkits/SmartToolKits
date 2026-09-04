@@ -1,0 +1,447 @@
+/* ===========================
+   GOOGLE FONT
+=========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ===========================
+   RESET
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    min-height:100vh;
+
+    background:
+    radial-gradient(circle at top left,#2563eb 0%,transparent 35%),
+    radial-gradient(circle at bottom right,#06b6d4 0%,transparent 35%),
+    #07111f;
+
+    color:white;
+
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+header{
+
+    display:flex;
+
+    justify-content:center;
+
+    padding:28px;
+
+}
+
+.logo{
+
+    font-size:30px;
+
+    font-weight:800;
+
+}
+
+/* ===========================
+   HERO
+=========================== */
+
+.hero{
+
+    text-align:center;
+
+    padding:30px 20px;
+
+}
+
+.badge{
+
+    display:inline-block;
+
+    padding:10px 24px;
+
+    border-radius:50px;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    backdrop-filter:blur(12px);
+
+    letter-spacing:2px;
+
+    font-size:14px;
+
+}
+
+.hero h1{
+
+    margin-top:25px;
+
+    font-size:56px;
+
+    font-weight:800;
+
+}
+
+.hero p{
+
+    max-width:700px;
+
+    margin:20px auto;
+
+    color:#cbd5e1;
+
+    line-height:1.8;
+
+    font-size:18px;
+
+}
+
+/* ===========================
+   CARD
+=========================== */
+
+.upload-section{
+
+    display:flex;
+
+    justify-content:center;
+
+    padding:50px 20px 80px;
+
+}
+
+.upload-card{
+
+    width:920px;
+
+    max-width:95%;
+
+    padding:40px;
+
+    border-radius:30px;
+
+    backdrop-filter:blur(25px);
+
+    background:rgba(255,255,255,.07);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+
+}
+/* ===========================
+   UPLOAD BOX
+=========================== */
+
+.upload-box{
+
+    position:relative;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:70px 30px;
+
+    border:2px dashed rgba(255,255,255,.18);
+
+    border-radius:25px;
+
+    cursor:pointer;
+
+    overflow:hidden;
+
+    transition:.35s;
+
+}
+
+.upload-box::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(135deg,#2563eb,#06b6d4);
+
+    opacity:0;
+
+    transition:.35s;
+
+}
+
+.upload-box>*{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.upload-box:hover{
+
+    transform:translateY(-8px);
+
+    border-color:transparent;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+
+}
+
+.upload-box:hover::before{
+
+    opacity:.12;
+
+}
+
+/* ===========================
+   ICON
+=========================== */
+
+.upload-icon{
+
+    width:95px;
+
+    height:95px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:46px;
+
+    background:linear-gradient(135deg,#2563eb,#06b6d4);
+
+    margin-bottom:22px;
+
+}
+
+.upload-box h2{
+
+    font-size:30px;
+
+    margin-bottom:12px;
+
+}
+
+.upload-box p{
+
+    color:#cbd5e1;
+
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+
+.buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:18px;
+
+    flex-wrap:wrap;
+
+    margin-top:35px;
+
+}
+
+button{
+
+    border:none;
+
+    border-radius:50px;
+
+    padding:16px 36px;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+#mergeBtn{
+
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+
+    color:white;
+
+}
+
+#downloadBtn{
+
+    background:linear-gradient(135deg,#06b6d4,#0891b2);
+
+    color:white;
+
+}
+
+button:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
+
+}
+
+/* ===========================
+   FILE LIST
+=========================== */
+
+#fileList{
+
+    margin-top:40px;
+
+    display:grid;
+
+    gap:16px;
+
+}
+
+.file-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 20px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.07);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    transition:.3s;
+
+}
+
+.file-item:hover{
+
+    transform:translateX(6px);
+
+    background:rgba(255,255,255,.10);
+
+}
+
+.file-info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.file-icon{
+
+    font-size:28px;
+
+}
+
+.file-name{
+
+    font-size:16px;
+
+    word-break:break-word;
+
+}
+
+.file-size{
+
+    color:#94a3b8;
+
+    font-size:14px;
+
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:768px){
+
+.hero h1{
+
+font-size:38px;
+
+}
+
+.hero p{
+
+font-size:16px;
+
+}
+
+.upload-card{
+
+padding:25px;
+
+}
+
+.upload-box{
+
+padding:50px 20px;
+
+}
+
+.upload-box h2{
+
+font-size:24px;
+
+}
+
+.buttons{
+
+flex-direction:column;
+
+}
+
+button{
+
+width:100%;
+
+}
+
+.file-item{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+gap:10px;
+
+}
+
+}

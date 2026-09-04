@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Split PDF - SmartToolKits</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+
+        🚀 SmartToolKits
+
+    </div>
+
+</header>
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span class="badge">
+
+            SPLIT PDF
+
+        </span>
+
+        <h1>
+
+            Split PDF into Individual Pages
+
+        </h1>
+
+        <p>
+
+            Upload a PDF and extract specific pages or page ranges into a new PDF within seconds.
+
+        </p>
+
+    </div>
+
+</section>
+
+<section class="upload-section">
+
+    <div class="upload-card">
+
+        <label for="pdfInput" class="upload-box">
+
+            <div class="upload-icon">
+
+                ✂️
+
+            </div>
+
+            <h2>
+
+                Select a PDF File
+
+            </h2>
+
+            <p>
+
+                Click here to upload your PDF
+
+            </p>
+
+            <input
+                type="file"
+                id="pdfInput"
+                accept=".pdf,application/pdf"
+                hidden>
+
+        </label>
+
+        <div id="fileInfo"></div>
+
+        <div class="split-options">
+
+            <label>
+
+                Page Range
+
+            </label>
+
+            <input
+                type="text"
+                id="pageRange"
+                placeholder="Example: 1-5 or 3">
+
+        </div>
+
+        <div class="buttons">
+
+            <button id="splitBtn">
+
+                Split PDF
+
+            </button>
+
+            <button id="downloadBtn" style="display:none;">
+
+                Download PDF
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

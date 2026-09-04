@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Image Compressor | SmartToolKits</title>
+
+    <meta name="description"
+          content="Compress JPG, PNG and WEBP images online without losing quality.">
+
+    <meta name="theme-color"
+          content="#F97316">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+<main class="container">
+
+<!-- ===========================
+        HERO
+=========================== -->
+
+<section
+id="hero"
+class="hero">
+
+<div class="hero-badge">
+
+<i class="fa-solid fa-bolt"></i>
+
+<span>
+
+SmartToolKits
+
+</span>
+
+</div>
+
+<h1>
+
+Image Compressor
+
+</h1>
+
+<p>
+
+Compress JPG, PNG and WEBP images instantly while maintaining excellent quality.
+
+</p>
+
+</section>
+
+<!-- ===========================
+      UPLOAD SECTION
+=========================== -->
+
+<section
+id="uploadSection"
+class="upload-section">
+
+<input
+
+type="file"
+
+id="imageInput"
+
+accept=".jpg,.jpeg,.png,.webp"
+
+hidden>
+
+<label
+
+for="imageInput"
+
+id="uploadCard"
+
+class="upload-card">
+
+<div class="upload-icon">
+
+<i class="fa-solid fa-cloud-arrow-up"></i>
+
+</div>
+
+<h2>
+
+Upload Your Image
+
+</h2>
+
+<p>
+
+Drag & Drop your image here or click to browse.
+
+</p>
+
+<div class="upload-tags">
+
+<span>
+
+⚡ Fast
+
+</span>
+
+<span>
+
+🔒 Secure
+
+</span>
+
+<span>
+
+📱 Mobile Friendly
+
+</span>
+
+</div>
+
+</label>
+
+</section>
+<!-- ===========================
+      PREVIEW SECTION
+=========================== -->
+
+<section
+id="previewSection"
+class="preview-section">
+
+    <!-- Original Image -->
+
+    <div
+    id="originalCard"
+    class="preview-card">
+
+        <div class="card-header">
+
+            <h3>
+
+                Original Image
+
+            </h3>
+
+            <span class="status status-input">
+
+                INPUT
+
+            </span>
+
+        </div>
+
+        <div class="preview-box">
+
+            <img
+            id="originalPreview"
+            alt="Original Preview">
+
+            <div
+            id="originalPlaceholder"
+            class="placeholder">
+
+                <i class="fa-regular fa-image"></i>
+
+                <h4>
+
+                    No Image Selected
+
+                </h4>
+
+                <p>
+
+                    Upload an image to preview it here.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="image-info">
+
+            <div class="info-item">
+
+                <span>File Size</span>
+
+                <strong id="originalSize">
+
+                    --
+
+                </strong>
+
+            </div>
+
+            <div class="info-item">
+
+                <span>Resolution</span>
+
+                <strong id="originalResolution">
+
+                    --
+
+                </strong>
+
+            </div>
+
+            <div class="info-item">
+
+                <span>Format</span>
+
+                <strong id="originalFormat">
+
+                    --
+
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Compression Card -->
+
+    <div
+    id="compressCard"
+    class="compress-card">
+
+        <div class="compress-icon">
+
+            <i class="fa-solid fa-compress"></i>
+
+        </div>
+
+        <h3>
+
+            Smart Compression
+
+        </h3>
+
+        <p>
+
+            Compress your image with quality control or target size.
+
+        </p>
+
+        <div class="compress-mode">
+
+            <button
+            id="qualityModeBtn"
+            class="mode-btn active"
+            type="button">
+
+                Quality
+
+            </button>
+
+            <button
+            id="targetModeBtn"
+            class="mode-btn"
+            type="button">
+
+                Target Size
+
+            </button>
+
+        </div>
+
+        <div class="estimate-box">
+
+            <span>
+
+                Estimated Output
+
+            </span>
+
+            <strong id="estimatedOutput">
+
+                --
+
+            </strong>
+
+        </div>
+
+    </div>
+
+    <!-- Compressed Image -->
+
+    <div
+    id="compressedCard"
+    class="preview-card">
+
+        <div class="card-header">
+
+            <h3>
+
+                Compressed Image
+
+            </h3>
+
+            <span class="status status-output">
+
+                OUTPUT
+
+            </span>
+
+        </div>
+
+        <div class="preview-box">
+
+            <img
+            id="compressedPreview"
+            alt="Compressed Preview">
+
+            <div
+            id="compressedPlaceholder"
+            class="placeholder">
+
+                <i class="fa-solid fa-file-image"></i>
+
+                <h4>
+
+                    Waiting...
+
+                </h4>
+
+                <p>
+
+                    Your compressed image will appear here.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="image-info">
+
+            <div class="info-item">
+
+                <span>File Size</span>
+
+                <strong id="compressedSize">
+
+                    --
+
+                </strong>
+
+            </div>
+
+            <div class="info-item">
+
+                <span>Saved</span>
+
+                <strong id="savedPercent">
+
+                    0%
+
+                </strong>
+
+            </div>
+
+            <div class="info-item">
+
+                <span>Format</span>
+
+                <strong id="compressedFormat">
+
+                    --
+
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ===========================
+      SETTINGS SECTION
+=========================== -->
+
+<section
+id="settingsSection"
+class="settings-section">
+
+    <div class="section-title">
+
+        <h2>
+
+            Compression Settings
+
+        </h2>
+
+        <p>
+
+            Adjust quality, target size and output format.
+
+        </p>
+
+    </div>
+
+    <div class="settings-grid">
+
+        <!-- Quality -->
+
+        <div
+        id="qualityCard"
+        class="setting-card">
+
+            <label for="qualitySlider">
+
+                Compression Quality
+
+            </label>
+
+            <input
+
+            type="range"
+
+            id="qualitySlider"
+
+            min="10"
+
+            max="100"
+
+            value="80">
+
+            <div class="slider-value">
+
+                <span>
+
+                    Quality
+
+                </span>
+
+                <strong id="qualityValue">
+
+                    80%
+
+                </strong>
+
+            </div>
+
+        </div>
+
+        <!-- Target Size -->
+
+        <div
+        id="targetCard"
+        class="setting-card">
+
+            <label>
+
+                Desired File Size
+
+            </label>
+
+            <div class="target-input">
+
+                <input
+
+                type="number"
+
+                id="targetSize"
+
+                placeholder="500"
+
+                min="1">
+
+                <select id="targetUnit">
+
+                    <option value="KB">
+
+                        KB
+
+                    </option>
+
+                    <option value="MB">
+
+                        MB
+
+                    </option>
+
+                </select>
+
+            </div>
+
+            <small>
+
+                Leave empty to use Quality Mode.
+
+            </small>
+
+        </div>
+
+        <!-- Output Format -->
+
+        <div
+        id="formatCard"
+        class="setting-card">
+
+            <label for="outputFormat">
+
+                Output Format
+
+            </label>
+
+            <select id="outputFormat">
+
+                <option value="original">
+
+                    Keep Original
+
+                </option>
+
+                <option value="jpeg">
+
+                    JPG
+
+                </option>
+
+                <option value="png">
+
+                    PNG
+
+                </option>
+
+                <option value="webp">
+
+                    WEBP
+
+                </option>
+
+            </select>
+
+        </div>
+
+        <!-- Options -->
+
+        <div
+        id="optionsCard"
+        class="setting-card">
+
+            <label class="check-item">
+
+                <input
+
+                type="checkbox"
+
+                id="keepResolution"
+
+                checked>
+
+                <span>
+
+                    Keep Original Resolution
+
+                </span>
+
+            </label>
+
+            <label class="check-item">
+
+                <input
+
+                type="checkbox"
+
+                id="preserveMetadata">
+
+                <span>
+
+                    Preserve Metadata
+
+                </span>
+
+            </label>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ===========================
+      ACTIONS SECTION
+=========================== -->
+
+<section
+id="actionSection"
+class="action-section">
+
+    <button
+    id="compressBtn"
+    class="btn btn-primary"
+    type="button">
+
+        <i class="fa-solid fa-compress"></i>
+
+        <span>
+
+            Compress Image
+
+        </span>
+
+    </button>
+
+    <button
+    id="downloadBtn"
+    class="btn btn-secondary"
+    type="button"
+    disabled>
+
+        <i class="fa-solid fa-download"></i>
+
+        <span>
+
+            Download
+
+        </span>
+
+    </button>
+
+    <button
+    id="resetBtn"
+    class="btn btn-outline"
+    type="button">
+
+        <i class="fa-solid fa-rotate-left"></i>
+
+        <span>
+
+            Reset
+
+        </span>
+
+    </button>
+
+</section>
+
+<!-- ===========================
+      LIVE STATISTICS
+=========================== -->
+
+<section
+id="statsSection"
+class="stats-section">
+
+    <div class="stat-card">
+
+        <i class="fa-solid fa-file-image"></i>
+
+        <h3 id="statOriginal">
+
+            0 KB
+
+        </h3>
+
+        <p>
+
+            Original Size
+
+        </p>
+
+    </div>
+
+    <div class="stat-card">
+
+        <i class="fa-solid fa-compress"></i>
+
+        <h3 id="statCompressed">
+
+            0 KB
+
+        </h3>
+
+        <p>
+
+            Compressed Size
+
+        </p>
+
+    </div>
+
+    <div class="stat-card">
+
+        <i class="fa-solid fa-chart-column"></i>
+
+        <h3 id="statSaved">
+
+            0%
+
+        </h3>
+
+        <p>
+
+            Space Saved
+
+        </p>
+
+    </div>
+
+    <div class="stat-card">
+
+        <i class="fa-solid fa-gauge-high"></i>
+
+        <h3 id="statRatio">
+
+            0%
+
+        </h3>
+
+        <p>
+
+            Compression Ratio
+
+        </p>
+
+    </div>
+
+</section>
+<!-- ===========================
+      FEATURES SECTION
+=========================== -->
+
+<section
+id="featuresSection"
+class="features-section">
+
+    <div class="section-title">
+
+        <h2>
+
+            Why Choose SmartToolKits?
+
+        </h2>
+
+        <p>
+
+            Fast, secure and professional image compression directly in your browser.
+
+        </p>
+
+    </div>
+
+    <div class="features-grid">
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-bolt"></i>
+
+            <h3>
+
+                Fast Compression
+
+            </h3>
+
+            <p>
+
+                Compress images within seconds using optimized browser processing.
+
+            </p>
+
+        </div>
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-lock"></i>
+
+            <h3>
+
+                Privacy First
+
+            </h3>
+
+            <p>
+
+                Your images never leave your device.
+
+            </p>
+
+        </div>
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-sliders"></i>
+
+            <h3>
+
+                Full Control
+
+            </h3>
+
+            <p>
+
+                Adjust quality, format and target size with ease.
+
+            </p>
+
+        </div>
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-mobile-screen"></i>
+
+            <h3>
+
+                Mobile Friendly
+
+            </h3>
+
+            <p>
+
+                Works perfectly on desktop, tablet and mobile devices.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ===========================
+      FAQ SECTION
+=========================== -->
+
+<section
+id="faqSection"
+class="faq-section">
+
+    <div class="section-title">
+
+        <h2>
+
+            Frequently Asked Questions
+
+        </h2>
+
+    </div>
+
+    <div class="faq-list">
+
+        <details>
+
+            <summary>
+
+                Does this tool reduce image quality?
+
+            </summary>
+
+            <p>
+
+                You can control the quality level. Higher quality keeps more details.
+
+            </p>
+
+        </details>
+
+        <details>
+
+            <summary>
+
+                Are my images uploaded?
+
+            </summary>
+
+            <p>
+
+                No. Everything is processed directly inside your browser.
+
+            </p>
+
+        </details>
+
+        <details>
+
+            <summary>
+
+                Which image formats are supported?
+
+            </summary>
+
+            <p>
+
+                JPG, JPEG, PNG and WEBP.
+
+            </p>
+
+        </details>
+
+    </div>
+
+</section>
+
+</main>
+
+<!-- ===========================
+      FOOTER
+=========================== -->
+
+<footer
+class="footer">
+
+<p>
+
+© 2026 SmartToolKits. All Rights Reserved.
+
+</p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
