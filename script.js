@@ -1,454 +1,433 @@
 /* =========================================
-   SMARTTOOLKITS — SCRIPT
-   PART 1
-   LOADER + MOBILE MENU
-========================================= */
+   SMARTTOOLKITS
+   JAVASCRIPT PART 1 — MOBILE NAVIGATION
+   ========================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* =========================================
-       PAGE LOADER
-    ========================================= */
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mobileNavigation = document.querySelector(".mobile-navigation");
 
-    const pageLoader = document.getElementById("page-loader");
-
-    if (pageLoader) {
-        window.addEventListener("load", () => {
-            setTimeout(() => {
-                pageLoader.classList.add("hide");
-            }, 450);
-        });
+    if (!menuToggle || !mobileNavigation) {
+        return;
     }
 
+    const mobileLinks = mobileNavigation.querySelectorAll("a");
 
-    /* =========================================
-       MOBILE MENU
-    ========================================= */
-
-    const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
-    const mobileNav = document.querySelector(".mobile-nav");
-    const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
-
-    if (mobileMenuBtn && mobileNav) {
-
-        mobileMenuBtn.addEventListener("click", () => {
-            const isOpen = mobileNav.classList.toggle("open");
-
-            mobileMenuBtn.classList.toggle("open", isOpen);
-            mobileMenuBtn.setAttribute("aria-expanded", isOpen);
-        });
-
-
-        /* Close menu after clicking a link */
-
-        mobileNavLinks.forEach((link) => {
-            link.addEventListener("click", () => {
-                mobileNav.classList.remove("open");
-                mobileMenuBtn.classList.remove("open");
-                mobileMenuBtn.setAttribute("aria-expanded", "false");
-            });
-        });
-
-
-        /* Close menu when clicking outside */
-
-        document.addEventListener("click", (event) => {
-            if (
-                !mobileNav.contains(event.target) &&
-                !mobileMenuBtn.contains(event.target)
-            ) {
-                mobileNav.classList.remove("open");
-                mobileMenuBtn.classList.remove("open");
-                mobileMenuBtn.setAttribute("aria-expanded", "false");
-            }
-        });
-
+    function openMobileMenu() {
+        mobileNavigation.classList.add("active");
+        menuToggle.setAttribute("aria-expanded", "true");
+        menuToggle.setAttribute("aria-label", "Close navigation menu");
     }
 
-});
-    /* =========================================
-       SMOOTH NAVIGATION
-    ========================================= */
+    function closeMobileMenu() {
+        mobileNavigation.classList.remove("active");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+    }
 
-    const navLinks = document.querySelectorAll(
-        '.nav-link[href^="#"], .mobile-nav-link[href^="#"]'
+    function toggleMobileMenu() {
+        const isOpen =
+            mobileNavigation.classList.contains("active");
+
+        if (isOpen) {
+            closeMobileMenu();
+        } else {
+            openMobileMenu();
+        }
+    }
+
+    menuToggle.addEventListener(
+        "click",
+        toggleMobileMenu
     );
 
-    navLinks.forEach((link) => {
-        link.addEventListener("click", (event) => {
-
-            const targetId = link.getAttribute("href");
-
-            if (!targetId || targetId === "#") {
-                return;
-            }
-
-            const target = document.querySelector(targetId);
-
-            if (!target) {
-                return;
-            }
-
-            event.preventDefault();
-
-            const navbar = document.querySelector(".navbar");
-            const navbarHeight = navbar
-                ? navbar.offsetHeight
-                : 0;
-
-            const targetPosition =
-                target.getBoundingClientRect().top +
-                window.scrollY -
-                navbarHeight;
-
-            window.scrollTo({
-                top: targetPosition,
-                behavior: "smooth"
-            });
-
+    mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+            closeMobileMenu();
         });
     });
 
+});
+/* =========================================
+   JAVASCRIPT PART 2 — ALL TOOLS FILTER
+   ========================================= */
 
-    /* =========================================
-       ACTIVE NAVBAR LINK
-    ========================================= */
+const filterButtons = document.querySelectorAll(
+    ".filter-button"
+);
 
-    const desktopNavLinks = document.querySelectorAll(
-        '.nav-link[href^="#"]'
-    );
+const allToolCards = document.querySelectorAll(
+    ".all-tool-card"
+);
 
-    const sections = document.querySelectorAll(
-        "#home, #tools, #image-tools, #pdf-tools, #about"
-    );
+if (filterButtons.length && allToolCards.length) {
 
-    const updateActiveNav = () => {
+    filterButtons.forEach((button) => {
 
-        let currentSection = "home";
-        const scrollPosition = window.scrollY + 180;
+        button.addEventListener("click", () => {
 
-        sections.forEach((section) => {
+            const selectedFilter =
+                button.getAttribute("data-filter");
 
-            if (scrollPosition >= section.offsetTop) {
-                currentSection = section.id;
+            /* Remove active state from all buttons */
+            filterButtons.forEach((item) => {
+                item.classList.remove("active");
+            });
+
+            /* Activate clicked button */
+            button.classList.add("active");
+
+            /* Filter tool cards */
+            allToolCards.forEach((card) => {
+
+                const category =
+                    card.getAttribute("data-category");
+
+                if (
+                    selectedFilter === "all" ||
+                    category === selectedFilter
+                ) {
+                    card.style.display = "";
+                } else {
+                    card.style.display = "none";
+                }
+
+            });
+
+        });
+
+    });
+
+}
+/* =========================================
+   JAVASCRIPT PART 3 — NAVIGATION
+   ========================================= */
+
+const navigationLinks = document.querySelectorAll(
+    ".main-navigation .nav-link"
+);
+
+const pageSections = document.querySelectorAll(
+    "main section[id]"
+);
+
+if (navigationLinks.length && pageSections.length) {
+
+    function updateActiveNavigation() {
+
+        const scrollPosition =
+            window.scrollY + 140;
+
+        let currentSection = "";
+
+        pageSections.forEach((section) => {
+
+            const sectionTop =
+                section.offsetTop;
+
+            const sectionBottom =
+                sectionTop + section.offsetHeight;
+
+            if (
+                scrollPosition >= sectionTop &&
+                scrollPosition < sectionBottom
+            ) {
+                currentSection = section.getAttribute("id");
             }
 
         });
 
-        desktopNavLinks.forEach((link) => {
+        navigationLinks.forEach((link) => {
 
-            const isActive =
-                link.getAttribute("href") === `#${currentSection}`;
+            const linkTarget =
+                link.getAttribute("href");
 
-            link.classList.toggle("active", isActive);
+            if (
+                linkTarget === `#${currentSection}`
+            ) {
+                link.classList.add("active");
+            } else {
+                link.classList.remove("active");
+            }
 
         });
-
-    };
+    }
 
     window.addEventListener(
         "scroll",
-        updateActiveNav,
+        updateActiveNavigation,
         { passive: true }
     );
 
-    updateActiveNav();
-    /* =========================================
-   TOOL SEARCH
-========================================= */
-
-const toolSearchInput = document.getElementById("tool-search");
-const searchButton = document.getElementById("search-button");
-
-const toolRoutes = {
-    "image compressor": "Image/Image-compressor/image-compressor.html",
-    "compress image": "Image/Image-compressor/image-compressor.html",
-
-    "image converter": "Image/image-conversion/image-converter.html",
-    "convert image": "Image/image-conversion/image-converter.html",
-
-    "image cropper": "Image/image-cropper/image-cropper.html",
-    "crop image": "Image/image-cropper/image-cropper.html",
-
-    "image resizer": "Image/image-resizer/image-resizer.html",
-    "resize image": "Image/image-resizer/image-resizer.html",
-
-    "image to pdf": "pdf/image-to-pdf/image-to-pdf.html",
-
-    "pdf merge": "pdf/Pdf-Merge/pdf-merge.html",
-    "merge pdf": "pdf/Pdf-Merge/pdf-merge.html",
-
-    "pdf rotate": "pdf/pdf-rotate/pdf-rotate.html",
-    "rotate pdf": "pdf/pdf-rotate/pdf-rotate.html",
-
-    "pdf split": "pdf/pdf-split/pdf-split.html",
-    "split pdf": "pdf/pdf-split/pdf-split.html",
-
-    "pdf to image": "pdf/Pdf-to-image/pdf-to-image.html",
-    "convert pdf to image": "pdf/Pdf-to-image/pdf-to-image.html"
-};
-
-
-const searchTool = () => {
-
-    if (!toolSearchInput) {
-        return;
-    }
-
-    const query = toolSearchInput.value
-        .trim()
-        .toLowerCase();
-
-    if (!query) {
-        toolSearchInput.focus();
-        return;
-    }
-
-    const exactMatch = toolRoutes[query];
-
-    if (exactMatch) {
-        window.location.href = exactMatch;
-        return;
-    }
-
-    const matchingTool = Object.keys(toolRoutes).find((tool) =>
-        tool.includes(query) || query.includes(tool)
-    );
-
-    if (matchingTool) {
-        window.location.href = toolRoutes[matchingTool];
-        return;
-    }
-
-    toolSearchInput.value = "";
-    toolSearchInput.placeholder = "Tool not found — try another name";
-
-    setTimeout(() => {
-        toolSearchInput.placeholder = "Search for a tool...";
-    }, 2200);
-};
-
-
-if (searchButton) {
-    searchButton.addEventListener("click", searchTool);
-}
-
-
-if (toolSearchInput) {
-    toolSearchInput.addEventListener("keydown", (event) => {
-
-        if (event.key === "Enter") {
-            event.preventDefault();
-            searchTool();
-        }
-
-    });
+    updateActiveNavigation();
 }
 /* =========================================
-   ALL TOOLS FILTER
-========================================= */
+   JAVASCRIPT PART 4 — MOBILE MENU OUTSIDE CLICK
+   ========================================= */
 
-const filterButtons = document.querySelectorAll(".filter-btn");
-const allToolCards = document.querySelectorAll(".all-tool-card");
+const outsideClickMenuToggle =
+    document.querySelector(".menu-toggle");
 
-filterButtons.forEach((button) => {
+const outsideClickMobileNavigation =
+    document.querySelector(".mobile-navigation");
 
-    button.addEventListener("click", () => {
+if (
+    outsideClickMenuToggle &&
+    outsideClickMobileNavigation
+) {
+    document.addEventListener("click", (event) => {
 
-        const selectedFilter = button.dataset.filter;
+        const clickedInsideMenu =
+            outsideClickMobileNavigation.contains(event.target);
 
-        filterButtons.forEach((item) => {
-            item.classList.remove("active");
-        });
+        const clickedMenuButton =
+            outsideClickMenuToggle.contains(event.target);
 
-        button.classList.add("active");
+        const menuIsOpen =
+            outsideClickMobileNavigation.classList.contains("active");
 
-        allToolCards.forEach((card) => {
+        if (
+            menuIsOpen &&
+            !clickedInsideMenu &&
+            !clickedMenuButton
+        ) {
+            outsideClickMobileNavigation.classList.remove("active");
 
-            const cardCategory = card.dataset.category;
-
-            if (
-                selectedFilter === "all" ||
-                cardCategory === selectedFilter
-            ) {
-                card.classList.remove("is-hidden");
-            } else {
-                card.classList.add("is-hidden");
-            }
-
-        });
-
-    });
-
-});
-/* =========================================
-   FAQ ACCORDION
-========================================= */
-
-const faqItems = document.querySelectorAll(".faq-item");
-
-faqItems.forEach((item) => {
-
-    const question = item.querySelector(".faq-question");
-
-    if (!question) {
-        return;
-    }
-
-    question.addEventListener("click", () => {
-
-        const isOpen =
-            question.getAttribute("aria-expanded") === "true";
-
-
-        /* Close all other FAQ items */
-
-        faqItems.forEach((otherItem) => {
-
-            const otherQuestion =
-                otherItem.querySelector(".faq-question");
-
-            if (otherItem !== item && otherQuestion) {
-                otherItem.classList.remove("active");
-                otherQuestion.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-            }
-
-        });
-
-
-        /* Toggle current FAQ */
-
-        if (isOpen) {
-            item.classList.remove("active");
-            question.setAttribute(
+            outsideClickMenuToggle.setAttribute(
                 "aria-expanded",
                 "false"
             );
-        } else {
-            item.classList.add("active");
-            question.setAttribute(
+
+            outsideClickMenuToggle.setAttribute(
+                "aria-label",
+                "Open navigation menu"
+            );
+        }
+
+    });
+}
+/* =========================================
+   JAVASCRIPT PART 5 — ESCAPE KEY
+   ========================================= */
+
+const escapeMenuNavigation =
+    document.querySelector(".mobile-navigation");
+
+const escapeMenuToggle =
+    document.querySelector(".menu-toggle");
+
+if (escapeMenuNavigation && escapeMenuToggle) {
+
+    document.addEventListener("keydown", (event) => {
+
+        if (
+            event.key === "Escape" &&
+            escapeMenuNavigation.classList.contains("active")
+        ) {
+            escapeMenuNavigation.classList.remove("active");
+
+            escapeMenuToggle.setAttribute(
                 "aria-expanded",
-                "true"
+                "false"
+            );
+
+            escapeMenuToggle.setAttribute(
+                "aria-label",
+                "Open navigation menu"
             );
         }
 
     });
 
-});
+}
 /* =========================================
-   SCROLL REVEAL
-========================================= */
+   JAVASCRIPT PART 6 — SMOOTH SCROLL
+   ========================================= */
 
-const revealElements = document.querySelectorAll(
-    ".section-header, .featured-card, .tool-card, .all-tool-card, .feature-card, .stat-item, .cta-card, .faq-item"
+const smoothScrollLinks = document.querySelectorAll(
+    'a[href^="#"]'
 );
 
-if ("IntersectionObserver" in window) {
+if (smoothScrollLinks.length) {
 
-    const revealObserver = new IntersectionObserver(
-        (entries, observer) => {
+    smoothScrollLinks.forEach((link) => {
 
-            entries.forEach((entry) => {
+        link.addEventListener("click", (event) => {
 
-                if (!entry.isIntersecting) {
-                    return;
-                }
+            const targetId =
+                link.getAttribute("href");
 
-                entry.target.classList.add("revealed");
-                observer.unobserve(entry.target);
+            if (
+                !targetId ||
+                targetId === "#"
+            ) {
+                return;
+            }
 
+            const targetElement =
+                document.querySelector(targetId);
+
+            if (!targetElement) {
+                return;
+            }
+
+            event.preventDefault();
+
+            targetElement.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
             });
 
-        },
-        {
-            threshold: 0.12,
-            rootMargin: "0px 0px -40px 0px"
-        }
-    );
+        });
 
-    revealElements.forEach((element) => {
-        element.classList.add("reveal");
-        revealObserver.observe(element);
-    });
-
-} else {
-
-    revealElements.forEach((element) => {
-        element.classList.add("revealed");
     });
 
 }
 /* =========================================
-   FINAL PERFORMANCE + SAFETY
-========================================= */
+   JAVASCRIPT PART 7 — HEADER SCROLL EFFECT
+   ========================================= */
 
-/* Prevent accidental form submission */
+const siteHeader = document.querySelector(".site-header");
 
-document.querySelectorAll("form").forEach((form) => {
+if (siteHeader) {
 
-    form.addEventListener("submit", (event) => {
+    function updateHeaderOnScroll() {
+
+        if (window.scrollY > 20) {
+            siteHeader.classList.add("scrolled");
+        } else {
+            siteHeader.classList.remove("scrolled");
+        }
+
+    }
+
+    window.addEventListener(
+        "scroll",
+        updateHeaderOnScroll,
+        { passive: true }
+    );
+
+    updateHeaderOnScroll();
+
+}
+/* =========================================
+   JAVASCRIPT PART 8 — INTERACTION SAFETY
+   ========================================= */
+
+const interactiveCards = document.querySelectorAll(
+    ".tool-card, .featured-tool-card, .all-tool-card"
+);
+
+if (interactiveCards.length) {
+
+    interactiveCards.forEach((card) => {
+
+        card.addEventListener("keydown", (event) => {
+
+            if (
+                event.key === "Enter" ||
+                event.key === " "
+            ) {
+                const link = card.querySelector("a");
+
+                if (link) {
+                    event.preventDefault();
+                    link.click();
+                }
+            }
+
+        });
+
+    });
+
+}
+/* =========================================
+   JAVASCRIPT PART 9 — TOOL CARD FOCUS
+   ========================================= */
+
+const toolCardLinks = document.querySelectorAll(
+    ".tool-card a, .featured-tool-card a, .all-tool-card a"
+);
+
+if (toolCardLinks.length) {
+
+    toolCardLinks.forEach((link) => {
+
+        link.addEventListener("focus", () => {
+
+            const parentCard =
+                link.closest(
+                    ".tool-card, .featured-tool-card, .all-tool-card"
+                );
+
+            if (parentCard) {
+                parentCard.classList.add("keyboard-focus");
+            }
+
+        });
+
+        link.addEventListener("blur", () => {
+
+            const parentCard =
+                link.closest(
+                    ".tool-card, .featured-tool-card, .all-tool-card"
+                );
+
+            if (parentCard) {
+                parentCard.classList.remove("keyboard-focus");
+            }
+
+        });
+
+    });
+
+}
+/* =========================================
+   JAVASCRIPT PART 10 — IMAGE LOADING
+   ========================================= */
+
+const pageImages = document.querySelectorAll(
+    "img"
+);
+
+if (pageImages.length) {
+
+    pageImages.forEach((image) => {
+
+        if (!image.hasAttribute("loading")) {
+            image.setAttribute("loading", "lazy");
+        }
+
+        if (!image.hasAttribute("decoding")) {
+            image.setAttribute("decoding", "async");
+        }
+
+    });
+
+}
+/* =========================================
+   JAVASCRIPT PART 11 — FINAL SAFETY
+   ========================================= */
+
+window.addEventListener("error", (event) => {
+
+    if (!event.target) {
+        return;
+    }
+
+    if (event.target.tagName === "IMG") {
+        event.target.classList.add("image-load-error");
+    }
+
+}, true);
+
+
+/* Prevent empty links from jumping to the top */
+document.querySelectorAll('a[href="#"]').forEach((link) => {
+
+    link.addEventListener("click", (event) => {
         event.preventDefault();
     });
 
 });
-
-
-/* Keep animations lightweight while scrolling */
-
-let scrollTicking = false;
-
-window.addEventListener(
-    "scroll",
-    () => {
-
-        if (!scrollTicking) {
-
-            window.requestAnimationFrame(() => {
-                scrollTicking = false;
-            });
-
-            scrollTicking = true;
-        }
-
-    },
-    { passive: true }
-);
-
-
-/* Reset mobile menu when switching to desktop */
-
-window.addEventListener("resize", () => {
-
-    if (window.innerWidth > 850) {
-
-        const mobileNav =
-            document.querySelector(".mobile-nav");
-
-        const mobileMenuBtn =
-            document.querySelector(".mobile-menu-btn");
-
-        if (mobileNav) {
-            mobileNav.classList.remove("open");
-        }
-
-        if (mobileMenuBtn) {
-            mobileMenuBtn.classList.remove("open");
-            mobileMenuBtn.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-        }
-
-    }
-
-});
-
-
-/* =========================================
-   PAGE READY
-========================================= */
-
-document.documentElement.classList.add("js-ready");

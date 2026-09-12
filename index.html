@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -10,12 +12,7 @@
 
     <meta
         name="description"
-        content="SmartToolKits — Fast, simple and powerful online tools for images and PDF files."
-    >
-
-    <meta
-        name="keywords"
-        content="image tools, PDF tools, image compressor, image converter, PDF merge, PDF split"
+        content="SmartToolKits — Fast and simple online tools for images and PDF files."
     >
 
     <meta
@@ -25,479 +22,240 @@
 
     <title>SmartToolKits — Fast Online Image & PDF Tools</title>
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+    <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
     <!-- =========================================
-         PAGE LOADER
+         HEADER / NAVIGATION
          ========================================= -->
 
-    <div
-        id="page-loader"
-        class="page-loader"
-    >
-        <div class="loader-content">
+    <header class="site-header">
 
-            <div class="loader-logo">
-                ST
-            </div>
+        <div class="header-container">
 
-            <div class="loader-bar">
-                <span></span>
-            </div>
-
-        </div>
-    </div>
-
-
-    <!-- =========================================
-         WEBSITE
-         ========================================= -->
-
-    <div class="site-wrapper">
-        <!-- =========================================
-     NAVBAR
-     ========================================= -->
-
-<header class="navbar">
-
-    <div class="navbar-container">
-
-        <a
-            href="index.html"
-            class="brand-logo"
-            aria-label="SmartToolKits Home"
-        >
-
-            <span class="brand-mark">
-                ST
-            </span>
-
-            <span class="brand-name">
-                Smart<span>ToolKits</span>
-            </span>
-
-        </a>
-
-
-        <nav
-            class="nav-menu"
-            aria-label="Main Navigation"
-        >
+            <!-- BRAND -->
 
             <a
-                href="#home"
-                class="nav-link active"
-            >
-                Home
-            </a>
-
-            <a
-                href="#tools"
-                class="nav-link"
-            >
-                All Tools
-            </a>
-
-            <a
-                href="#image-tools"
-                class="nav-link"
-            >
-                Image Tools
-            </a>
-
-            <a
-                href="#pdf-tools"
-                class="nav-link"
-            >
-                PDF Tools
-            </a>
-
-            <a
-                href="#about"
-                class="nav-link"
-            >
-                About
-            </a>
-
-        </nav>
-
-
-        <div class="navbar-actions">
-
-            <a
-                href="#tools"
-                class="nav-cta"
-            >
-                Explore Tools
-            </a>
-
-            <button
-                type="button"
-                class="mobile-menu-btn"
-                aria-label="Open navigation menu"
-                aria-expanded="false"
+                href="index.html"
+                class="brand"
+                aria-label="SmartToolKits Home"
             >
 
-                <span></span>
-                <span></span>
-                <span></span>
-
-            </button>
-
-        </div>
-
-    </div>
-
-</header>
-
-
-<!-- =========================================
-     MOBILE NAVIGATION
-     ========================================= -->
-
-<div
-    class="mobile-nav"
-    aria-hidden="true"
->
-
-    <a
-        href="#home"
-        class="mobile-nav-link active"
-    >
-        Home
-    </a>
-
-    <a
-        href="#tools"
-        class="mobile-nav-link"
-    >
-        All Tools
-    </a>
-
-    <a
-        href="#image-tools"
-        class="mobile-nav-link"
-    >
-        Image Tools
-    </a>
-
-    <a
-        href="#pdf-tools"
-        class="mobile-nav-link"
-    >
-        PDF Tools
-    </a>
-
-    <a
-        href="#about"
-        class="mobile-nav-link"
-    >
-        About
-    </a>
-
-</div>
-<!-- =========================================
-     HERO SECTION
-     ========================================= -->
-
-<main>
-
-<section
-    class="hero-section"
-    id="home"
->
-
-    <div class="hero-glow hero-glow-one"></div>
-    <div class="hero-glow hero-glow-two"></div>
-
-    <div class="hero-grid"></div>
-
-
-    <div class="hero-container">
-
-
-        <!-- HERO CONTENT -->
-
-        <div class="hero-content">
-
-            <div class="hero-badge">
-                Smart Tools. Simple Results.
-            </div>
-
-
-            <h1 class="hero-title">
-
-                Everything You Need.
-                <span class="gradient-text">
-                    One Smart Toolkit.
+                <span class="brand-symbol">
+                    ST
                 </span>
 
-            </h1>
+                <span class="brand-name">
+                    Smart<span>ToolKits</span>
+                </span>
+
+            </a>
 
 
-            <p class="hero-description">
+            <!-- MAIN NAVIGATION -->
 
-                Compress, convert, resize, crop and manage
-                your images and PDF files with fast,
-                simple and powerful online tools.
+            <nav
+                class="main-navigation"
+                aria-label="Main Navigation"
+            >
 
-            </p>
-
-
-            <!-- HERO SEARCH -->
-
-            <div class="hero-search">
-
-                <input
-                    type="search"
-                    id="tool-search"
-                    placeholder="Search for a tool..."
-                    autocomplete="off"
-                    aria-label="Search tools"
+                <a
+                    href="#home"
+                    class="nav-link active"
                 >
+                    Home
+                </a>
+
+                <a
+                    href="#tools"
+                    class="nav-link"
+                >
+                    Tools
+                </a>
+
+                <a
+                    href="#image-tools"
+                    class="nav-link"
+                >
+                    Image Tools
+                </a>
+
+                <a
+                    href="#pdf-tools"
+                    class="nav-link"
+                >
+                    PDF Tools
+                </a>
+
+                <a
+                    href="#about"
+                    class="nav-link"
+                >
+                    About
+                </a>
+
+            </nav>
+
+
+            <!-- HEADER ACTION -->
+
+            <div class="header-action">
+
+                <a
+                    href="#tools"
+                    class="header-button"
+                >
+                    Explore Tools
+                </a>
 
                 <button
                     type="button"
-                    id="search-button"
-                    aria-label="Search"
+                    class="menu-toggle"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false"
                 >
 
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <circle
-                            cx="11"
-                            cy="11"
-                            r="6.5"
-                            stroke="currentColor"
-                            stroke-width="1.8"
-                        />
-
-                        <path
-                            d="M16 16L21 21"
-                            stroke="currentColor"
-                            stroke-width="1.8"
-                            stroke-linecap="round"
-                        />
-
-                    </svg>
+                    <span></span>
+                    <span></span>
+                    <span></span>
 
                 </button>
 
             </div>
 
-
-            <!-- QUICK LINKS -->
-
-            <div class="hero-quick-links">
-
-                <span>Popular:</span>
-
-                <a href="Image/Image-compressor/image-compressor.html">
-                    Image Compressor
-                </a>
-
-                <span>•</span>
-
-                <a href="Image/image-conversion/image-converter.html">
-                    Image Converter
-                </a>
-
-                <span>•</span>
-
-                <a href="pdf/Pdf-Merge/pdf-merge.html">
-                    PDF Merge
-                </a>
-
-            </div>
-
-
-            <!-- HERO ACTIONS -->
-
-            <div class="hero-actions">
-
-                <a
-                    href="#tools"
-                    class="primary-btn"
-                >
-
-                    Explore All Tools
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M5 12H19"
-                            stroke="currentColor"
-                            stroke-width="1.8"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M13 6L19 12L13 18"
-                            stroke="currentColor"
-                            stroke-width="1.8"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-
-                    </svg>
-
-                </a>
-
-
-                <a
-                    href="#image-tools"
-                    class="secondary-btn"
-                >
-                    Start with Image Tools
-                </a>
-
-            </div>
-
-
-            <!-- TRUST POINTS -->
-
-            <div class="hero-trust">
-
-                <span class="trust-point">
-                    Fast Processing
-                </span>
-
-                <span class="trust-point">
-                    Simple to Use
-                </span>
-
-                <span class="trust-point">
-                    Available Online
-                </span>
-
-            </div>
-
         </div>
 
-
-        <!-- =========================================
-             HERO VISUAL
-             ========================================= -->
-
-        <div class="hero-visual">
-
-            <div class="hero-orbit orbit-one"></div>
-            <div class="hero-orbit orbit-two"></div>
+    </header>
 
 
-            <!-- MAIN VISUAL CARD -->
+    <!-- =========================================
+         MOBILE NAVIGATION
+         ========================================= -->
 
-            <div class="hero-visual-card">
+    <nav
+        class="mobile-navigation"
+        aria-label="Mobile Navigation"
+    >
 
-                <div class="visual-window-bar">
+        <a href="#home">
+            Home
+        </a>
 
-                    <span></span>
-                    <span></span>
-                    <span></span>
+        <a href="#tools">
+            Tools
+        </a>
 
+        <a href="#image-tools">
+            Image Tools
+        </a>
+
+        <a href="#pdf-tools">
+            PDF Tools
+        </a>
+
+        <a href="#about">
+            About
+        </a>
+
+    </nav>
+
+
+    <!-- =========================================
+         MAIN CONTENT
+         HTML PART 2 WILL START HERE
+         ========================================= -->
+
+    <main id="home">
+            <!-- =========================================
+         HERO SECTION
+         ========================================= -->
+
+    <section
+        class="hero-section"
+        id="hero"
+    >
+
+        <div class="hero-container">
+
+
+            <!-- HERO CONTENT -->
+
+            <div class="hero-content">
+
+                <div class="hero-eyebrow">
+                    SMART TOOLS. SIMPLE RESULTS.
                 </div>
+                <div class="hero-creator">
+    Created by <strong>Shivang Kumar Thakur</strong>
+</div>
+
+                <h1 class="hero-title">
+
+                    Everything You Need.
+
+                    <span class="hero-title-highlight">
+                        One Smart Toolkit.
+                    </span>
+
+                </h1>
 
 
-                <div class="visual-icon">
+                <p class="hero-description">
 
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
+                    Powerful online tools to compress, convert,
+                    resize and manage your images and PDF files.
+                    Fast, simple and easy to use.
 
-                        <rect
-                            x="3"
-                            y="4"
-                            width="18"
-                            height="16"
-                            rx="3"
-                            stroke="currentColor"
-                            stroke-width="1.6"
-                        />
-
-                        <circle
-                            cx="8.5"
-                            cy="9"
-                            r="1.5"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                        />
-
-                        <path
-                            d="M5.5 17L10 12.5L13 15.5L15 13.5L18.5 17"
-                            stroke="currentColor"
-                            stroke-width="1.6"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-
-                    </svg>
-
-                </div>
-
-
-                <div class="visual-category">
-                    IMAGE TOOLS
-                </div>
-
-
-                <h2>
-                    Smart Image Tools
-                </h2>
-
-
-                <p>
-                    Compress, convert, crop and resize
-                    your images effortlessly.
                 </p>
 
 
-                <div class="visual-progress">
+                <!-- HERO ACTIONS -->
 
-                    <div class="visual-progress-info">
+                <div class="hero-actions">
 
-                        <span>
-                            Processing
-                        </span>
+                    <a
+                        href="#tools"
+                        class="hero-primary-button"
+                    >
+                        Explore All Tools
+                    </a>
 
-                        <strong>
-                            82%
-                        </strong>
-
-                    </div>
-
-
-                    <div class="visual-progress-bar">
-                        <span></span>
-                    </div>
+                    <a
+                        href="#image-tools"
+                        class="hero-secondary-button"
+                    >
+                        Start with Image Tools
+                    </a>
 
                 </div>
 
 
-                <div class="visual-status">
+                <!-- HERO TRUST POINTS -->
 
-                    <span class="status-dot"></span>
+                <div class="hero-trust">
 
-                    <span>
-                        Fast & Ready
+                    <span class="trust-item">
+                        Fast Processing
+                    </span>
+
+                    <span class="trust-divider">
+                        •
+                    </span>
+
+                    <span class="trust-item">
+                        Simple to Use
+                    </span>
+
+                    <span class="trust-divider">
+                        •
+                    </span>
+
+                    <span class="trust-item">
+                        Available Online
                     </span>
 
                 </div>
@@ -505,46 +263,124 @@
             </div>
 
 
-            <!-- FLOATING CARD 1 -->
+            <!-- HERO VISUAL -->
 
-            <div class="floating-tool floating-tool-one">
+            <div class="hero-visual">
 
-                <div class="floating-tool-icon">
-                    IMG
+                <div class="hero-glow"></div>
+
+
+                <div class="hero-card">
+
+                    <div class="hero-card-top">
+
+                        <span class="window-dot"></span>
+                        <span class="window-dot"></span>
+                        <span class="window-dot"></span>
+
+                    </div>
+
+
+                    <div class="hero-card-content">
+
+                        <div class="hero-card-icon">
+                            ST
+                        </div>
+
+                        <span class="hero-card-label">
+                            SMARTTOOLKITS
+                        </span>
+
+                        <h2>
+                            Smart Image Tools
+                        </h2>
+
+                        <p>
+                            Compress, convert, crop and resize
+                            your images effortlessly.
+                        </p>
+
+
+                        <div class="hero-progress">
+
+                            <div class="hero-progress-info">
+
+                                <span>
+                                    Processing
+                                </span>
+
+                                <strong>
+                                    82%
+                                </strong>
+
+                            </div>
+
+                            <div class="hero-progress-bar">
+
+                                <span></span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="hero-status">
+
+                            <span class="status-indicator"></span>
+
+                            <span>
+                                Fast &amp; Ready
+                            </span>
+
+                        </div>
+
+                    </div>
+
                 </div>
 
-                <div class="floating-tool-text">
 
-                    <strong>
-                        Image Compressor
-                    </strong>
+                <!-- FLOATING TOOL CARD -->
 
-                    <small>
-                        Reduce file size
-                    </small>
+                <div class="floating-card floating-card-image">
+
+                    <span class="floating-card-icon">
+                        IMG
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Image Compressor
+                        </strong>
+
+                        <small>
+                            Reduce file size
+                        </small>
+
+                    </div>
 
                 </div>
 
-            </div>
 
+                <!-- FLOATING TOOL CARD -->
 
-            <!-- FLOATING CARD 2 -->
+                <div class="floating-card floating-card-pdf">
 
-            <div class="floating-tool floating-tool-two">
+                    <span class="floating-card-icon">
+                        PDF
+                    </span>
 
-                <div class="floating-tool-icon">
-                    PDF
-                </div>
+                    <div>
 
-                <div class="floating-tool-text">
+                        <strong>
+                            PDF Tools
+                        </strong>
 
-                    <strong>
-                        PDF Tools
-                    </strong>
+                        <small>
+                            Manage your files
+                        </small>
 
-                    <small>
-                        Manage your files
-                    </small>
+                    </div>
 
                 </div>
 
@@ -552,1439 +388,63 @@
 
         </div>
 
-    </div>
+    </section>
+        <!-- =========================================
+         FEATURED TOOLS SECTION
+         ========================================= -->
 
-</section>
-<!-- =========================================
-     FEATURED TOOLS
-     ========================================= -->
+    <section
+        class="featured-tools-section"
+        id="tools"
+    >
 
-<section
-    class="featured-section"
-    id="tools"
->
-
-    <div class="section-container">
+        <div class="section-container">
 
 
-        <!-- SECTION HEADER -->
+            <!-- SECTION HEADER -->
 
-        <div class="section-header">
+            <div class="section-header">
 
-            <div class="section-label">
-                FEATURED TOOLS
+                <span class="section-label">
+                    FEATURED TOOLS
+                </span>
+
+                <h2 class="section-title">
+
+                    Get Things Done
+                    <span>
+                        Faster.
+                    </span>
+
+                </h2>
+
+                <p class="section-description">
+
+                    Start with our most useful tools for
+                    everyday image and PDF tasks.
+
+                </p>
+
             </div>
 
-            <h2 class="section-title">
 
-                Get Things Done
-                <span class="gradient-text">
-                    Faster.
-                </span>
+            <!-- FEATURED TOOLS GRID -->
 
-            </h2>
+            <div class="featured-tools-grid">
 
-            <p class="section-description">
 
-                Start with our most useful tools for
-                everyday image and PDF tasks.
+                <!-- IMAGE COMPRESSOR -->
 
-            </p>
-
-        </div>
-
-
-        <!-- FEATURED GRID -->
-
-        <div class="featured-grid">
-
-
-            <!-- IMAGE COMPRESSOR -->
-
-            <a
-                href="Image/Image-compressor/image-compressor.html"
-                class="featured-card"
-            >
-
-                <div class="featured-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M4 7.5C4 5.57 5.57 4 7.5 4H16.5C18.43 4 20 5.57 20 7.5V16.5C20 18.43 18.43 20 16.5 20H7.5C5.57 20 4 18.43 4 16.5V7.5Z"
-                            stroke="currentColor"
-                            stroke-width="1.6"
-                        />
-
-                        <path
-                            d="M8 15L10.5 12.5L13 15L15 13L17 15"
-                            stroke="currentColor"
-                            stroke-width="1.6"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-
-                    </svg>
-
-                </div>
-
-                <span class="featured-category">
-                    IMAGE
-                </span>
-
-                <h3>
-                    Image Compressor
-                </h3>
-
-                <p>
-                    Reduce image file size while keeping
-                    your images looking sharp.
-                </p>
-
-                <span class="featured-arrow">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M5 12H19"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M13 6L19 12L13 18"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-
-                    </svg>
-
-                </span>
-
-            </a>
-
-
-            <!-- IMAGE CONVERTER -->
-
-            <a
-                href="Image/image-conversion/image-converter.html"
-                class="featured-card"
-            >
-
-                <div class="featured-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M7 7H17"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M14 4L17 7L14 10"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-
-                        <path
-                            d="M17 17H7"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M10 14L7 17L10 20"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-
-                    </svg>
-
-                </div>
-
-                <span class="featured-category">
-                    IMAGE
-                </span>
-
-                <h3>
-                    Image Converter
-                </h3>
-
-                <p>
-                    Convert images between popular formats
-                    quickly and easily.
-                </p>
-
-                <span class="featured-arrow">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M5 12H19"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M13 6L19 12L13 18"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-
-                    </svg>
-
-                </span>
-
-            </a>
-
-
-            <!-- IMAGE RESIZER -->
-
-            <a
-                href="Image/image-resizer/image-resizer.html"
-                class="featured-card"
-            >
-
-                <div class="featured-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M5 9V6C5 5.448 5.448 5 6 5H9"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M15 5H18C18.552 5 19 5.448 19 6V9"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M19 15V18C19 18.552 18.552 19 18 19H15"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M9 19H6C5.448 19 5 18.552 5 18V15"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M9 9L15 15"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                    </svg>
-
-                </div>
-
-                <span class="featured-category">
-                    IMAGE
-                </span>
-
-                <h3>
-                    Image Resizer
-                </h3>
-
-                <p>
-                    Resize your images to the dimensions
-                    you need in seconds.
-                </p>
-
-                <span class="featured-arrow">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M5 12H19"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M13 6L19 12L13 18"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-
-                    </svg>
-
-                </span>
-
-            </a>
-
-
-            <!-- PDF MERGE -->
-
-            <a
-                href="pdf/Pdf-Merge/pdf-merge.html"
-                class="featured-card"
-            >
-
-                <div class="featured-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M7 4H14L18 8V19C18 19.552 17.552 20 17 20H7C6.448 20 6 19.552 6 19V5C6 4.448 6.448 4 7 4Z"
-                            stroke="currentColor"
-                            stroke-width="1.6"
-                            stroke-linejoin="round"
-                        />
-
-                        <path
-                            d="M14 4V8H18"
-                            stroke="currentColor"
-                            stroke-width="1.6"
-                            stroke-linejoin="round"
-                        />
-
-                        <path
-                            d="M9 14H15"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M12 11V17"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                    </svg>
-
-                </div>
-
-                <span class="featured-category">
-                    PDF
-                </span>
-
-                <h3>
-                    PDF Merge
-                </h3>
-
-                <p>
-                    Combine multiple PDF files into one
-                    organized document.
-                </p>
-
-                <span class="featured-arrow">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M5 12H19"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M13 6L19 12L13 18"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-
-                    </svg>
-
-                </span>
-
-            </a>
-
-        </div>
-
-
-        <!-- VIEW ALL -->
-
-        <div class="featured-view-all">
-
-            <a href="#all-tools">
-
-                View All Tools
-
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
+                <a
+                    href="Image/Image-compressor/image-compressor.html"
+                    class="featured-tool-card"
                 >
 
-                    <path
-                        d="M5 12H19"
-                        stroke="currentColor"
-                        stroke-width="1.7"
-                        stroke-linecap="round"
-                    />
-
-                    <path
-                        d="M13 6L19 12L13 18"
-                        stroke="currentColor"
-                        stroke-width="1.7"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    />
-
-                </svg>
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-<!-- =========================================
-     IMAGE TOOLS
-     ========================================= -->
-
-<section
-    class="tools-section image-tools-section"
-    id="image-tools"
->
-
-    <div class="section-container">
-
-
-        <div class="section-header">
-
-            <div class="section-label">
-                IMAGE TOOLS
-            </div>
-
-            <h2 class="section-title">
-
-                Powerful Tools For
-                <span class="gradient-text">
-                    Every Image.
-                </span>
-
-            </h2>
-
-            <p class="section-description">
-
-                Edit, optimize and transform your images
-                quickly without complicated software.
-
-            </p>
-
-        </div>
-
-
-        <div class="tools-grid">
-
-
-            <!-- IMAGE COMPRESSOR -->
-
-            <a
-                href="Image/Image-compressor/image-compressor.html"
-                class="tool-card"
-            >
-
-                <div class="tool-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M5 7C5 5.895 5.895 5 7 5H17C18.105 5 19 5.895 19 7V17C19 18.105 18.105 19 17 19H7C5.895 19 5 18.105 5 17V7Z"
-                            stroke="currentColor"
-                            stroke-width="1.6"
-                        />
-
-                        <path
-                            d="M8 15L10.5 12.5L13 15L15 13L17 15"
-                            stroke="currentColor"
-                            stroke-width="1.6"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-
-                    </svg>
-
-                </div>
-
-                <span class="tool-category">
-                    IMAGE
-                </span>
-
-                <h3>
-                    Image Compressor
-                </h3>
-
-                <p>
-                    Compress images and reduce file size
-                    while maintaining good quality.
-                </p>
-
-                <span class="tool-arrow">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M5 12H19"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M13 6L19 12L13 18"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-
-                    </svg>
-
-                </span>
-
-            </a>
-
-
-            <!-- IMAGE CONVERTER -->
-
-            <a
-                href="Image/image-conversion/image-converter.html"
-                class="tool-card"
-            >
-
-                <div class="tool-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M7 7H17"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M14 4L17 7L14 10"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-
-                        <path
-                            d="M17 17H7"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M10 14L7 17L10 20"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-
-                    </svg>
-
-                </div>
-
-                <span class="tool-category">
-                    IMAGE
-                </span>
-
-                <h3>
-                    Image Converter
-                </h3>
-
-                <p>
-                    Convert your images between different
-                    formats quickly and easily.
-                </p>
-
-                <span class="tool-arrow">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M5 12H19"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M13 6L19 12L13 18"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-
-                    </svg>
-
-                </span>
-
-            </a>
-
-
-            <!-- IMAGE CROPPER -->
-
-            <a
-                href="Image/image-cropper/image-cropper.html"
-                class="tool-card"
-            >
-
-                <div class="tool-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M7 4V17C7 18.105 7.895 19 9 19H20"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M4 7H17C18.105 7 19 7.895 19 9V20"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M4 4L20 20"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                    </svg>
-
-                </div>
-
-                <span class="tool-category">
-                    IMAGE
-                </span>
-
-                <h3>
-                    Image Cropper
-                </h3>
-
-                <p>
-                    Crop your images to the exact area
-                    and dimensions you need.
-                </p>
-
-                <span class="tool-arrow">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M5 12H19"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M13 6L19 12L13 18"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-
-                    </svg>
-
-                </span>
-
-            </a>
-
-
-            <!-- IMAGE RESIZER -->
-
-            <a
-                href="Image/image-resizer/image-resizer.html"
-                class="tool-card"
-            >
-
-                <div class="tool-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M5 9V6C5 5.448 5.448 5 6 5H9"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M15 5H18C18.552 5 19 5.448 19 6V9"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M19 15V18C19 18.552 18.552 19 18 19H15"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M9 19H6C5.448 19 5 18.552 5 18V15"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                    </svg>
-
-                </div>
-
-                <span class="tool-category">
-                    IMAGE
-                </span>
-
-                <h3>
-                    Image Resizer
-                </h3>
-
-                <p>
-                    Resize images to custom dimensions
-                    without unnecessary complexity.
-                </p>
-
-                <span class="tool-arrow">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M5 12H19"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M13 6L19 12L13 18"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-
-                    </svg>
-
-                </span>
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-<!-- =========================================
-     PDF TOOLS
-     ========================================= -->
-
-<section
-    class="tools-section pdf-tools-section"
-    id="pdf-tools"
->
-
-    <div class="section-container">
-
-
-        <div class="section-header">
-
-            <div class="section-label">
-                PDF TOOLS
-            </div>
-
-            <h2 class="section-title">
-
-                Work Smarter With
-                <span class="gradient-text">
-                    PDF Files.
-                </span>
-
-            </h2>
-
-            <p class="section-description">
-
-                Merge, split, rotate and convert your PDF
-                files with simple online tools.
-
-            </p>
-
-        </div>
-
-
-        <div class="tools-grid">
-
-
-            <!-- IMAGE TO PDF -->
-
-            <a
-                href="pdf/image-to-pdf/image-to-pdf.html"
-                class="tool-card"
-            >
-
-                <div class="tool-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M7 3H14L19 8V20C19 20.552 18.552 21 18 21H7C6.448 21 6 20.552 6 20V4C6 3.448 6.448 3 7 3Z"
-                            stroke="currentColor"
-                            stroke-width="1.6"
-                            stroke-linejoin="round"
-                        />
-
-                        <path
-                            d="M14 3V8H19"
-                            stroke="currentColor"
-                            stroke-width="1.6"
-                            stroke-linejoin="round"
-                        />
-
-                        <path
-                            d="M9 14L11 12L13 14L15 11L17 14"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-
-                    </svg>
-
-                </div>
-
-                <span class="tool-category">
-                    PDF
-                </span>
-
-                <h3>
-                    Image to PDF
-                </h3>
-
-                <p>
-                    Convert your images into a clean,
-                    shareable PDF document.
-                </p>
-
-                <span class="tool-arrow">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M5 12H19"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M13 6L19 12L13 18"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-
-                    </svg>
-
-                </span>
-
-            </a>
-
-
-            <!-- PDF MERGE -->
-
-            <a
-                href="pdf/Pdf-Merge/pdf-merge.html"
-                class="tool-card"
-            >
-
-                <div class="tool-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <rect
-                            x="5"
-                            y="4"
-                            width="10"
-                            height="13"
-                            rx="2"
-                            stroke="currentColor"
-                            stroke-width="1.6"
-                        />
-
-                        <path
-                            d="M9 20H17C18.105 20 19 19.105 19 18V9"
-                            stroke="currentColor"
-                            stroke-width="1.6"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M12 10V14"
-                            stroke="currentColor"
-                            stroke-width="1.6"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M10 12H14"
-                            stroke="currentColor"
-                            stroke-width="1.6"
-                            stroke-linecap="round"
-                        />
-
-                    </svg>
-
-                </div>
-
-                <span class="tool-category">
-                    PDF
-                </span>
-
-                <h3>
-                    PDF Merge
-                </h3>
-
-                <p>
-                    Combine multiple PDF files into one
-                    organized document.
-                </p>
-
-                <span class="tool-arrow">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M5 12H19"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M13 6L19 12L13 18"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-
-                    </svg>
-
-                </span>
-
-            </a>
-
-
-            <!-- PDF ROTATE -->
-
-            <a
-                href="pdf/pdf-rotate/pdf-rotate.html"
-                class="tool-card"
-            >
-
-                <div class="tool-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M19 8C17.9 5.6 15.5 4 12.7 4C8.99 4 6 6.99 6 10.7C6 14.41 8.99 17.4 12.7 17.4"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M19 4V8H15"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-
-                        <path
-                            d="M12 20H17"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                    </svg>
-
-                </div>
-
-                <span class="tool-category">
-                    PDF
-                </span>
-
-                <h3>
-                    PDF Rotate
-                </h3>
-
-                <p>
-                    Rotate PDF pages to the correct
-                    orientation in seconds.
-                </p>
-
-                <span class="tool-arrow">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M5 12H19"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M13 6L19 12L13 18"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-
-                    </svg>
-
-                </span>
-
-            </a>
-
-
-            <!-- PDF SPLIT -->
-
-            <a
-                href="pdf/pdf-split/pdf-split.html"
-                class="tool-card"
-            >
-
-                <div class="tool-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M6 4H18V20H6V4Z"
-                            stroke="currentColor"
-                            stroke-width="1.6"
-                            stroke-linejoin="round"
-                        />
-
-                        <path
-                            d="M6 12H18"
-                            stroke="currentColor"
-                            stroke-width="1.6"
-                            stroke-dasharray="2 2"
-                        />
-
-                        <path
-                            d="M9 8H15"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M9 16H15"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                        />
-
-                    </svg>
-
-                </div>
-
-                <span class="tool-category">
-                    PDF
-                </span>
-
-                <h3>
-                    PDF Split
-                </h3>
-
-                <p>
-                    Split PDF documents into smaller
-                    files or selected pages.
-                </p>
-
-                <span class="tool-arrow">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M5 12H19"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M13 6L19 12L13 18"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-
-                    </svg>
-
-                </span>
-
-            </a>
-
-
-            <!-- PDF TO IMAGE -->
-
-            <a
-                href="pdf/Pdf-to-image/pdf-to-image.html"
-                class="tool-card"
-            >
-
-                <div class="tool-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M7 3H14L19 8V20C19 20.552 18.552 21 18 21H7C6.448 21 6 20.552 6 20V4C6 3.448 6.448 3 7 3Z"
-                            stroke="currentColor"
-                            stroke-width="1.6"
-                            stroke-linejoin="round"
-                        />
-
-                        <path
-                            d="M14 3V8H19"
-                            stroke="currentColor"
-                            stroke-width="1.6"
-                            stroke-linejoin="round"
-                        />
-
-                        <circle
-                            cx="10"
-                            cy="13"
-                            r="1.5"
-                            stroke="currentColor"
-                            stroke-width="1.4"
-                        />
-
-                        <path
-                            d="M8 17L11 14L13 16L15 14L17 17"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-
-                    </svg>
-
-                </div>
-
-                <span class="tool-category">
-                    PDF
-                </span>
-
-                <h3>
-                    PDF to Image
-                </h3>
-
-                <p>
-                    Convert PDF pages into convenient
-                    image files for easy sharing.
-                </p>
-
-                <span class="tool-arrow">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M5 12H19"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M13 6L19 12L13 18"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-
-                    </svg>
-
-                </span>
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-<!-- =========================================
-     ALL TOOLS
-     ========================================= -->
-
-<section
-    class="all-tools-section"
-    id="all-tools"
->
-
-    <div class="section-container">
-
-
-        <div class="section-header">
-
-            <div class="section-label">
-                ALL TOOLS
-            </div>
-
-            <h2 class="section-title">
-
-                One Place.
-                <span class="gradient-text">
-                    Every Tool.
-                </span>
-
-            </h2>
-
-            <p class="section-description">
-
-                Explore all SmartToolKits tools and find
-                exactly what you need.
-
-            </p>
-
-        </div>
-
-
-        <!-- TOOL FILTER -->
-
-        <div
-            class="tools-filter"
-            role="tablist"
-            aria-label="Filter tools"
-        >
-
-            <button
-                type="button"
-                class="filter-btn active"
-                data-filter="all"
-            >
-                All Tools
-            </button>
-
-            <button
-                type="button"
-                class="filter-btn"
-                data-filter="image"
-            >
-                Image Tools
-            </button>
-
-            <button
-                type="button"
-                class="filter-btn"
-                data-filter="pdf"
-            >
-                PDF Tools
-            </button>
-
-        </div>
-
-
-        <!-- ALL TOOLS GRID -->
-
-        <div class="all-tools-grid">
-
-
-            <!-- IMAGE COMPRESSOR -->
-
-            <a
-                href="Image/Image-compressor/image-compressor.html"
-                class="all-tool-card"
-                data-category="image"
-            >
-
-                <div class="all-tool-icon">
-                    IMG
-                </div>
-
-                <div class="all-tool-content">
-
-                    <span class="all-tool-category">
+                    <div class="tool-card-icon">
+                        IMG
+                    </div>
+
+                    <span class="tool-card-category">
                         IMAGE
                     </span>
 
@@ -1993,33 +453,29 @@
                     </h3>
 
                     <p>
-                        Reduce image file size quickly.
+                        Reduce image file size while keeping
+                        your images looking sharp.
                     </p>
 
-                </div>
+                    <span class="tool-card-arrow">
+                        →
+                    </span>
 
-                <span class="all-tool-arrow">
-                    →
-                </span>
-
-            </a>
+                </a>
 
 
-            <!-- IMAGE CONVERTER -->
+                <!-- IMAGE CONVERTER -->
 
-            <a
-                href="Image/image-conversion/image-converter.html"
-                class="all-tool-card"
-                data-category="image"
-            >
+                <a
+                    href="Image/image-conversion/image-converter.html"
+                    class="featured-tool-card"
+                >
 
-                <div class="all-tool-icon">
-                    CONV
-                </div>
+                    <div class="tool-card-icon">
+                        CONV
+                    </div>
 
-                <div class="all-tool-content">
-
-                    <span class="all-tool-category">
+                    <span class="tool-card-category">
                         IMAGE
                     </span>
 
@@ -2028,68 +484,29 @@
                     </h3>
 
                     <p>
-                        Convert images between popular formats.
+                        Convert images between popular formats
+                        quickly and easily.
                     </p>
 
-                </div>
-
-                <span class="all-tool-arrow">
-                    →
-                </span>
-
-            </a>
-
-
-            <!-- IMAGE CROPPER -->
-
-            <a
-                href="Image/image-cropper/image-cropper.html"
-                class="all-tool-card"
-                data-category="image"
-            >
-
-                <div class="all-tool-icon">
-                    CROP
-                </div>
-
-                <div class="all-tool-content">
-
-                    <span class="all-tool-category">
-                        IMAGE
+                    <span class="tool-card-arrow">
+                        →
                     </span>
 
-                    <h3>
-                        Image Cropper
-                    </h3>
-
-                    <p>
-                        Crop images to the exact area you need.
-                    </p>
-
-                </div>
-
-                <span class="all-tool-arrow">
-                    →
-                </span>
-
-            </a>
+                </a>
 
 
-            <!-- IMAGE RESIZER -->
+                <!-- IMAGE RESIZER -->
 
-            <a
-                href="Image/image-resizer/image-resizer.html"
-                class="all-tool-card"
-                data-category="image"
-            >
+                <a
+                    href="Image/image-resizer/image-resizer.html"
+                    class="featured-tool-card"
+                >
 
-                <div class="all-tool-icon">
-                    SIZE
-                </div>
+                    <div class="tool-card-icon">
+                        SIZE
+                    </div>
 
-                <div class="all-tool-content">
-
-                    <span class="all-tool-category">
+                    <span class="tool-card-category">
                         IMAGE
                     </span>
 
@@ -2098,68 +515,29 @@
                     </h3>
 
                     <p>
-                        Resize images to custom dimensions.
+                        Resize your images to the dimensions
+                        you need in seconds.
                     </p>
 
-                </div>
-
-                <span class="all-tool-arrow">
-                    →
-                </span>
-
-            </a>
-
-
-            <!-- IMAGE TO PDF -->
-
-            <a
-                href="pdf/image-to-pdf/image-to-pdf.html"
-                class="all-tool-card"
-                data-category="pdf"
-            >
-
-                <div class="all-tool-icon">
-                    PDF
-                </div>
-
-                <div class="all-tool-content">
-
-                    <span class="all-tool-category">
-                        PDF
+                    <span class="tool-card-arrow">
+                        →
                     </span>
 
-                    <h3>
-                        Image to PDF
-                    </h3>
-
-                    <p>
-                        Turn images into PDF documents.
-                    </p>
-
-                </div>
-
-                <span class="all-tool-arrow">
-                    →
-                </span>
-
-            </a>
+                </a>
 
 
-            <!-- PDF MERGE -->
+                <!-- PDF MERGE -->
 
-            <a
-                href="pdf/Pdf-Merge/pdf-merge.html"
-                class="all-tool-card"
-                data-category="pdf"
-            >
+                <a
+                    href="pdf/Pdf-Merge/pdf-merge.html"
+                    class="featured-tool-card"
+                >
 
-                <div class="all-tool-icon">
-                    MERGE
-                </div>
+                    <div class="tool-card-icon">
+                        PDF
+                    </div>
 
-                <div class="all-tool-content">
-
-                    <span class="all-tool-category">
+                    <span class="tool-card-category">
                         PDF
                     </span>
 
@@ -2168,33 +546,322 @@
                     </h3>
 
                     <p>
-                        Combine multiple PDF files into one.
+                        Combine multiple PDF files into one
+                        organized document.
                     </p>
 
-                </div>
+                    <span class="tool-card-arrow">
+                        →
+                    </span>
 
-                <span class="all-tool-arrow">
-                    →
+                </a>
+
+            </div>
+
+
+            <!-- VIEW ALL TOOLS -->
+
+            <div class="section-action">
+
+                <a href="#all-tools">
+                    View All Tools →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+        <!-- =========================================
+         IMAGE TOOLS SECTION
+         ========================================= -->
+
+    <section
+        class="tools-section image-tools-section"
+        id="image-tools"
+    >
+
+        <div class="section-container">
+
+
+            <!-- SECTION HEADER -->
+
+            <div class="section-header">
+
+                <span class="section-label">
+                    IMAGE TOOLS
                 </span>
 
-            </a>
+                <h2 class="section-title">
+
+                    Powerful Tools For
+                    <span>
+                        Every Image.
+                    </span>
+
+                </h2>
+
+                <p class="section-description">
+
+                    Edit, optimize and transform your images
+                    quickly without complicated software.
+
+                </p>
+
+            </div>
 
 
-            <!-- PDF ROTATE -->
+            <!-- IMAGE TOOLS GRID -->
 
-            <a
-                href="pdf/pdf-rotate/pdf-rotate.html"
-                class="all-tool-card"
-                data-category="pdf"
-            >
+            <div class="tools-grid">
 
-                <div class="all-tool-icon">
-                    ROT
-                </div>
 
-                <div class="all-tool-content">
+                <!-- IMAGE COMPRESSOR -->
 
-                    <span class="all-tool-category">
+                <a
+                    href="Image/Image-compressor/image-compressor.html"
+                    class="tool-card"
+                >
+
+                    <div class="tool-icon">
+                        IMG
+                    </div>
+
+                    <span class="tool-category">
+                        IMAGE
+                    </span>
+
+                    <h3>
+                        Image Compressor
+                    </h3>
+
+                    <p>
+                        Compress images and reduce file size
+                        while maintaining good quality.
+                    </p>
+
+                    <span class="tool-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <!-- IMAGE CONVERTER -->
+
+                <a
+                    href="Image/image-conversion/image-converter.html"
+                    class="tool-card"
+                >
+
+                    <div class="tool-icon">
+                        CONV
+                    </div>
+
+                    <span class="tool-category">
+                        IMAGE
+                    </span>
+
+                    <h3>
+                        Image Converter
+                    </h3>
+
+                    <p>
+                        Convert your images between different
+                        formats quickly and easily.
+                    </p>
+
+                    <span class="tool-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <!-- IMAGE CROPPER -->
+
+                <a
+                    href="Image/image-cropper/image-cropper.html"
+                    class="tool-card"
+                >
+
+                    <div class="tool-icon">
+                        CROP
+                    </div>
+
+                    <span class="tool-category">
+                        IMAGE
+                    </span>
+
+                    <h3>
+                        Image Cropper
+                    </h3>
+
+                    <p>
+                        Crop your images to the exact area
+                        and dimensions you need.
+                    </p>
+
+                    <span class="tool-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <!-- IMAGE RESIZER -->
+
+                <a
+                    href="Image/image-resizer/image-resizer.html"
+                    class="tool-card"
+                >
+
+                    <div class="tool-icon">
+                        SIZE
+                    </div>
+
+                    <span class="tool-category">
+                        IMAGE
+                    </span>
+
+                    <h3>
+                        Image Resizer
+                    </h3>
+
+                    <p>
+                        Resize images to custom dimensions
+                        without unnecessary complexity.
+                    </p>
+
+                    <span class="tool-arrow">
+                        →
+                    </span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+        <!-- =========================================
+         PDF TOOLS SECTION
+         ========================================= -->
+
+    <section
+        class="tools-section pdf-tools-section"
+        id="pdf-tools"
+    >
+
+        <div class="section-container">
+
+
+            <!-- SECTION HEADER -->
+
+            <div class="section-header">
+
+                <span class="section-label">
+                    PDF TOOLS
+                </span>
+
+                <h2 class="section-title">
+
+                    Work Smarter With
+                    <span>
+                        PDF Files.
+                    </span>
+
+                </h2>
+
+                <p class="section-description">
+
+                    Merge, split, rotate and convert your PDF
+                    files with simple online tools.
+
+                </p>
+
+            </div>
+
+
+            <!-- PDF TOOLS GRID -->
+
+            <div class="tools-grid">
+
+
+                <!-- IMAGE TO PDF -->
+
+                <a
+                    href="pdf/image-to-pdf/image-to-pdf.html"
+                    class="tool-card"
+                >
+
+                    <div class="tool-icon">
+                        PDF
+                    </div>
+
+                    <span class="tool-category">
+                        PDF
+                    </span>
+
+                    <h3>
+                        Image to PDF
+                    </h3>
+
+                    <p>
+                        Convert your images into clean,
+                        shareable PDF documents.
+                    </p>
+
+                    <span class="tool-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <!-- PDF MERGE -->
+
+                <a
+                    href="pdf/Pdf-Merge/pdf-merge.html"
+                    class="tool-card"
+                >
+
+                    <div class="tool-icon">
+                        MERGE
+                    </div>
+
+                    <span class="tool-category">
+                        PDF
+                    </span>
+
+                    <h3>
+                        PDF Merge
+                    </h3>
+
+                    <p>
+                        Combine multiple PDF files into one
+                        organized document.
+                    </p>
+
+                    <span class="tool-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <!-- PDF ROTATE -->
+
+                <a
+                    href="pdf/pdf-rotate/pdf-rotate.html"
+                    class="tool-card"
+                >
+
+                    <div class="tool-icon">
+                        ROT
+                    </div>
+
+                    <span class="tool-category">
                         PDF
                     </span>
 
@@ -2203,33 +870,29 @@
                     </h3>
 
                     <p>
-                        Rotate PDF pages with ease.
+                        Rotate PDF pages to the correct
+                        orientation in seconds.
                     </p>
 
-                </div>
+                    <span class="tool-arrow">
+                        →
+                    </span>
 
-                <span class="all-tool-arrow">
-                    →
-                </span>
-
-            </a>
+                </a>
 
 
-            <!-- PDF SPLIT -->
+                <!-- PDF SPLIT -->
 
-            <a
-                href="pdf/pdf-split/pdf-split.html"
-                class="all-tool-card"
-                data-category="pdf"
-            >
+                <a
+                    href="pdf/pdf-split/pdf-split.html"
+                    class="tool-card"
+                >
 
-                <div class="all-tool-icon">
-                    SPLIT
-                </div>
+                    <div class="tool-icon">
+                        SPLIT
+                    </div>
 
-                <div class="all-tool-content">
-
-                    <span class="all-tool-category">
+                    <span class="tool-category">
                         PDF
                     </span>
 
@@ -2238,33 +901,29 @@
                     </h3>
 
                     <p>
-                        Split PDF documents into smaller files.
+                        Split PDF documents into smaller
+                        files or selected pages.
                     </p>
 
-                </div>
+                    <span class="tool-arrow">
+                        →
+                    </span>
 
-                <span class="all-tool-arrow">
-                    →
-                </span>
-
-            </a>
+                </a>
 
 
-            <!-- PDF TO IMAGE -->
+                <!-- PDF TO IMAGE -->
 
-            <a
-                href="pdf/Pdf-to-image/pdf-to-image.html"
-                class="all-tool-card"
-                data-category="pdf"
-            >
+                <a
+                    href="pdf/Pdf-to-image/pdf-to-image.html"
+                    class="tool-card"
+                >
 
-                <div class="all-tool-icon">
-                    IMG
-                </div>
+                    <div class="tool-icon">
+                        IMG
+                    </div>
 
-                <div class="all-tool-content">
-
-                    <span class="all-tool-category">
+                    <span class="tool-category">
                         PDF
                     </span>
 
@@ -2273,386 +932,13 @@
                     </h3>
 
                     <p>
-                        Convert PDF pages into images.
+                        Convert PDF pages into convenient
+                        image files for easy sharing.
                     </p>
 
-                </div>
-
-                <span class="all-tool-arrow">
-                    →
-                </span>
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-<!-- =========================================
-     FEATURES
-     ========================================= -->
-
-<section
-    class="features-section"
-    id="about"
->
-
-    <div class="section-container">
-
-
-        <div class="section-header">
-
-            <div class="section-label">
-                WHY SMARTTOOLKITS
-            </div>
-
-            <h2 class="section-title">
-
-                Built To Make
-                <span class="gradient-text">
-                    Things Easier.
-                </span>
-
-            </h2>
-
-            <p class="section-description">
-
-                Everything is designed around speed,
-                simplicity and a smooth user experience.
-
-            </p>
-
-        </div>
-
-
-        <div class="features-grid">
-
-
-            <!-- FEATURE 1 -->
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M13 2L4 14H11L10 22L20 9H13L13 2Z"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linejoin="round"
-                        />
-
-                    </svg>
-
-                </div>
-
-                <h3>
-                    Fast Processing
-                </h3>
-
-                <p>
-                    Get your files processed quickly
-                    without unnecessary steps.
-                </p>
-
-            </div>
-
-
-            <!-- FEATURE 2 -->
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <circle
-                            cx="12"
-                            cy="12"
-                            r="9"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                        />
-
-                        <path
-                            d="M9 12L11 14L15 10"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-
-                    </svg>
-
-                </div>
-
-                <h3>
-                    Simple To Use
-                </h3>
-
-                <p>
-                    Clean interfaces make every tool
-                    easy to understand and use.
-                </p>
-
-            </div>
-
-
-            <!-- FEATURE 3 -->
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M12 3V15"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M8 11L12 15L16 11"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-
-                        <path
-                            d="M5 20H19"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                    </svg>
-
-                </div>
-
-                <h3>
-                    Easy Downloads
-                </h3>
-
-                <p>
-                    Download your processed files
-                    whenever your work is complete.
-                </p>
-
-            </div>
-
-
-            <!-- FEATURE 4 -->
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <rect
-                            x="5"
-                            y="10"
-                            width="14"
-                            height="10"
-                            rx="2"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                        />
-
-                        <path
-                            d="M8 10V7C8 4.791 9.791 3 12 3C14.209 3 16 4.791 16 7V10"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                            stroke-linecap="round"
-                        />
-
-                        <circle
-                            cx="12"
-                            cy="15"
-                            r="1"
-                            fill="currentColor"
-                        />
-
-                    </svg>
-
-                </div>
-
-                <h3>
-                    Privacy Focused
-                </h3>
-
-                <p>
-                    Your files are handled through
-                    straightforward and secure workflows.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-<!-- =========================================
-     STATS
-     ========================================= -->
-
-<section class="stats-section">
-
-    <div class="section-container">
-
-        <div class="stats-grid">
-
-            <div class="stat-item">
-
-                <strong>
-                    9+
-                </strong>
-
-                <span>
-                    Useful Tools
-                </span>
-
-            </div>
-
-
-            <div class="stat-item">
-
-                <strong>
-                    2
-                </strong>
-
-                <span>
-                    Tool Categories
-                </span>
-
-            </div>
-
-
-            <div class="stat-item">
-
-                <strong>
-                    100%
-                </strong>
-
-                <span>
-                    Online Access
-                </span>
-
-            </div>
-
-
-            <div class="stat-item">
-
-                <strong>
-                    24/7
-                </strong>
-
-                <span>
-                    Available
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     CTA SECTION
-     ========================================= -->
-
-<section class="cta-section">
-
-    <div class="section-container">
-
-        <div class="cta-card">
-
-
-            <div class="cta-glow"></div>
-
-
-            <div class="cta-content">
-
-                <div class="section-label">
-                    READY TO GET STARTED?
-                </div>
-
-                <h2>
-
-                    Your Next Task
-                    <span class="gradient-text">
-                        Starts Here.
+                    <span class="tool-arrow">
+                        →
                     </span>
-
-                </h2>
-
-                <p>
-
-                    Choose a tool, upload your file and
-                    get things done without the hassle.
-
-                </p>
-
-
-                <a
-                    href="#all-tools"
-                    class="primary-btn cta-btn"
-                >
-
-                    Explore All Tools
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M5 12H19"
-                            stroke="currentColor"
-                            stroke-width="1.8"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M13 6L19 12L13 18"
-                            stroke="currentColor"
-                            stroke-width="1.8"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-
-                    </svg>
 
                 </a>
 
@@ -2660,73 +946,539 @@
 
         </div>
 
-    </div>
+    </section>
+        <!-- =========================================
+         ALL TOOLS SECTION
+         ========================================= -->
 
-</section>
-<!-- =========================================
-     FAQ SECTION
-     ========================================= -->
+    <section
+        class="all-tools-section"
+        id="all-tools"
+    >
 
-<section class="faq-section">
-
-    <div class="section-container">
+        <div class="section-container">
 
 
-        <div class="section-header">
+            <!-- SECTION HEADER -->
 
-            <div class="section-label">
-                FAQ
-            </div>
+            <div class="section-header">
 
-            <h2 class="section-title">
-
-                Got Questions?
-                <span class="gradient-text">
-                    We've Got Answers.
+                <span class="section-label">
+                    ALL TOOLS
                 </span>
 
-            </h2>
+                <h2 class="section-title">
 
-            <p class="section-description">
+                    One Place.
+                    <span>
+                        Every Tool.
+                    </span>
 
-                A few quick answers about SmartToolKits
-                and how our tools work.
+                </h2>
 
-            </p>
+                <p class="section-description">
+
+                    Explore all SmartToolKits tools and find
+                    exactly what you need.
+
+                </p>
+
+            </div>
+
+
+            <!-- TOOL FILTER -->
+
+            <div
+                class="tools-filter"
+            >
+
+                <button
+                    type="button"
+                    class="filter-button active"
+                    data-filter="all"
+                >
+                    All Tools
+                </button>
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    data-filter="image"
+                >
+                    Image Tools
+                </button>
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    data-filter="pdf"
+                >
+                    PDF Tools
+                </button>
+
+            </div>
+
+
+            <!-- ALL TOOLS GRID -->
+
+            <div class="all-tools-grid">
+
+
+                <!-- IMAGE COMPRESSOR -->
+
+                <a
+                    href="Image/Image-compressor/image-compressor.html"
+                    class="all-tool-card"
+                    data-category="image"
+                >
+
+                    <div class="all-tool-icon">
+                        IMG
+                    </div>
+
+                    <div class="all-tool-content">
+
+                        <span class="all-tool-category">
+                            IMAGE
+                        </span>
+
+                        <h3>
+                            Image Compressor
+                        </h3>
+
+                        <p>
+                            Reduce image file size quickly.
+                        </p>
+
+                    </div>
+
+                    <span class="all-tool-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <!-- IMAGE CONVERTER -->
+
+                <a
+                    href="Image/image-conversion/image-converter.html"
+                    class="all-tool-card"
+                    data-category="image"
+                >
+
+                    <div class="all-tool-icon">
+                        CONV
+                    </div>
+
+                    <div class="all-tool-content">
+
+                        <span class="all-tool-category">
+                            IMAGE
+                        </span>
+
+                        <h3>
+                            Image Converter
+                        </h3>
+
+                        <p>
+                            Convert images between popular formats.
+                        </p>
+
+                    </div>
+
+                    <span class="all-tool-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <!-- IMAGE CROPPER -->
+
+                <a
+                    href="Image/image-cropper/image-cropper.html"
+                    class="all-tool-card"
+                    data-category="image"
+                >
+
+                    <div class="all-tool-icon">
+                        CROP
+                    </div>
+
+                    <div class="all-tool-content">
+
+                        <span class="all-tool-category">
+                            IMAGE
+                        </span>
+
+                        <h3>
+                            Image Cropper
+                        </h3>
+
+                        <p>
+                            Crop images to the exact area you need.
+                        </p>
+
+                    </div>
+
+                    <span class="all-tool-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <!-- IMAGE RESIZER -->
+
+                <a
+                    href="Image/image-resizer/image-resizer.html"
+                    class="all-tool-card"
+                    data-category="image"
+                >
+
+                    <div class="all-tool-icon">
+                        SIZE
+                    </div>
+
+                    <div class="all-tool-content">
+
+                        <span class="all-tool-category">
+                            IMAGE
+                        </span>
+
+                        <h3>
+                            Image Resizer
+                        </h3>
+
+                        <p>
+                            Resize images to custom dimensions.
+                        </p>
+
+                    </div>
+
+                    <span class="all-tool-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <!-- IMAGE TO PDF -->
+
+                <a
+                    href="pdf/image-to-pdf/image-to-pdf.html"
+                    class="all-tool-card"
+                    data-category="pdf"
+                >
+
+                    <div class="all-tool-icon">
+                        PDF
+                    </div>
+
+                    <div class="all-tool-content">
+
+                        <span class="all-tool-category">
+                            PDF
+                        </span>
+
+                        <h3>
+                            Image to PDF
+                        </h3>
+
+                        <p>
+                            Turn images into PDF documents.
+                        </p>
+
+                    </div>
+
+                    <span class="all-tool-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <!-- PDF MERGE -->
+
+                <a
+                    href="pdf/Pdf-Merge/pdf-merge.html"
+                    class="all-tool-card"
+                    data-category="pdf"
+                >
+
+                    <div class="all-tool-icon">
+                        MERGE
+                    </div>
+
+                    <div class="all-tool-content">
+
+                        <span class="all-tool-category">
+                            PDF
+                        </span>
+
+                        <h3>
+                            PDF Merge
+                        </h3>
+
+                        <p>
+                            Combine multiple PDF files into one.
+                        </p>
+
+                    </div>
+
+                    <span class="all-tool-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <!-- PDF ROTATE -->
+
+                <a
+                    href="pdf/pdf-rotate/pdf-rotate.html"
+                    class="all-tool-card"
+                    data-category="pdf"
+                >
+
+                    <div class="all-tool-icon">
+                        ROT
+                    </div>
+
+                    <div class="all-tool-content">
+
+                        <span class="all-tool-category">
+                            PDF
+                        </span>
+
+                        <h3>
+                            PDF Rotate
+                        </h3>
+
+                        <p>
+                            Rotate PDF pages with ease.
+                        </p>
+
+                    </div>
+
+                    <span class="all-tool-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <!-- PDF SPLIT -->
+
+                <a
+                    href="pdf/pdf-split/pdf-split.html"
+                    class="all-tool-card"
+                    data-category="pdf"
+                >
+
+                    <div class="all-tool-icon">
+                        SPLIT
+                    </div>
+
+                    <div class="all-tool-content">
+
+                        <span class="all-tool-category">
+                            PDF
+                        </span>
+
+                        <h3>
+                            PDF Split
+                        </h3>
+
+                        <p>
+                            Split PDF documents into smaller files.
+                        </p>
+
+                    </div>
+
+                    <span class="all-tool-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <!-- PDF TO IMAGE -->
+
+                <a
+                    href="pdf/Pdf-to-image/pdf-to-image.html"
+                    class="all-tool-card"
+                    data-category="pdf"
+                >
+
+                    <div class="all-tool-icon">
+                        IMG
+                    </div>
+
+                    <div class="all-tool-content">
+
+                        <span class="all-tool-category">
+                            PDF
+                        </span>
+
+                        <h3>
+                            PDF to Image
+                        </h3>
+
+                        <p>
+                            Convert PDF pages into images.
+                        </p>
+
+                    </div>
+
+                    <span class="all-tool-arrow">
+                        →
+                    </span>
+
+                </a>
+
+            </div>
 
         </div>
 
+    </section>
+        <!-- =========================================
+         WHY SMARTTOOLKITS SECTION
+         ========================================= -->
 
-        <div class="faq-list">
+    <section
+        class="why-section"
+        id="about"
+    >
+
+        <div class="section-container">
 
 
-            <!-- FAQ 1 -->
+            <!-- SECTION HEADER -->
 
-            <div class="faq-item">
+            <div class="section-header">
 
-                <button
-                    type="button"
-                    class="faq-question"
-                    aria-expanded="false"
-                >
+                <span class="section-label">
+                    WHY SMARTTOOLKITS
+                </span>
 
+                <h2 class="section-title">
+
+                    Built To Keep Things
                     <span>
-                        What is SmartToolKits?
+                        Simple.
                     </span>
 
-                    <span class="faq-icon">
-                        +
-                    </span>
+                </h2>
 
-                </button>
+                <p class="section-description">
+
+                    SmartToolKits is designed to make everyday
+                    image and PDF tasks easier, faster and more
+                    convenient.
+
+                </p>
+
+            </div>
 
 
-                <div class="faq-answer">
+            <!-- WHY FEATURES -->
+
+            <div class="why-features-grid">
+
+
+                <!-- FEATURE 1 -->
+
+                <div class="why-feature-card">
+
+                    <div class="why-feature-number">
+                        01
+                    </div>
+
+                    <div class="why-feature-icon">
+                        FAST
+                    </div>
+
+                    <h3>
+                        Fast &amp; Efficient
+                    </h3>
 
                     <p>
-                        SmartToolKits is a collection of simple
-                        online tools for working with images
-                        and PDF files.
+                        Get your everyday file tasks done
+                        quickly without unnecessary steps.
+                    </p>
+
+                </div>
+
+
+                <!-- FEATURE 2 -->
+
+                <div class="why-feature-card">
+
+                    <div class="why-feature-number">
+                        02
+                    </div>
+
+                    <div class="why-feature-icon">
+                        EASY
+                    </div>
+
+                    <h3>
+                        Simple To Use
+                    </h3>
+
+                    <p>
+                        Clean and straightforward tools that
+                        are easy to understand and use.
+                    </p>
+
+                </div>
+
+
+                <!-- FEATURE 3 -->
+
+                <div class="why-feature-card">
+
+                    <div class="why-feature-number">
+                        03
+                    </div>
+
+                    <div class="why-feature-icon">
+                        WEB
+                    </div>
+
+                    <h3>
+                        Works Online
+                    </h3>
+
+                    <p>
+                        Access useful image and PDF tools
+                        directly from your web browser.
+                    </p>
+
+                </div>
+
+
+                <!-- FEATURE 4 -->
+
+                <div class="why-feature-card">
+
+                    <div class="why-feature-number">
+                        04
+                    </div>
+
+                    <div class="why-feature-icon">
+                        ONE
+                    </div>
+
+                    <h3>
+                        One Smart Toolkit
+                    </h3>
+
+                    <p>
+                        Keep your most useful file tools
+                        together in one convenient place.
                     </p>
 
                 </div>
@@ -2734,204 +1486,276 @@
             </div>
 
 
-            <!-- FAQ 2 -->
+            <!-- ABOUT TEXT -->
 
-            <div class="faq-item">
+            <div class="about-content">
 
-                <button
-                    type="button"
-                    class="faq-question"
-                    aria-expanded="false"
-                >
-
-                    <span>
-                        Do I need to install any software?
-                    </span>
-
-                    <span class="faq-icon">
-                        +
-                    </span>
-
-                </button>
-
-
-                <div class="faq-answer">
-
-                    <p>
-                        No. SmartToolKits is designed to work
-                        directly in your web browser, so there
-                        is no software installation required.
-                    </p>
-
+                <div class="about-content-label">
+                    ABOUT SMARTTOOLKITS
                 </div>
 
-            </div>
+                <h3>
+                    Simple tools for everyday
+                    digital tasks.
+                </h3>
 
-
-            <!-- FAQ 3 -->
-
-            <div class="faq-item">
-
-                <button
-                    type="button"
-                    class="faq-question"
-                    aria-expanded="false"
-                >
-
-                    <span>
-                        Which types of tools are available?
-                    </span>
-
-                    <span class="faq-icon">
-                        +
-                    </span>
-
-                </button>
-
-
-                <div class="faq-answer">
-
-                    <p>
-                        You can find tools for image compression,
-                        conversion, cropping and resizing, along
-                        with several PDF management tools.
-                    </p>
-
-                </div>
+                <p>
+                    SmartToolKits brings together practical
+    online tools for working with images and
+    PDF files. Our goal is simple: make common
+    file tasks easier without complicated
+    software or unnecessary steps.
+    SmartToolKits is created and maintained by
+    Shivang Kumar Thakur.
+                </p>
 
             </div>
-
-
-            <!-- FAQ 4 -->
-
-            <div class="faq-item">
-
-                <button
-                    type="button"
-                    class="faq-question"
-                    aria-expanded="false"
-                >
-
-                    <span>
-                        Can I use SmartToolKits on my phone?
-                    </span>
-
-                    <span class="faq-icon">
-                        +
-                    </span>
-
-                </button>
-
-
-                <div class="faq-answer">
-
-                    <p>
-                        Yes. The website is designed to provide
-                        a smooth experience across desktop,
-                        tablet and mobile devices.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- FAQ 5 -->
-
-            <div class="faq-item">
-
-                <button
-                    type="button"
-                    class="faq-question"
-                    aria-expanded="false"
-                >
-
-                    <span>
-                        How do I choose a tool?
-                    </span>
-
-                    <span class="faq-icon">
-                        +
-                    </span>
-
-                </button>
-
-
-                <div class="faq-answer">
-
-                    <p>
-                        You can browse the tool sections or use
-                        the search box at the top of the homepage
-                        to quickly find a specific tool.
-                    </p>
-
-                </div>
-
-            </div>
-
 
         </div>
 
-    </div>
+    </section>
+        <!-- =========================================
+         STATS / TRUST SECTION
+         ========================================= -->
 
-</section>
-<!-- =========================================
-     FOOTER
-     ========================================= -->
+    <section
+        class="stats-section"
+    >
 
-<footer class="site-footer">
-
-    <div class="section-container">
-
-        <div class="footer-main">
+        <div class="section-container">
 
 
-            <!-- BRAND -->
+            <!-- STATS GRID -->
+
+            <div class="stats-grid">
+
+
+                <!-- STAT 1 -->
+
+                <div class="stat-item">
+
+                    <div class="stat-value">
+                        9+
+                    </div>
+
+                    <div class="stat-label">
+                        Useful Tools
+                    </div>
+
+                </div>
+
+
+                <!-- STAT 2 -->
+
+                <div class="stat-item">
+
+                    <div class="stat-value">
+                        2
+                    </div>
+
+                    <div class="stat-label">
+                        Tool Categories
+                    </div>
+
+                </div>
+
+
+                <!-- STAT 3 -->
+
+                <div class="stat-item">
+
+                    <div class="stat-value">
+                        100%
+                    </div>
+
+                    <div class="stat-label">
+                        Online Access
+                    </div>
+
+                </div>
+
+
+                <!-- STAT 4 -->
+
+                <div class="stat-item">
+
+                    <div class="stat-value">
+                        24/7
+                    </div>
+
+                    <div class="stat-label">
+                        Available Online
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TRUST MESSAGE -->
+
+            <div class="trust-message">
+
+                <span class="trust-message-icon">
+                    ST
+                </span>
+
+                <div class="trust-message-content">
+
+                    <strong>
+                        Your everyday file toolkit.
+                    </strong>
+
+                    <p>
+                        Simple tools. Clean experience.
+                        Get more done with SmartToolKits.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+        <!-- =========================================
+         FINAL CTA SECTION
+         ========================================= -->
+
+    <section
+        class="cta-section"
+    >
+
+        <div class="section-container">
+
+            <div class="cta-card">
+
+
+                <!-- CTA BACKGROUND ELEMENTS -->
+
+                <div class="cta-glow cta-glow-left"></div>
+
+                <div class="cta-glow cta-glow-right"></div>
+
+
+                <!-- CTA CONTENT -->
+
+                <div class="cta-content">
+
+                    <span class="cta-label">
+                        SMART TOOLS. SIMPLE RESULTS.
+                    </span>
+
+                    <h2>
+
+                        Ready To Get Things
+                        <span>
+                            Done Faster?
+                        </span>
+
+                    </h2>
+
+                    <p>
+
+                        Explore SmartToolKits and find the right
+                        tool for your next image or PDF task.
+
+                    </p>
+
+
+                    <!-- CTA ACTION -->
+
+                    <div class="cta-actions">
+
+                        <a
+                            href="#tools"
+                            class="cta-primary-button"
+                        >
+                            Explore All Tools
+                        </a>
+
+                        <a
+                            href="#image-tools"
+                            class="cta-secondary-button"
+                        >
+                            Image Tools
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CTA VISUAL -->
+
+                <div class="cta-visual">
+
+                    <div class="cta-orbit orbit-one"></div>
+
+                    <div class="cta-orbit orbit-two"></div>
+
+                    <div class="cta-orbit orbit-three"></div>
+
+
+                    <div class="cta-core">
+
+                        <span>
+                            ST
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+        <!-- =========================================
+         FOOTER
+         ========================================= -->
+
+    <footer class="site-footer">
+
+        <div class="footer-container">
+
+
+            <!-- FOOTER BRAND -->
 
             <div class="footer-brand">
 
                 <a
                     href="index.html"
-                    class="brand-logo"
+                    class="footer-logo"
                     aria-label="SmartToolKits Home"
                 >
 
-                    <span class="brand-mark">
+                    <span class="footer-logo-symbol">
                         ST
                     </span>
 
-                    <span class="brand-name">
+                    <span class="footer-logo-name">
                         Smart<span>ToolKits</span>
                     </span>
 
                 </a>
 
-
                 <p>
-
-                    Fast, simple and powerful online tools
-                    for your everyday image and PDF tasks.
-
+                    Fast and simple online tools for your
+                    everyday image and PDF tasks.
                 </p>
 
             </div>
 
 
-            <!-- QUICK LINKS -->
+            <!-- FOOTER LINKS -->
 
-            <div class="footer-column">
+            <div class="footer-links-group">
 
                 <h3>
-                    Quick Links
+                    Tools
                 </h3>
-
-                <a href="#home">
-                    Home
-                </a>
-
-                <a href="#tools">
-                    All Tools
-                </a>
 
                 <a href="#image-tools">
                     Image Tools
@@ -2941,59 +1765,48 @@
                     PDF Tools
                 </a>
 
-            </div>
-
-
-            <!-- POPULAR TOOLS -->
-
-            <div class="footer-column">
-
-                <h3>
-                    Popular Tools
-                </h3>
-
-                <a href="Image/Image-compressor/image-compressor.html">
-                    Image Compressor
-                </a>
-
-                <a href="Image/image-conversion/image-converter.html">
-                    Image Converter
-                </a>
-
-                <a href="Image/image-resizer/image-resizer.html">
-                    Image Resizer
-                </a>
-
-                <a href="pdf/Pdf-Merge/pdf-merge.html">
-                    PDF Merge
+                <a href="#all-tools">
+                    All Tools
                 </a>
 
             </div>
 
 
-            <!-- PDF TOOLS -->
+            <!-- FOOTER NAVIGATION -->
 
-            <div class="footer-column">
+            <div class="footer-links-group">
 
                 <h3>
-                    PDF Tools
+                    Navigate
                 </h3>
 
-                <a href="pdf/image-to-pdf/image-to-pdf.html">
-                    Image to PDF
+                <a href="#home">
+                    Home
                 </a>
 
-                <a href="pdf/pdf-split/pdf-split.html">
-                    PDF Split
+                <a href="#about">
+                    About
                 </a>
 
-                <a href="pdf/pdf-rotate/pdf-rotate.html">
-                    PDF Rotate
+                <a href="#tools">
+                    Featured Tools
                 </a>
 
-                <a href="pdf/Pdf-to-image/pdf-to-image.html">
-                    PDF to Image
-                </a>
+            </div>
+
+
+            <!-- FOOTER INFO -->
+
+            <div class="footer-links-group">
+
+                <h3>
+                    SmartToolKits
+                </h3>
+
+                <p class="footer-info">
+                    Simple tools designed to make
+                    everyday file tasks easier.
+                </p>
 
             </div>
 
@@ -3004,29 +1817,31 @@
 
         <div class="footer-bottom">
 
-            <p>
-                © 2026 SmartToolKits. All rights reserved.
-            </p>
+            <div class="footer-bottom-container">
+<span>
+    © 2026 SmartToolKits. All rights reserved.
+</span>
 
-            <a href="#home">
-                Back to top ↑
-            </a>
+<span>
+    Created by Shivang Kumar Thakur
+</span>
+            </div>
 
         </div>
 
-    </div>
+    </footer>
 
-</footer>
+
+</main>
 
 
 <!-- =========================================
-     CLOSE WEBSITE
+     JAVASCRIPT
+     WILL BE ADDED AFTER CSS
      ========================================= -->
-
-</div>
-
 
 <script src="script.js"></script>
 
 </body>
+
 </html>
