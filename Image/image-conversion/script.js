@@ -1,38 +1,21 @@
-/* ==================================================
-   SMARTTOOLKITS
-   UNIVERSAL IMAGE CONVERTER
-   PART 1
-================================================== */
+/* =========================================================
+   SMARTTOOLKITS — IMAGE CONVERTER
+   JS PART 1 — UPLOAD + ORIGINAL PREVIEW
+   ========================================================= */
+
+"use strict";
 
 
-/* ==================================================
-   DOM ELEMENTS
-================================================== */
+/* =========================================================
+   ELEMENTS
+   ========================================================= */
 
+const imageInput = document.getElementById("imageInput");
+const uploadCard = document.querySelector(".upload-card");
 
-/* Upload */
-
-const imageInput =
-    document.getElementById("imageInput");
-
-
-/* Preview */
-
-const originalPreview =
-    document.getElementById("originalPreview");
-
-const convertedPreview =
-    document.getElementById("convertedPreview");
-
-
+const originalPreview = document.getElementById("originalPreview");
 const originalPlaceholder =
     document.getElementById("originalPlaceholder");
-
-const convertedPlaceholder =
-    document.getElementById("convertedPlaceholder");
-
-
-/* Information */
 
 const originalResolution =
     document.getElementById("originalResolution");
@@ -43,6 +26,17 @@ const originalSize =
 const originalFormat =
     document.getElementById("originalFormat");
 
+const formatSelect =
+    document.getElementById("formatSelect");
+
+const convertBtn =
+    document.getElementById("convertBtn");
+
+const convertedPreview =
+    document.getElementById("convertedPreview");
+
+const convertedPlaceholder =
+    document.getElementById("convertedPlaceholder");
 
 const convertedResolution =
     document.getElementById("convertedResolution");
@@ -53,11 +47,268 @@ const convertedSize =
 const convertedFormat =
     document.getElementById("convertedFormat");
 
+const downloadBtn =
+    document.getElementById("downloadBtn");
 
-/* Settings */
+const resultStatus =
+    document.getElementById("resultStatus");
 
-const formatSelect =
-    document.getElementById("formatSelect");
+const conversionResult =
+    document.querySelector(".conversion-result");
+
+
+/* =========================================================
+   STATE
+   ========================================================= */
+
+let originalFile = null;
+let originalImage = null;
+let originalImageURL = null;
+
+let convertedBlob = null;
+let convertedImageURL = null;
+
+
+/* =========================================================
+   INITIAL STATE
+   ========================================================= */
+
+if (conversionResult) {
+    conversionResult.style.display = "none";
+}
+
+if (downloadBtn) {
+    downloadBtn.disabled = true;
+}
+
+if (convertBtn) {
+    convertBtn.disabled = true;
+}
+
+
+/* =========================================================
+   FILE INPUT
+   ========================================================= */
+
+imageInput.addEventListener("change", handleFileSelection);
+
+function handleFileSelection(event) {
+
+    const file = event.target.files[0];
+
+    if (!file) {
+        return;
+    }
+
+    loadImage(file);
+}
+
+
+/* =========================================================
+   DRAG & DROP
+   ========================================================= */
+
+if (uploadCard) {
+
+    uploadCard.addEventListener("dragover", handleDragOver);
+
+    uploadCard.addEventListener("dragleave", handleDragLeave);
+
+    uploadCard.addEventListener("drop", handleDrop);
+}
+
+
+function handleDragOver(event) {
+
+    event.preventDefault();
+
+    uploadCard.classList.add("drag-over");
+}
+
+
+function handleDragLeave() {
+
+    uploadCard.classList.remove("drag-over");
+}
+
+
+function handleDrop(event) {
+
+    event.preventDefault();
+
+    uploadCard.classList.remove("drag-over");
+
+    const file = event.dataTransfer.files[0];
+
+    if (!file) {
+        return;
+    }
+
+    loadImage(file);
+}
+
+
+/* =========================================================
+   LOAD IMAGE
+   ========================================================= */
+
+function loadImage(file) {
+
+    if (!file.type.startsWith("image/")) {
+
+        alert("Please select a valid image file.");
+
+        return;
+    }
+
+    originalFile = file;
+
+    /* Clear previous conversion */
+
+    convertedBlob = null;
+
+    if (convertedImageURL) {
+
+        URL.revokeObjectURL(convertedImageURL);
+
+        convertedImageURL = null;
+    }
+
+    downloadBtn.disabled = true;
+
+    convertedPreview.removeAttribute("src");
+
+    convertedPreview.style.display = "none";
+
+    convertedPlaceholder.style.display = "flex";
+
+    convertedResolution.textContent = "0 × 0";
+
+    convertedSize.textContent = "0 KB";
+
+    convertedFormat.textContent = "—";
+
+    if (conversionResult) {
+        conversionResult.style.display = "none";
+    }
+
+
+    /* Clear old original URL */
+
+    if (originalImageURL) {
+
+        URL.revokeObjectURL(originalImageURL);
+    }
+
+
+    /* Create new preview URL */
+
+    originalImageURL =
+        URL.createObjectURL(file);
+
+
+    originalImage = new Image();
+
+
+    originalImage.onload = function () {
+
+        showOriginalPreview();
+
+        updateOriginalInfo();
+
+        convertBtn.disabled = false;
+    };
+
+
+    originalImage.onerror = function () {
+
+        alert("Unable to load this image.");
+
+        convertBtn.disabled = true;
+    };
+
+
+    originalImage.src = originalImageURL;
+}
+
+
+/* =========================================================
+   ORIGINAL PREVIEW
+   ========================================================= */
+
+function showOriginalPreview() {
+
+    originalPreview.src = originalImageURL;
+
+    originalPreview.style.display = "block";
+
+    originalPlaceholder.style.display = "none";
+}
+
+
+/* =========================================================
+   ORIGINAL IMAGE INFORMATION
+   ========================================================= */
+
+function updateOriginalInfo() {
+
+    originalResolution.textContent =
+        `${originalImage.width} × ${originalImage.height}`;
+
+    originalSize.textContent =
+        formatBytes(originalFile.size);
+
+    originalFormat.textContent =
+        getFileFormat(originalFile);
+}
+
+
+/* =========================================================
+   FILE FORMAT
+   ========================================================= */
+
+function getFileFormat(file) {
+
+    if (!file || !file.type) {
+        return "—";
+    }
+
+    return file.type
+        .replace("image/", "")
+        .toUpperCase();
+}
+
+
+/* =========================================================
+   FILE SIZE FORMAT
+   ========================================================= */
+
+function formatBytes(bytes) {
+
+    if (bytes < 1024) {
+
+        return bytes + " B";
+    }
+
+    if (bytes < 1024 * 1024) {
+
+        return (
+            bytes / 1024
+        ).toFixed(1) + " KB";
+    }
+
+    return (
+        bytes / (1024 * 1024)
+    ).toFixed(2) + " MB";
+}
+/* =========================================================
+   JS PART 2 — QUALITY + FORMAT + CONVERT BUTTON
+   ========================================================= */
+
+
+/* =========================================================
+   QUALITY SLIDER
+   ========================================================= */
 
 const qualitySlider =
     document.getElementById("qualitySlider");
@@ -65,616 +316,641 @@ const qualitySlider =
 const qualityValue =
     document.getElementById("qualityValue");
 
-const backgroundColor =
-    document.getElementById("backgroundColor");
 
-const keepMetadata =
-    document.getElementById("keepMetadata");
+if (qualitySlider && qualityValue) {
 
+    qualitySlider.addEventListener(
+        "input",
+        updateQualityValue
+    );
 
-/* Buttons */
-
-const convertBtn =
-    document.getElementById("convertBtn");
-
-const downloadBtn =
-    document.getElementById("downloadBtn");
+    updateQualityValue();
+}
 
 
-/* Stats */
+function updateQualityValue() {
 
-const statFormat =
-    document.getElementById("statFormat");
-
-const statResolution =
-    document.getElementById("statResolution");
-
-const statSize =
-    document.getElementById("statSize");
-
-
-/* ==================================================
-   GLOBAL STATE
-================================================== */
-
-let originalFile = null;
-
-let originalImage = null;
-
-let convertedBlob = null;
-
-let convertedURL = null;
-
-
-/* Current Image */
-
-let imageWidth = 0;
-
-let imageHeight = 0;
-
-
-/* Output */
-
-let outputMimeType = "image/png";
-
-
-/* ==================================================
-   INITIAL STATE
-================================================== */
-
-convertBtn.disabled = true;
-
-downloadBtn.disabled = true;
-
-
-/* ==================================================
-   QUALITY LABEL
-================================================== */
-
-qualitySlider.addEventListener("input", () => {
+    const quality =
+        Number(qualitySlider.value);
 
     qualityValue.textContent =
-        `${qualitySlider.value}%`;
-
-});
-/* ==================================================
-   PART 2
-   IMAGE UPLOAD
-================================================== */
-
-imageInput.addEventListener("change", handleImageUpload);
-
-
-/* ==================================================
-   HANDLE IMAGE
-================================================== */
-
-function handleImageUpload(event){
-
-    const file = event.target.files[0];
-
-    if(!file) return;
-
-
-    /* =========================
-       VALIDATION
-    ========================= */
-
-    if(!file.type.startsWith("image/")){
-
-        alert("Please select a valid image.");
-
-        imageInput.value="";
-
-        return;
-
-    }
-
-
-    originalFile=file;
-
-
-    /* Remove old preview */
-
-    if(convertedURL){
-
-        URL.revokeObjectURL(convertedURL);
-
-        convertedURL=null;
-
-    }
-
-    convertedBlob=null;
-
-
-    /* =========================
-       LOAD IMAGE
-    ========================= */
-
-    const reader=new FileReader();
-
-    reader.onload=function(e){
-
-        const img=new Image();
-
-        img.onload=function(){
-
-            originalImage=img;
-
-            imageWidth=img.naturalWidth;
-
-            imageHeight=img.naturalHeight;
-
-
-            /* Preview */
-
-            originalPreview.src=e.target.result;
-
-            originalPreview.style.display="block";
-
-            originalPlaceholder.style.display="none";
-
-
-            /* Information */
-
-            originalResolution.textContent=
-
-                `${imageWidth} × ${imageHeight}`;
-
-            originalSize.textContent=
-
-                formatFileSize(file.size);
-
-            originalFormat.textContent=
-
-                detectFormat(file.type);
-
-
-            /* Reset output */
-
-            resetOutput();
-
-
-            /* Enable Convert */
-
-            convertBtn.disabled=false;
-
-        };
-
-        img.src=e.target.result;
-
-    };
-
-    reader.readAsDataURL(file);
-
+        quality + "%";
 }
 
 
-/* ==================================================
-   FORMAT DETECTION
-================================================== */
+/* =========================================================
+   FORMAT SELECTION
+   ========================================================= */
 
-function detectFormat(type){
+formatSelect.addEventListener(
+    "change",
+    handleFormatChange
+);
 
-    switch(type){
 
-        case "image/jpeg":
+function handleFormatChange() {
 
-            return "JPG";
+    /*
+     * A new format selection means
+     * the previous conversion is no longer
+     * the current result.
+     */
 
-        case "image/png":
+    convertedBlob = null;
 
-            return "PNG";
+    if (convertedImageURL) {
 
-        case "image/webp":
+        URL.revokeObjectURL(convertedImageURL);
 
-            return "WEBP";
-
-        case "image/avif":
-
-            return "AVIF";
-
-        case "image/bmp":
-
-            return "BMP";
-
-        case "image/gif":
-
-            return "GIF";
-
-        case "image/tiff":
-
-            return "TIFF";
-
-        case "image/x-icon":
-
-        case "image/vnd.microsoft.icon":
-
-            return "ICO";
-
-        default:
-
-            return "IMAGE";
-
+        convertedImageURL = null;
     }
-
-}
-
-
-/* ==================================================
-   FILE SIZE
-================================================== */
-
-function formatFileSize(bytes){
-
-    if(bytes<1024){
-
-        return bytes+" Bytes";
-
-    }
-
-    if(bytes<1024*1024){
-
-        return (bytes/1024).toFixed(1)+" KB";
-
-    }
-
-    return (bytes/1024/1024).toFixed(2)+" MB";
-
-}
-
-
-/* ==================================================
-   RESET OUTPUT
-================================================== */
-
-function resetOutput(){
 
     convertedPreview.removeAttribute("src");
 
-    convertedPreview.style.display="none";
+    convertedPreview.style.display = "none";
 
-    convertedPlaceholder.style.display="flex";
+    convertedPlaceholder.style.display = "flex";
 
+    convertedResolution.textContent =
+        "0 × 0";
 
-    convertedResolution.textContent="0 × 0";
+    convertedSize.textContent =
+        "0 KB";
 
-    convertedSize.textContent="0 KB";
+    convertedFormat.textContent =
+        "—";
 
-    convertedFormat.textContent="—";
+    downloadBtn.disabled = true;
 
+    if (conversionResult) {
+        conversionResult.style.display = "none";
+    }
 
-    statFormat.textContent="—";
-
-    statResolution.textContent="0 × 0";
-
-    statSize.textContent="0 KB";
-
-
-    downloadBtn.disabled=true;
-
+    if (resultStatus) {
+        resultStatus.textContent = "Ready";
+    }
 }
-/* ==================================================
-   PART 3
-   CONVERT IMAGE
-================================================== */
+
+
+/* =========================================================
+   CONVERT BUTTON
+   ========================================================= */
 
 convertBtn.addEventListener(
     "click",
-    convertImage
+    startConversion
 );
 
-async function convertImage(){
 
-    if(!originalImage) return;
+async function startConversion() {
 
+    if (!originalImage || !originalFile) {
 
-    convertBtn.disabled=true;
+        alert("Please upload an image first.");
 
-    convertBtn.innerHTML=
-
-        `<i class="fa-solid fa-spinner fa-spin"></i>
-         Converting...`;
-
-
-    try{
-
-        const canvas=
-            document.createElement("canvas");
-
-        const ctx=
-            canvas.getContext("2d");
-
-
-        canvas.width=imageWidth;
-        canvas.height=imageHeight;
-
-
-        /* =====================================
-           OUTPUT FORMAT
-        ===================================== */
-
-        const format=
-            formatSelect.value.toLowerCase();
-
-
-        switch(format){
-
-            case "jpg":
-            case "jpeg":
-
-                outputMimeType="image/jpeg";
-
-                break;
-
-            case "png":
-
-                outputMimeType="image/png";
-
-                break;
-
-            case "webp":
-
-                outputMimeType="image/webp";
-
-                break;
-
-            case "avif":
-
-                outputMimeType="image/avif";
-
-                break;
-
-            case "bmp":
-
-                outputMimeType="image/bmp";
-
-                break;
-
-            case "tiff":
-
-                outputMimeType="image/tiff";
-
-                break;
-
-            case "ico":
-
-                outputMimeType="image/x-icon";
-
-                break;
-
-            default:
-
-                outputMimeType="image/png";
-
-        }
-
-
-        /* =====================================
-           JPG BACKGROUND
-        ===================================== */
-
-        if(outputMimeType==="image/jpeg"){
-
-            ctx.fillStyle=
-
-                backgroundColor.value;
-
-            ctx.fillRect(
-
-                0,
-                0,
-
-                canvas.width,
-
-                canvas.height
-
-            );
-
-        }
-
-
-        /* =====================================
-           DRAW IMAGE
-        ===================================== */
-
-        ctx.drawImage(
-
-            originalImage,
-
-            0,
-            0,
-
-            canvas.width,
-
-            canvas.height
-
-        );
-
-
-        /* =====================================
-           QUALITY
-        ===================================== */
-
-        const quality=
-
-            qualitySlider.value/100;
-
-
-        /* =====================================
-           EXPORT
-        ===================================== */
-
-        canvas.toBlob(
-
-            function(blob){
-
-                if(!blob){
-
-                    alert(
-
-                        "This image format is not supported by your browser."
-
-                    );
-
-                    resetConvertButton();
-
-                    return;
-
-                }
-
-                convertedBlob=blob;
-
-                showConvertedImage(blob);
-
-            },
-
-            outputMimeType,
-
-            quality
-
-        );
-
+        return;
     }
 
-    catch(error){
 
-        console.error(error);
+    /* Disable button while processing */
+
+    convertBtn.disabled = true;
+
+
+    /* Show processing state */
+
+    convertBtn.innerHTML = `
+        <i class="fa-solid fa-spinner fa-spin"></i>
+        <span>Converting...</span>
+    `;
+
+
+    if (resultStatus) {
+        resultStatus.textContent = "Converting...";
+    }
+
+
+    try {
+
+        await convertImage();
+
+        updateConvertedResult();
+
+        if (resultStatus) {
+            resultStatus.textContent = "Completed";
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Image conversion failed:",
+            error
+        );
 
         alert(
-
-            "Conversion failed."
-
+            "Something went wrong while converting the image."
         );
 
-        resetConvertButton();
+        if (resultStatus) {
+            resultStatus.textContent = "Failed";
+        }
 
+    } finally {
+
+        convertBtn.disabled = false;
+
+        convertBtn.innerHTML = `
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>Convert Image</span>
+        `;
+    }
+}
+/* =========================================================
+   JS PART 3 — IMAGE CONVERSION ENGINE
+   ========================================================= */
+
+
+/* =========================================================
+   CONVERT IMAGE
+   ========================================================= */
+
+async function convertImage() {
+
+    if (!originalImage || !originalFile) {
+        throw new Error("No image selected.");
     }
 
-}
-/* ==================================================
-   PART 4
-   SHOW CONVERTED IMAGE
-================================================== */
 
-function showConvertedImage(blob){
+    const selectedFormat =
+        formatSelect.value.toLowerCase();
 
-    /* Remove old preview */
 
-    if(convertedURL){
+    /*
+     * Canvas is used so the image can be
+     * processed locally in the browser.
+     */
 
-        URL.revokeObjectURL(convertedURL);
+    const canvas =
+        document.createElement("canvas");
 
+    const ctx =
+        canvas.getContext("2d", {
+            alpha: true
+        });
+
+
+    if (!ctx) {
+        throw new Error(
+            "Canvas is not supported by this browser."
+        );
     }
 
-    convertedURL = URL.createObjectURL(blob);
+
+    /* Keep original resolution */
+
+    canvas.width =
+        originalImage.naturalWidth ||
+        originalImage.width;
+
+    canvas.height =
+        originalImage.naturalHeight ||
+        originalImage.height;
 
 
-    /* =========================
-       SHOW PREVIEW
-    ========================= */
+    /*
+     * JPG/BMP do not support transparency.
+     * Use the selected background color for
+     * those formats.
+     */
 
-    convertedPreview.src = convertedURL;
+    if (
+        selectedFormat === "jpg" ||
+        selectedFormat === "jpeg" ||
+        selectedFormat === "bmp"
+    ) {
 
-    convertedPreview.style.display = "block";
+        ctx.fillStyle =
+            backgroundColor.value || "#ffffff";
 
-    convertedPlaceholder.style.display = "none";
-
-
-    /* =========================
-       IMAGE LOADED
-    ========================= */
-
-    convertedPreview.onload = function(){
-
-        convertedResolution.textContent =
-            `${convertedPreview.naturalWidth} × ${convertedPreview.naturalHeight}`;
-
-        convertedSize.textContent =
-            formatFileSize(blob.size);
-
-        convertedFormat.textContent =
-            detectFormat(outputMimeType);
+        ctx.fillRect(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+    }
 
 
-        /* Stats */
+    /* Draw source image */
 
-        statFormat.textContent =
-            detectFormat(outputMimeType);
+    ctx.drawImage(
+        originalImage,
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
 
-        statResolution.textContent =
-            `${convertedPreview.naturalWidth} × ${convertedPreview.naturalHeight}`;
 
-        statSize.textContent =
-            formatFileSize(blob.size);
+    /* Get output MIME type */
+
+    const mimeType =
+        getOutputMimeType(
+            selectedFormat
+        );
 
 
-        downloadBtn.disabled = false;
+    /*
+     * Quality is mainly respected by
+     * lossy formats such as JPG and WEBP.
+     */
 
-        resetConvertButton();
+    const quality =
+        Number(qualitySlider.value) / 100;
 
-    };
+
+    /*
+     * Convert canvas to Blob.
+     */
+
+    const blob =
+        await canvasToBlob(
+            canvas,
+            mimeType,
+            quality
+        );
+
+
+    if (!blob) {
+
+        throw new Error(
+            "This image format is not supported by your browser."
+        );
+    }
+
+
+    convertedBlob = blob;
+
+
+    return blob;
+}
+
+
+/* =========================================================
+   MIME TYPE
+   ========================================================= */
+
+function getOutputMimeType(format) {
+
+    switch (format) {
+
+        case "jpg":
+        case "jpeg":
+            return "image/jpeg";
+
+        case "png":
+            return "image/png";
+
+        case "webp":
+            return "image/webp";
+
+        case "avif":
+            return "image/avif";
+
+        case "bmp":
+            return "image/bmp";
+
+        default:
+            return "image/png";
+    }
+}
+
+
+/* =========================================================
+   CANVAS → BLOB
+   ========================================================= */
+
+function canvasToBlob(
+    canvas,
+    mimeType,
+    quality
+) {
+
+    return new Promise((resolve) => {
+
+        canvas.toBlob(
+            (blob) => {
+                resolve(blob);
+            },
+            mimeType,
+            quality
+        );
+
+    });
+}
+
+
+/* =========================================================
+   BACKGROUND COLOR
+   ========================================================= */
+
+const backgroundColor =
+    document.getElementById(
+        "backgroundColor"
+    );
+
+
+/*
+ * Changing the background does not
+ * automatically convert the image.
+ * The selected color is simply used
+ * during the next conversion.
+ */
+
+if (backgroundColor) {
+
+    backgroundColor.addEventListener(
+        "input",
+        () => {
+
+            if (
+                resultStatus &&
+                convertedBlob
+            ) {
+                resultStatus.textContent =
+                    "Settings Changed";
+            }
+
+        }
+    );
+}
+/* =========================================================
+   JS PART 4 — CONVERTED RESULT + PREVIEW
+   ========================================================= */
+
+
+/* =========================================================
+   UPDATE CONVERTED RESULT
+   ========================================================= */
+
+function updateConvertedResult() {
+
+    if (!convertedBlob || !originalImage) {
+        throw new Error(
+            "Converted image is not available."
+        );
+    }
+
+
+    /* Revoke previous preview URL */
+
+    if (convertedImageURL) {
+
+        URL.revokeObjectURL(
+            convertedImageURL
+        );
+
+        convertedImageURL = null;
+    }
+
+
+    /* Create new preview URL */
+
+    convertedImageURL =
+        URL.createObjectURL(
+            convertedBlob
+        );
+
+
+    /* Show converted image */
+
+    convertedPreview.src =
+        convertedImageURL;
+
+    convertedPreview.style.display =
+        "block";
+
+    convertedPlaceholder.style.display =
+        "none";
+
+
+    /* Update resolution */
+
+    convertedResolution.textContent =
+        `${originalImage.width} × ${originalImage.height}`;
+
+
+    /* Update file size */
+
+    convertedSize.textContent =
+        formatBytes(
+            convertedBlob.size
+        );
+
+
+    /* Update format */
+
+    convertedFormat.textContent =
+        formatOutputFormat(
+            formatSelect.value
+        );
+
+
+    /* Enable download */
+
+    downloadBtn.disabled = false;
+
+
+    /* Show result section */
+
+    if (conversionResult) {
+
+        conversionResult.style.display =
+            "block";
+    }
+
+
+    /* Scroll smoothly to result */
+
+    setTimeout(() => {
+
+        if (conversionResult) {
+
+            conversionResult.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
+
+    }, 100);
+}
+
+
+/* =========================================================
+   FORMAT DISPLAY NAME
+   ========================================================= */
+
+function formatOutputFormat(format) {
+
+    if (!format) {
+        return "—";
+    }
+
+    const normalizedFormat =
+        format.toLowerCase();
+
+
+    switch (normalizedFormat) {
+
+        case "jpg":
+            return "JPG";
+
+        case "jpeg":
+            return "JPEG";
+
+        case "png":
+            return "PNG";
+
+        case "webp":
+            return "WEBP";
+
+        case "avif":
+            return "AVIF";
+
+        case "bmp":
+            return "BMP";
+
+        case "tiff":
+            return "TIFF";
+
+        case "ico":
+            return "ICO";
+
+        default:
+            return normalizedFormat.toUpperCase();
+    }
+}
+
+
+/* =========================================================
+   RESULT PREVIEW ERROR HANDLING
+   ========================================================= */
+
+if (convertedPreview) {
+
+    convertedPreview.addEventListener(
+        "error",
+        () => {
+
+            convertedPreview.style.display =
+                "none";
+
+            convertedPlaceholder.style.display =
+                "flex";
+
+            convertedPlaceholder.querySelector(
+                "p"
+            ).textContent =
+                "Preview could not be displayed.";
+
+        }
+    );
+}
+/* =========================================================
+   JS PART 5 — DOWNLOAD CONVERTED IMAGE
+   ========================================================= */
+
+
+/* =========================================================
+   DOWNLOAD BUTTON
+   ========================================================= */
+
+if (downloadBtn) {
+
+    downloadBtn.addEventListener(
+        "click",
+        downloadConvertedImage
+    );
 
 }
 
 
-/* ==================================================
-   RESET BUTTON
-================================================== */
+/* =========================================================
+   DOWNLOAD FUNCTION
+   ========================================================= */
 
-function resetConvertButton(){
+function downloadConvertedImage() {
 
-    convertBtn.disabled = false;
+    if (!convertedBlob) {
 
-    convertBtn.innerHTML =
+        alert(
+            "Please convert the image first."
+        );
 
-    `<i class="fa-solid fa-arrows-rotate"></i>
-     Convert Image`;
-
-}
-
-
-/* ==================================================
-   DOWNLOAD
-================================================== */
-
-downloadBtn.addEventListener(
-    "click",
-    downloadImage
-);
+        return;
+    }
 
 
-function downloadImage(){
+    if (!originalFile) {
 
-    if(!convertedBlob) return;
+        alert(
+            "Original image information is missing."
+        );
 
+        return;
+    }
+
+
+    const selectedFormat =
+        formatSelect.value.toLowerCase();
+
+
+    /*
+     * Create temporary download URL.
+     */
+
+    const downloadURL =
+        URL.createObjectURL(
+            convertedBlob
+        );
+
+
+    /*
+     * Remove the original extension
+     * from the filename.
+     */
+
+    const originalName =
+        originalFile.name
+            .replace(/\.[^/.]+$/, "");
+
+
+    /*
+     * Create final filename.
+     */
+
+    const fileName =
+        `${originalName}-converted.${getFileExtension(selectedFormat)}`;
+
+
+    /*
+     * Create temporary download link.
+     */
 
     const link =
         document.createElement("a");
 
-
-    link.href = convertedURL;
-
-
-    const format =
-        formatSelect.value.toLowerCase();
-
-
-    const fileName =
-
-        originalFile.name.replace(
-
-            /\.[^/.]+$/,
-
-            ""
-
-        );
-
+    link.href =
+        downloadURL;
 
     link.download =
+        fileName;
 
-        `${fileName}-converted.${format}`;
 
+    /*
+     * Trigger browser download.
+     */
 
     document.body.appendChild(link);
 
@@ -682,4 +958,584 @@ function downloadImage(){
 
     link.remove();
 
+
+    /*
+     * Clean temporary URL.
+     */
+
+    setTimeout(() => {
+
+        URL.revokeObjectURL(
+            downloadURL
+        );
+
+    }, 1000);
+
+
+    /*
+     * Update status.
+     */
+
+    if (resultStatus) {
+
+        resultStatus.textContent =
+            "Downloaded";
+
+    }
+
 }
+
+
+/* =========================================================
+   FILE EXTENSION
+   ========================================================= */
+
+function getFileExtension(format) {
+
+    switch (format) {
+
+        case "jpeg":
+            return "jpg";
+
+        case "jpg":
+            return "jpg";
+
+        case "png":
+            return "png";
+
+        case "webp":
+            return "webp";
+
+        case "avif":
+            return "avif";
+
+        case "bmp":
+            return "bmp";
+
+        case "tiff":
+            return "tiff";
+
+        case "ico":
+            return "ico";
+
+        default:
+            return "png";
+    }
+
+}
+/* =========================================================
+   JS PART 6 — FINALIZATION + CLEANUP + COMPATIBILITY
+   ========================================================= */
+
+
+/* =========================================================
+   KEEP METADATA
+   ========================================================= */
+
+const keepMetadata =
+    document.getElementById(
+        "keepMetadata"
+    );
+
+
+/*
+ * Canvas conversion cannot reliably preserve
+ * every original metadata field.
+ *
+ * The checkbox is therefore treated as a
+ * user preference and only metadata that the
+ * browser/output format can preserve is kept.
+ */
+
+if (keepMetadata) {
+
+    keepMetadata.addEventListener(
+        "change",
+        () => {
+
+            if (
+                convertedBlob &&
+                resultStatus
+            ) {
+
+                resultStatus.textContent =
+                    "Settings Changed";
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   BROWSER FORMAT SUPPORT CHECK
+   ========================================================= */
+
+function isFormatSupported(format) {
+
+    const mimeType =
+        getOutputMimeType(
+            format
+        );
+
+
+    const canvas =
+        document.createElement("canvas");
+
+
+    if (!canvas.toDataURL) {
+        return false;
+    }
+
+
+    try {
+
+        const dataURL =
+            canvas.toDataURL(
+                mimeType
+            );
+
+
+        return dataURL.startsWith(
+            `data:${mimeType}`
+        );
+
+    } catch (error) {
+
+        return false;
+
+    }
+
+}
+
+
+/* =========================================================
+   FORMAT CHANGE SUPPORT CHECK
+   ========================================================= */
+
+if (formatSelect) {
+
+    formatSelect.addEventListener(
+        "change",
+        checkSelectedFormatSupport
+    );
+
+}
+
+
+function checkSelectedFormatSupport() {
+
+    const selectedFormat =
+        formatSelect.value.toLowerCase();
+
+
+    /*
+     * These formats require browser support
+     * through Canvas.
+     */
+
+    const supported =
+        isFormatSupported(
+            selectedFormat
+        );
+
+
+    if (!supported) {
+
+        if (resultStatus) {
+
+            resultStatus.textContent =
+                "Format Not Supported";
+
+        }
+
+    } else {
+
+        if (
+            !convertedBlob &&
+            resultStatus
+        ) {
+
+            resultStatus.textContent =
+                "Ready";
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   PAGE CLEANUP
+   ========================================================= */
+
+window.addEventListener(
+    "beforeunload",
+    () => {
+
+        if (originalImageURL) {
+
+            URL.revokeObjectURL(
+                originalImageURL
+            );
+
+        }
+
+
+        if (convertedImageURL) {
+
+            URL.revokeObjectURL(
+                convertedImageURL
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   INITIAL STATE
+   ========================================================= */
+
+function initializeConverter() {
+
+    if (originalPreview) {
+
+        originalPreview.style.display =
+            "none";
+
+    }
+
+
+    if (originalPlaceholder) {
+
+        originalPlaceholder.style.display =
+            "flex";
+
+    }
+
+
+    if (convertedPreview) {
+
+        convertedPreview.style.display =
+            "none";
+
+    }
+
+
+    if (convertedPlaceholder) {
+
+        convertedPlaceholder.style.display =
+            "flex";
+
+    }
+
+
+    if (conversionResult) {
+
+        conversionResult.style.display =
+            "none";
+
+    }
+
+
+    if (convertBtn) {
+
+        convertBtn.disabled =
+            true;
+
+    }
+
+
+    if (downloadBtn) {
+
+        downloadBtn.disabled =
+            true;
+
+    }
+
+
+    if (resultStatus) {
+
+        resultStatus.textContent =
+            "Ready";
+
+    }
+
+}
+
+
+/* =========================================================
+   START CONVERTER
+   ========================================================= */
+
+initializeConverter();
+/* =========================================================
+   JS PART 7 — FORMAT VALIDATION + SAFE CONVERSION
+   ========================================================= */
+
+
+/* =========================================================
+   SUPPORTED BROWSER FORMATS
+   ========================================================= */
+
+const browserSupportedFormats = [
+    "jpg",
+    "png",
+    "webp",
+    "avif",
+    "bmp"
+];
+
+
+/* =========================================================
+   CHECK REAL FORMAT SUPPORT
+   ========================================================= */
+
+function canConvertFormat(format) {
+
+    if (!browserSupportedFormats.includes(format)) {
+        return false;
+    }
+
+    const mimeType =
+        getOutputMimeType(format);
+
+    const testCanvas =
+        document.createElement("canvas");
+
+    testCanvas.width = 1;
+    testCanvas.height = 1;
+
+    try {
+
+        const dataURL =
+            testCanvas.toDataURL(mimeType);
+
+        return dataURL.startsWith(
+            `data:${mimeType}`
+        );
+
+    } catch (error) {
+
+        return false;
+
+    }
+}
+
+
+/* =========================================================
+   REPLACE CONVERT IMAGE WITH SAFE VERSION
+   ========================================================= */
+
+const originalConvertImage =
+    convertImage;
+
+
+async function safeConvertImage() {
+
+    const selectedFormat =
+        formatSelect.value.toLowerCase();
+
+
+    /*
+     * TIFF and ICO are not handled by
+     * the browser Canvas conversion engine.
+     */
+
+    if (
+        selectedFormat === "tiff" ||
+        selectedFormat === "ico"
+    ) {
+
+        throw new Error(
+            `${selectedFormat.toUpperCase()} conversion is not supported by the current browser conversion engine.`
+        );
+    }
+
+
+    /*
+     * Check actual browser support for
+     * AVIF and BMP as well.
+     */
+
+    if (
+        !canConvertFormat(
+            selectedFormat
+        )
+    ) {
+
+        throw new Error(
+            `${selectedFormat.toUpperCase()} conversion is not supported by your browser.`
+        );
+    }
+
+
+    return await originalConvertImage();
+}
+
+
+/* =========================================================
+   USE SAFE CONVERTER
+   ========================================================= */
+
+convertImage =
+    safeConvertImage;
+
+
+/* =========================================================
+   BETTER ERROR MESSAGE
+   ========================================================= */
+
+const originalStartConversion =
+    startConversion;
+
+
+startConversion = async function () {
+
+    if (!originalImage || !originalFile) {
+
+        alert(
+            "Please upload an image first."
+        );
+
+        return;
+    }
+
+
+    convertBtn.disabled = true;
+
+    convertBtn.innerHTML = `
+        <i class="fa-solid fa-spinner fa-spin"></i>
+        <span>Converting...</span>
+    `;
+
+
+    if (resultStatus) {
+
+        resultStatus.textContent =
+            "Converting...";
+
+    }
+
+
+    try {
+
+        await convertImage();
+
+        updateConvertedResult();
+
+        if (resultStatus) {
+
+            resultStatus.textContent =
+                "Completed";
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Image conversion failed:",
+            error
+        );
+
+
+        alert(
+            error.message ||
+            "This image format cannot be converted in your browser."
+        );
+
+
+        if (resultStatus) {
+
+            resultStatus.textContent =
+                "Not Supported";
+
+        }
+
+
+    } finally {
+
+        convertBtn.disabled = false;
+
+        convertBtn.innerHTML = `
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>Convert Image</span>
+        `;
+
+    }
+
+};
+
+
+/* =========================================================
+   DISABLE UNSUPPORTED OUTPUT FORMATS
+   ========================================================= */
+
+function updateFormatOptions() {
+
+    const options =
+        formatSelect.querySelectorAll(
+            "option"
+        );
+
+
+    options.forEach((option) => {
+
+        const format =
+            option.value.toLowerCase();
+
+
+        const supported =
+            canConvertFormat(format);
+
+
+        /*
+         * TIFF and ICO are explicitly
+         * unavailable in this browser engine.
+         */
+
+        if (
+            format === "tiff" ||
+            format === "ico"
+        ) {
+
+            option.disabled = true;
+
+        } else {
+
+            option.disabled =
+                !supported;
+
+        }
+
+    });
+
+
+    /*
+     * Select JPG as the safe default
+     * if the current format is unavailable.
+     */
+
+    if (
+        formatSelect.options[
+            formatSelect.selectedIndex
+        ]?.disabled
+    ) {
+
+        formatSelect.value = "jpg";
+
+    }
+
+}
+
+
+/* =========================================================
+   RUN FORMAT CHECK
+   ========================================================= */
+
+updateFormatOptions();
