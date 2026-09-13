@@ -4,60 +4,552 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF to Image - SmartToolKits</title>
+
+    <title>PDF to Image | SmartToolKits</title>
+
+    <meta
+        name="description"
+        content="Convert PDF pages into JPG or PNG images online with SmartToolKits."
+    >
+
+    <meta name="robots" content="index, follow">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <header>
-        <h2>🚀 SmartToolKits</h2>
-    </header>
+    <header class="tool-header">
 
-    <section class="hero">
+        <div class="tool-header-container">
 
-        <h1>PDF to Image</h1>
+            <a
+                href="../../index.html"
+                class="tool-brand"
+                aria-label="SmartToolKits Home"
+            >
+                <span class="tool-brand-mark">ST</span>
+                <span class="tool-brand-name">
+                    SmartToolKits
+                </span>
+            </a>
 
-        <p>Convert PDF pages into JPG or PNG images.</p>
+            <nav
+                class="tool-navigation"
+                aria-label="Main navigation"
+            >
+                <a
+                    href="../../index.html"
+                    class="tool-nav-link"
+                >
+                    Home
+                </a>
 
-        <input type="file" id="pdfInput" accept=".pdf">
+                <a
+                    href="../../index.html#all-tools"
+                    class="tool-nav-link"
+                >
+                    All Tools
+                </a>
+            </nav>
 
-        <br><br>
-
-        <div style="margin:20px 0;">
-            <label>
-                <input type="radio" name="format" value="png" checked>
-                PNG
-            </label>
-
-            &nbsp;&nbsp;
-
-            <label>
-                <input type="radio" name="format" value="jpg">
-                JPG
-            </label>
         </div>
 
-       <div class="button-group">
-    <button id="convertBtn">
-        Convert to Images
-    </button>
+    </header>
 
-    <button id="downloadAllBtn" style="display:none;">
-        Download All (ZIP)
-    </button>
-</div>
+    <main class="tool-page">
 
-<div id="output"></div>
-        
+        <section class="pdf-hero">
 
-    </section>
+            <div class="pdf-hero-content">
+
+                <span class="tool-label">
+                    PDF TOOL
+                </span>
+
+                <h1>
+                    PDF to Image
+                </h1>
+
+                <p>
+                    Convert PDF pages into high-quality
+                    JPG or PNG images quickly and easily.
+                </p>
+
+                <div class="tool-creator">
+                    Created by
+                    <strong>Shivang Kumar Thakur</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="pdf-workspace">
+                        <div class="pdf-upload-area">
+
+                <input
+                    type="file"
+                    id="pdfInput"
+                    accept=".pdf,application/pdf"
+                    hidden
+                >
+
+                <label
+                    for="pdfInput"
+                    class="pdf-upload-card"
+                >
+
+                    <div class="pdf-upload-icon">
+                        <i class="fa-solid fa-file-pdf"></i>
+                    </div>
+
+                    <h2>
+                        Upload Your PDF
+                    </h2>
+
+                    <p>
+                        Drag and drop your PDF here,
+                        or browse from your device.
+                    </p>
+
+                    <span class="pdf-upload-button">
+                        Select PDF
+                    </span>
+
+                    <small>
+                        PDF files only
+                    </small>
+
+                </label>
+
+            </div>
+
+
+            <div class="pdf-options">
+
+                <div class="pdf-options-heading">
+
+                    <span class="pdf-option-icon">
+                        <i class="fa-solid fa-image"></i>
+                    </span>
+
+                    <div>
+
+                        <h2>
+                            Output Format
+                        </h2>
+
+                        <p>
+                            Choose the image format for
+                            your converted PDF pages.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="format-options">
+
+                    <label class="format-option">
+
+                        <input
+                            type="radio"
+                            name="format"
+                            value="png"
+                            checked
+                        >
+
+                        <span class="format-option-content">
+
+                            <span class="format-icon">
+                                <i class="fa-regular fa-image"></i>
+                            </span>
+
+                            <span>
+                                <strong>PNG</strong>
+                                <small>
+                                    High-quality image
+                                </small>
+                            </span>
+
+                        </span>
+
+                    </label>
+
+
+                    <label class="format-option">
+
+                        <input
+                            type="radio"
+                            name="format"
+                            value="jpg"
+                        >
+
+                        <span class="format-option-content">
+
+                            <span class="format-icon">
+                                <i class="fa-regular fa-image"></i>
+                            </span>
+
+                            <span>
+                                <strong>JPG</strong>
+                                <small>
+                                    Smaller file size
+                                </small>
+                            </span>
+
+                        </span>
+
+                    </label>
+
+                </div>
+
+            </div>
+                        <div class="pdf-action-area">
+
+                <button
+                    type="button"
+                    id="convertBtn"
+                    class="pdf-convert-button"
+                >
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <span>Convert to Images</span>
+                </button>
+
+                <div
+                    class="pdf-processing-status"
+                    id="processingStatus"
+                    aria-live="polite"
+                >
+                    <i class="fa-solid fa-circle-info"></i>
+                    <span>
+                        Upload a PDF to get started.
+                    </span>
+                </div>
+
+            </div>
+
+
+            <section class="pdf-results">
+
+                <div class="pdf-results-header">
+
+                    <div>
+
+                        <span class="section-label">
+                            CONVERSION RESULT
+                        </span>
+
+                        <h2>
+                            Converted Pages
+                        </h2>
+
+                        <p>
+                            Preview each converted page
+                            and download it individually.
+                        </p>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        id="downloadAllBtn"
+                        class="download-all-button"
+                        style="display: none;"
+                    >
+                        <i class="fa-solid fa-file-zipper"></i>
+                        <span>Download All (ZIP)</span>
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="output"
+                    class="pdf-output"
+                >
+                    <div class="pdf-output-placeholder">
+
+                        <div class="pdf-placeholder-icon">
+                            <i class="fa-regular fa-images"></i>
+                        </div>
+
+                        <h3>
+                            Your converted pages will appear here
+                        </h3>
+
+                        <p>
+                            Upload a PDF and click
+                            “Convert to Images” to begin.
+                        </p>
+
+                    </div>
+                </div>
+
+            </section>
+                        <section class="tool-information">
+
+                <div class="information-header">
+
+                    <span class="section-label">
+                        ABOUT THIS TOOL
+                    </span>
+
+                    <h2>
+                        Simple PDF to Image Conversion
+                    </h2>
+
+                    <p>
+                        Turn PDF pages into individual JPG
+                        or PNG images directly in your browser.
+                    </p>
+
+                </div>
+
+
+                <div class="information-grid">
+
+                    <div class="information-card">
+
+                        <div class="information-icon">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+
+                        <h3>
+                            Fast Conversion
+                        </h3>
+
+                        <p>
+                            Convert PDF pages quickly
+                            without complicated software.
+                        </p>
+
+                    </div>
+
+
+                    <div class="information-card">
+
+                        <div class="information-icon">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+
+                        <h3>
+                            Browser Based
+                        </h3>
+
+                        <p>
+                            Your PDF is processed directly
+                            in your browser during conversion.
+                        </p>
+
+                    </div>
+
+
+                    <div class="information-card">
+
+                        <div class="information-icon">
+                            <i class="fa-solid fa-layer-group"></i>
+                        </div>
+
+                        <h3>
+                            Page by Page
+                        </h3>
+
+                        <p>
+                            Convert every PDF page into
+                            an individual image file.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="supported-formats">
+
+                <div class="supported-header">
+
+                    <span class="section-label">
+                        SUPPORTED FORMATS
+                    </span>
+
+                    <h2>
+                        Choose Your Image Format
+                    </h2>
+
+                    <p>
+                        Export your PDF pages as PNG
+                        or JPG images.
+                    </p>
+
+                </div>
+
+
+                <div class="format-list">
+
+                    <span class="format-item">
+                        <i class="fa-regular fa-image"></i>
+                        PNG
+                    </span>
+
+                    <span class="format-item">
+                        <i class="fa-regular fa-image"></i>
+                        JPG
+                    </span>
+
+                </div>
+
+            </section>
+                        <section class="how-to-section">
+
+                <div class="how-to-header">
+
+                    <span class="section-label">
+                        HOW IT WORKS
+                    </span>
+
+                    <h2>
+                        Convert Your PDF in Three Steps
+                    </h2>
+
+                </div>
+
+
+                <div class="how-to-grid">
+
+                    <div class="how-to-step">
+
+                        <span class="step-number">
+                            01
+                        </span>
+
+                        <div class="step-icon">
+                            <i class="fa-solid fa-upload"></i>
+                        </div>
+
+                        <h3>
+                            Upload
+                        </h3>
+
+                        <p>
+                            Select the PDF you want
+                            to convert.
+                        </p>
+
+                    </div>
+
+
+                    <div class="how-to-step">
+
+                        <span class="step-number">
+                            02
+                        </span>
+
+                        <div class="step-icon">
+                            <i class="fa-solid fa-image"></i>
+                        </div>
+
+                        <h3>
+                            Choose Format
+                        </h3>
+
+                        <p>
+                            Select PNG or JPG for
+                            your converted pages.
+                        </p>
+
+                    </div>
+
+
+                    <div class="how-to-step">
+
+                        <span class="step-number">
+                            03
+                        </span>
+
+                        <div class="step-icon">
+                            <i class="fa-solid fa-download"></i>
+                        </div>
+
+                        <h3>
+                            Download
+                        </h3>
+
+                        <p>
+                            Download individual pages
+                            or all images as a ZIP.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+    </main>
+
+
+    <footer class="tool-footer">
+
+        <div class="tool-footer-content">
+
+            <div class="tool-footer-brand">
+
+                <span class="tool-brand-mark">
+                    ST
+                </span>
+
+                <span class="tool-brand-name">
+                    SmartToolKits
+                </span>
+
+            </div>
+
+            <p>
+                Simple tools for everyday file tasks.
+            </p>
+
+
+            <div class="tool-footer-credit">
+
+                <span>
+                    © 2026 SmartToolKits. All rights reserved.
+                </span>
+
+                <span>
+                    Created by Shivang Kumar Thakur
+                </span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
     <script src="script.js"></script>
 
 </body>
-
 </html>
