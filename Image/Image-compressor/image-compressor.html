@@ -1,938 +1,904 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Image Compressor | SmartToolKits</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-          content="Compress JPG, PNG and WEBP images online without losing quality.">
+        content="Compress images online with F2CONVERT. Reduce image file size while maintaining quality. Fast, secure and easy to use.">
 
-    <meta name="theme-color"
-          content="#F97316">
+    <meta name="keywords"
+        content="image compressor, compress image, image size reducer, reduce image size, F2CONVERT">
 
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
+    <meta name="author" content="Shivang Kumar Thakur">
 
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
+    <title>Image Compressor - F2CONVERT</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-          rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../../assets/favicon.png">
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-    <link rel="stylesheet"
-          href="style.css">
-
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<main class="container">
+    <!-- =========================================
+         HEADER / NAVIGATION
+    ========================================== -->
 
-<!-- ===========================
-        HERO
-=========================== -->
+    <header class="site-header">
 
-<section
-id="hero"
-class="hero">
+        <div class="header-container">
 
-<div class="hero-badge">
+            <!-- Logo -->
+            <a href="../../index.html" class="brand" aria-label="F2CONVERT Home">
 
-<i class="fa-solid fa-bolt"></i>
+                <span class="brand-icon">F2</span>
 
-<span>
+                <span class="brand-name">F2CONVERT</span>
 
-SmartToolKits
+            </a>
 
-</span>
 
-</div>
+            <!-- Desktop Navigation -->
+            <nav class="main-navigation" aria-label="Main Navigation">
 
-<h1>
+                <a href="../../index.html">Tools</a>
 
-Image Compressor
+                <a href="../../index.html#features">Features</a>
 
-</h1>
+                <a href="../../index.html#how-it-works">How It Works</a>
 
-<p>
+                <a href="../../index.html#faq">FAQ</a>
 
-Compress JPG, PNG and WEBP images instantly while maintaining excellent quality.
+                <a href="../../index.html#tools" class="nav-tool-button">
+                    Explore Tools
+                    <span aria-hidden="true">↗</span>
+                </a>
 
-</p>
+            </nav>
 
-</section>
 
-<!-- ===========================
-      UPLOAD SECTION
-=========================== -->
+            <!-- Mobile Menu Button -->
+            <button
+                class="mobile-menu-button"
+                type="button"
+                aria-label="Open navigation menu"
+                aria-expanded="false">
 
-<section
-id="uploadSection"
-class="upload-section">
+                <span></span>
+                <span></span>
+                <span></span>
 
-<input
-
-type="file"
-
-id="imageInput"
-
-accept=".jpg,.jpeg,.png,.webp"
-
-hidden>
-
-<label
-
-for="imageInput"
-
-id="uploadCard"
-
-class="upload-card">
-
-<div class="upload-icon">
-
-<i class="fa-solid fa-cloud-arrow-up"></i>
-
-</div>
-
-<h2>
-
-Upload Your Image
-
-</h2>
-
-<p>
-
-Drag & Drop your image here or click to browse.
-
-</p>
-
-<div class="upload-tags">
-
-<span>
-
-⚡ Fast
-
-</span>
-
-<span>
-
-🔒 Secure
-
-</span>
-
-<span>
-
-📱 Mobile Friendly
-
-</span>
-
-</div>
-
-</label>
-
-</section>
-<!-- ===========================
-      PREVIEW SECTION
-=========================== -->
-
-<section
-id="previewSection"
-class="preview-section">
-
-    <!-- Original Image -->
-
-    <div
-    id="originalCard"
-    class="preview-card">
-
-        <div class="card-header">
-
-            <h3>
-
-                Original Image
-
-            </h3>
-
-            <span class="status status-input">
-
-                INPUT
-
-            </span>
+            </button>
 
         </div>
 
-        <div class="preview-box">
+    </header>
 
-            <img
-            id="originalPreview"
-            alt="Original Preview">
 
-            <div
-            id="originalPlaceholder"
-            class="placeholder">
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================== -->
 
-                <i class="fa-regular fa-image"></i>
+    <main class="compressor-page">
+                <!-- =========================================
+             COMPRESSOR HERO SECTION
+        ========================================== -->
 
-                <h4>
+        <section class="compressor-hero">
 
-                    No Image Selected
+            <div class="compressor-hero-content">
 
-                </h4>
+                <span class="section-badge">
+                    IMAGE TOOLS
+                </span>
+
+                <h1>
+                    Image Compressor
+                </h1>
 
                 <p>
-
-                    Upload an image to preview it here.
-
+                    Reduce image file size while keeping your images
+                    looking sharp and clear.
                 </p>
 
             </div>
 
+        </section>
+                <!-- =========================================
+             IMAGE UPLOAD SECTION
+        ========================================== -->
+
+        <section class="compressor-tool">
+
+            <div class="upload-card">
+
+                <!-- Upload Area -->
+                <div
+                    class="upload-drop-zone"
+                    id="uploadDropZone"
+                    role="button"
+                    tabindex="0"
+                    aria-label="Upload image">
+
+                    <!-- Upload Icon -->
+                    <div class="upload-icon" aria-hidden="true">
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+
+                            <path
+                                d="M12 16V4"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"/>
+
+                            <path
+                                d="M7 9L12 4L17 9"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"/>
+
+                            <path
+                                d="M5 20H19"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"/>
+                        </svg>
+                    </div>
+
+
+                    <!-- Upload Text -->
+                    <h2>
+                        Drop your image here
+                    </h2>
+
+                    <p>
+                        or click below to browse from your device
+                    </p>
+
+
+                    <!-- Browse Button -->
+                    <button
+                        type="button"
+                        class="browse-button"
+                        id="browseButton">
+
+                        Choose Image
+
+                    </button>
+
+
+                    <!-- Supported Formats -->
+                    <span class="upload-formats">
+                        JPG, JPEG, PNG, WebP
+                    </span>
+
+                </div>
+
+
+                <!-- Hidden File Input -->
+                <input
+                    type="file"
+                    id="imageInput"
+                    accept="image/jpeg,image/png,image/webp"
+                    hidden>
+
+            </div>
+
+        </section>
+  <!-- =========================================
+     COMPRESSED IMAGE PREVIEW
+========================================== -->
+
+<section
+    class="preview-section"
+    id="previewSection"
+    hidden>
+
+    <div class="preview-header">
+
+        <div>
+
+            <span class="section-badge">
+                COMPRESSED PREVIEW
+            </span>
+
+            <h2>
+                Your Compressed Image
+            </h2>
+
         </div>
 
-        <div class="image-info">
+    </div>
 
-            <div class="info-item">
 
-                <span>File Size</span>
+    <!-- Compressed Image Card -->
+    <div class="compressed-preview-card">
+
+        <div class="compressed-image-box">
+
+            <img
+                id="compressedImage"
+                src=""
+                alt="Compressed image preview">
+
+        </div>
+
+
+        <!-- Compression Results -->
+        <div class="compression-result">
+
+
+            <!-- Original Size -->
+            <div class="result-item">
+
+                <span class="result-title">
+                    Original Size
+                </span>
 
                 <strong id="originalSize">
-
-                    --
-
+                    —
                 </strong>
 
             </div>
 
-            <div class="info-item">
 
-                <span>Resolution</span>
+            <!-- Compressed Size -->
+            <div class="result-item">
 
-                <strong id="originalResolution">
+                <span class="result-title">
+                    Compressed Size
+                </span>
 
-                    --
-
+                <strong id="compressedSize">
+                    —
                 </strong>
 
             </div>
 
-            <div class="info-item">
 
-                <span>Format</span>
+            <!-- Saved -->
+            <div class="result-item">
 
-                <strong id="originalFormat">
+                <span class="result-title">
+                    Saved
+                </span>
 
-                    --
-
+                <strong id="savedSize">
+                    —
                 </strong>
 
             </div>
+
+
+            <!-- Reduction -->
+            <div class="result-item">
+
+                <span class="result-title">
+                    Reduction
+                </span>
+
+                <strong id="compressionPercentage">
+                    0%
+                </strong>
+
+            </div>
+
 
         </div>
 
     </div>
 
-    <!-- Compression Card -->
+</section>
+                <!-- =========================================
+             COMPRESSION CONTROLS
+        ========================================== -->
 
-    <div
-    id="compressCard"
-    class="compress-card">
+        <section
+    class="compression-controls"
+    id="compressionControls"
+    hidden>
 
-        <div class="compress-icon">
+            <div class="controls-card">
 
-            <i class="fa-solid fa-compress"></i>
+                <!-- Controls Header -->
+                <div class="controls-header">
 
-        </div>
+                    <div>
+                        <span class="section-badge">
+                            SETTINGS
+                        </span>
 
-        <h3>
+                        <h2>
+                            Compression Quality
+                        </h2>
+                    </div>
 
-            Smart Compression
+                    <div class="quality-value">
+                        <span id="qualityValue">80</span>%
+                    </div>
 
-        </h3>
+                </div>
 
-        <p>
 
-            Compress your image with quality control or target size.
+                <!-- Quality Slider -->
+                <div class="quality-control">
 
-        </p>
+                    <div class="quality-labels">
 
-        <div class="compress-mode">
+                        <span>
+                            Smaller File
+                        </span>
 
-            <button
-            id="qualityModeBtn"
-            class="mode-btn active"
-            type="button">
+                        <span>
+                            Better Quality
+                        </span>
 
-                Quality
+                    </div>
 
-            </button>
 
-            <button
-            id="targetModeBtn"
-            class="mode-btn"
-            type="button">
+                    <input
+                        type="range"
+                        id="qualitySlider"
+                        class="quality-slider"
+                        min="10"
+                        max="100"
+                        value="80"
+                        step="1"
+                        aria-label="Compression quality">
 
-                Target Size
 
-            </button>
+                    <div class="quality-scale">
 
-        </div>
+                        <span>10%</span>
 
-        <div class="estimate-box">
+                        <span>50%</span>
 
-            <span>
+                        <span>80%</span>
 
-                Estimated Output
+                        <span>100%</span>
 
-            </span>
+                    </div>
 
-            <strong id="estimatedOutput">
+                </div>
 
-                --
 
-            </strong>
+                <!-- Compress Button -->
+                <button
+                    type="button"
+                    class="compress-button"
+                    id="compressButton">
 
-        </div>
+                    <span class="button-icon" aria-hidden="true">
+                        ⚡
+                    </span>
 
-    </div>
+                    <span>
+                        Compress Image
+                    </span>
 
-    <!-- Compressed Image -->
+                </button>
 
-    <div
-    id="compressedCard"
-    class="preview-card">
+            </div>
 
-        <div class="card-header">
+        </section>
+                <!-- =========================================
+             DOWNLOAD / RESULT ACTIONS
+        ========================================== -->
 
-            <h3>
+        <section
+            class="download-section"
+            id="downloadSection"
+            hidden>
 
-                Compressed Image
+            <div class="download-card">
 
-            </h3>
+                <div class="download-content">
 
-            <span class="status status-output">
+                    <div class="success-icon" aria-hidden="true">
+                        ✓
+                    </div>
 
-                OUTPUT
+                    <div>
 
-            </span>
+                        <span class="section-badge">
+                            READY
+                        </span>
 
-        </div>
+                        <h2>
+                            Your Image Is Compressed
+                        </h2>
 
-        <div class="preview-box">
+                        <p>
+                            Download your compressed image or
+                            compress another image.
+                        </p>
 
-            <img
-            id="compressedPreview"
-            alt="Compressed Preview">
+                    </div>
 
-            <div
-            id="compressedPlaceholder"
-            class="placeholder">
+                </div>
 
-                <i class="fa-solid fa-file-image"></i>
 
-                <h4>
+                <!-- Download Button -->
+                <a
+                    href="#"
+                    class="download-button"
+                    id="downloadButton"
+                    download>
 
-                    Waiting...
+                    <span aria-hidden="true">
+                        ↓
+                    </span>
 
-                </h4>
+                    Download Compressed Image
+
+                </a>
+
+
+                <!-- Compress Another -->
+                <button
+                    type="button"
+                    class="reset-button"
+                    id="resetButton">
+
+                    Compress Another Image
+
+                </button>
+
+            </div>
+
+        </section>
+                <!-- =========================================
+             HOW IT WORKS
+        ========================================== -->
+
+        <section class="how-it-works" id="how-it-works">
+
+            <div class="section-heading">
+
+                <span class="section-badge">
+                    HOW IT WORKS
+                </span>
+
+                <h2>
+                    Compress Images in 3 Simple Steps
+                </h2>
 
                 <p>
-
-                    Your compressed image will appear here.
-
+                    Reduce your image size quickly without complicated
+                    settings or unnecessary steps.
                 </p>
 
             </div>
 
-        </div>
 
-        <div class="image-info">
+            <div class="steps-grid">
 
-            <div class="info-item">
 
-                <span>File Size</span>
+                <!-- Step 1 -->
+                <div class="step-card">
 
-                <strong id="compressedSize">
+                    <div class="step-number">
+                        01
+                    </div>
 
-                    --
+                    <div class="step-icon" aria-hidden="true">
+                        ↑
+                    </div>
 
-                </strong>
+                    <h3>
+                        Upload
+                    </h3>
+
+                    <p>
+                        Select an image from your device or
+                        drag and drop it into the upload area.
+                    </p>
+
+                </div>
+
+
+                <!-- Step 2 -->
+                <div class="step-card">
+
+                    <div class="step-number">
+                        02
+                    </div>
+
+                    <div class="step-icon" aria-hidden="true">
+                        ⚙
+                    </div>
+
+                    <h3>
+                        Compress
+                    </h3>
+
+                    <p>
+                        Choose your preferred quality and
+                        compress the image instantly.
+                    </p>
+
+                </div>
+
+
+                <!-- Step 3 -->
+                <div class="step-card">
+
+                    <div class="step-number">
+                        03
+                    </div>
+
+                    <div class="step-icon" aria-hidden="true">
+                        ↓
+                    </div>
+
+                    <h3>
+                        Download
+                    </h3>
+
+                    <p>
+                        Compare the result and download your
+                        optimized image with one click.
+                    </p>
+
+                </div>
 
             </div>
 
-            <div class="info-item">
+        </section>
 
-                <span>Saved</span>
 
-                <strong id="savedPercent">
+        <!-- =========================================
+             FEATURES
+        ========================================== -->
 
-                    0%
+        <section class="compressor-features">
 
-                </strong>
+            <div class="section-heading">
 
-            </div>
-
-            <div class="info-item">
-
-                <span>Format</span>
-
-                <strong id="compressedFormat">
-
-                    --
-
-                </strong>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-<!-- ===========================
-      SETTINGS SECTION
-=========================== -->
-
-<section
-id="settingsSection"
-class="settings-section">
-
-    <div class="section-title">
-
-        <h2>
-
-            Compression Settings
-
-        </h2>
-
-        <p>
-
-            Adjust quality, target size and output format.
-
-        </p>
-
-    </div>
-
-    <div class="settings-grid">
-
-        <!-- Quality -->
-
-        <div
-        id="qualityCard"
-        class="setting-card">
-
-            <label for="qualitySlider">
-
-                Compression Quality
-
-            </label>
-
-            <input
-
-            type="range"
-
-            id="qualitySlider"
-
-            min="10"
-
-            max="100"
-
-            value="80">
-
-            <div class="slider-value">
-
-                <span>
-
-                    Quality
-
+                <span class="section-badge">
+                    WHY F2CONVERT
                 </span>
 
-                <strong id="qualityValue">
-
-                    80%
-
-                </strong>
+                <h2>
+                    Simple, Fast & Private
+                </h2>
 
             </div>
 
-        </div>
 
-        <!-- Target Size -->
+            <div class="features-grid">
 
-        <div
-        id="targetCard"
-        class="setting-card">
 
-            <label>
+                <div class="feature-card">
 
-                Desired File Size
+                    <div class="feature-icon" aria-hidden="true">
+                        ⚡
+                    </div>
 
-            </label>
+                    <h3>
+                        Fast Compression
+                    </h3>
 
-            <div class="target-input">
+                    <p>
+                        Compress images quickly without unnecessary
+                        waiting or complicated processes.
+                    </p>
 
-                <input
+                </div>
 
-                type="number"
 
-                id="targetSize"
+                <div class="feature-card">
 
-                placeholder="500"
+                    <div class="feature-icon" aria-hidden="true">
+                        🔒
+                    </div>
 
-                min="1">
+                    <h3>
+                        Private & Secure
+                    </h3>
 
-                <select id="targetUnit">
+                    <p>
+                        Your image processing can happen directly
+                        in your browser without uploading files to a server.
+                    </p>
 
-                    <option value="KB">
+                </div>
 
-                        KB
 
-                    </option>
+                <div class="feature-card">
 
-                    <option value="MB">
+                    <div class="feature-icon" aria-hidden="true">
+                        ✦
+                    </div>
 
-                        MB
+                    <h3>
+                        Easy to Use
+                    </h3>
 
-                    </option>
+                    <p>
+                        A clean interface makes image compression
+                        simple on both desktop and mobile devices.
+                    </p>
 
-                </select>
+                </div>
 
             </div>
 
-            <small>
+        </section>
+                <!-- =========================================
+             FAQ SECTION
+        ========================================== -->
 
-                Leave empty to use Quality Mode.
+        <section class="faq-section" id="faq">
 
-            </small>
+            <div class="section-heading">
 
-        </div>
-
-        <!-- Output Format -->
-
-        <div
-        id="formatCard"
-        class="setting-card">
-
-            <label for="outputFormat">
-
-                Output Format
-
-            </label>
-
-            <select id="outputFormat">
-
-                <option value="original">
-
-                    Keep Original
-
-                </option>
-
-                <option value="jpeg">
-
-                    JPG
-
-                </option>
-
-                <option value="png">
-
-                    PNG
-
-                </option>
-
-                <option value="webp">
-
-                    WEBP
-
-                </option>
-
-            </select>
-
-        </div>
-
-        <!-- Options -->
-
-        <div
-        id="optionsCard"
-        class="setting-card">
-
-            <label class="check-item">
-
-                <input
-
-                type="checkbox"
-
-                id="keepResolution"
-
-                checked>
-
-                <span>
-
-                    Keep Original Resolution
-
+                <span class="section-badge">
+                    FAQ
                 </span>
 
-            </label>
+                <h2>
+                    Frequently Asked Questions
+                </h2>
 
-            <label class="check-item">
+                <p>
+                    Everything you need to know about the F2CONVERT
+                    Image Compressor.
+                </p>
 
-                <input
+            </div>
 
-                type="checkbox"
 
-                id="preserveMetadata">
+            <div class="faq-list">
 
-                <span>
 
-                    Preserve Metadata
+                <!-- FAQ 1 -->
+                <details class="faq-item">
 
-                </span>
+                    <summary>
+                        What image formats can I compress?
+                        
+                        <span class="faq-arrow" aria-hidden="true">
+                            +
+                        </span>
+                    </summary>
 
-            </label>
+                    <div class="faq-answer">
 
-        </div>
+                        <p>
+                            F2CONVERT supports common image formats
+                            including JPG, JPEG, PNG and WebP.
+                        </p>
 
-    </div>
+                    </div>
 
-</section>
-<!-- ===========================
-      ACTIONS SECTION
-=========================== -->
+                </details>
 
-<section
-id="actionSection"
-class="action-section">
 
-    <button
-    id="compressBtn"
-    class="btn btn-primary"
-    type="button">
+                <!-- FAQ 2 -->
+                <details class="faq-item">
 
-        <i class="fa-solid fa-compress"></i>
+                    <summary>
+                        Will my image quality be affected?
 
-        <span>
+                        <span class="faq-arrow" aria-hidden="true">
+                            +
+                        </span>
+                    </summary>
 
-            Compress Image
+                    <div class="faq-answer">
 
-        </span>
+                        <p>
+                            You can control the compression quality
+                            using the quality slider. Higher quality
+                            settings generally preserve more image detail.
+                        </p>
 
-    </button>
+                    </div>
 
-    <button
-    id="downloadBtn"
-    class="btn btn-secondary"
-    type="button"
-    disabled>
+                </details>
 
-        <i class="fa-solid fa-download"></i>
 
-        <span>
+                <!-- FAQ 3 -->
+                <details class="faq-item">
 
-            Download
+                    <summary>
+                        Do I need to install any software?
 
-        </span>
+                        <span class="faq-arrow" aria-hidden="true">
+                            +
+                        </span>
+                    </summary>
 
-    </button>
+                    <div class="faq-answer">
 
-    <button
-    id="resetBtn"
-    class="btn btn-outline"
-    type="button">
+                        <p>
+                            No. F2CONVERT works directly in your web
+                            browser, so there is nothing to install.
+                        </p>
 
-        <i class="fa-solid fa-rotate-left"></i>
+                    </div>
 
-        <span>
+                </details>
 
-            Reset
 
-        </span>
+                <!-- FAQ 4 -->
+                <details class="faq-item">
 
-    </button>
+                    <summary>
+                        Can I use the Image Compressor on mobile?
 
-</section>
+                        <span class="faq-arrow" aria-hidden="true">
+                            +
+                        </span>
+                    </summary>
 
-<!-- ===========================
-      LIVE STATISTICS
-=========================== -->
+                    <div class="faq-answer">
 
-<section
-id="statsSection"
-class="stats-section">
+                        <p>
+                            Yes. The Image Compressor is designed to
+                            work on desktop, tablet and mobile devices.
+                        </p>
 
-    <div class="stat-card">
+                    </div>
 
-        <i class="fa-solid fa-file-image"></i>
+                </details>
 
-        <h3 id="statOriginal">
 
-            0 KB
+                <!-- FAQ 5 -->
+                <details class="faq-item">
 
-        </h3>
+                    <summary>
+                        Is the Image Compressor free to use?
 
-        <p>
+                        <span class="faq-arrow" aria-hidden="true">
+                            +
+                        </span>
+                    </summary>
 
-            Original Size
+                    <div class="faq-answer">
 
-        </p>
+                        <p>
+                            Yes. You can use the F2CONVERT Image
+                            Compressor without installing additional software.
+                        </p>
 
-    </div>
+                    </div>
 
-    <div class="stat-card">
+                </details>
 
-        <i class="fa-solid fa-compress"></i>
 
-        <h3 id="statCompressed">
+            </div>
 
-            0 KB
+        </section>
+                <!-- =========================================
+             FOOTER
+        ========================================== -->
 
-        </h3>
+        <footer class="site-footer">
 
-        <p>
+            <div class="footer-container">
 
-            Compressed Size
 
-        </p>
+                <!-- Footer Brand -->
+                <div class="footer-brand">
 
-    </div>
+                    <a
+                        href="../../index.html"
+                        class="footer-logo"
+                        aria-label="F2CONVERT Home">
 
-    <div class="stat-card">
+                        <span class="brand-icon">
+                            F2
+                        </span>
 
-        <i class="fa-solid fa-chart-column"></i>
+                        <span class="brand-name">
+                            F2CONVERT
+                        </span>
 
-        <h3 id="statSaved">
+                    </a>
 
-            0%
+                    <p>
+                        Simple and powerful online tools for
+                        your everyday file needs.
+                    </p>
 
-        </h3>
+                </div>
 
-        <p>
 
-            Space Saved
+                <!-- Footer Links -->
+                <div class="footer-links">
 
-        </p>
+                    <div class="footer-column">
 
-    </div>
+                        <h3>
+                            Tools
+                        </h3>
 
-    <div class="stat-card">
+                        <a href="../image-conversion/image-converter.html">
+                            Image Converter
+                        </a>
 
-        <i class="fa-solid fa-gauge-high"></i>
+                        <a href="../image-resizer/image-resizer.html">
+                            Image Resizer
+                        </a>
 
-        <h3 id="statRatio">
+                        <a href="../image-cropper/image-cropper.html">
+                            Image Cropper
+                        </a>
 
-            0%
+                        <a href="image-compressor.html">
+                            Image Compressor
+                        </a>
 
-        </h3>
+                    </div>
 
-        <p>
 
-            Compression Ratio
+                    <div class="footer-column">
 
-        </p>
+                        <h3>
+                            F2CONVERT
+                        </h3>
 
-    </div>
+                        <a href="../../index.html">
+                            Home
+                        </a>
 
-</section>
-<!-- ===========================
-      FEATURES SECTION
-=========================== -->
+                        <a href="../../index.html#features">
+                            Features
+                        </a>
 
-<section
-id="featuresSection"
-class="features-section">
+                        <a href="../../index.html#how-it-works">
+                            How It Works
+                        </a>
 
-    <div class="section-title">
+                        <a href="../../index.html#faq">
+                            FAQ
+                        </a>
 
-        <h2>
+                    </div>
 
-            Why Choose SmartToolKits?
+                </div>
 
-        </h2>
+            </div>
 
-        <p>
 
-            Fast, secure and professional image compression directly in your browser.
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
 
-        </p>
+                <p>
+                    © <span id="currentYear"></span> F2CONVERT.
+                    All rights reserved.
+                </p>
 
-    </div>
+                <p>
+                    Created by
+                    <span class="creator-name">
+                        Shivang Kumar Thakur
+                    </span>
+                </p>
 
-    <div class="features-grid">
+            </div>
 
-        <div class="feature-card">
+        </footer>
 
-            <i class="fa-solid fa-bolt"></i>
 
-            <h3>
+    </main>
 
-                Fast Compression
 
-            </h3>
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
 
-            <p>
-
-                Compress images within seconds using optimized browser processing.
-
-            </p>
-
-        </div>
-
-        <div class="feature-card">
-
-            <i class="fa-solid fa-lock"></i>
-
-            <h3>
-
-                Privacy First
-
-            </h3>
-
-            <p>
-
-                Your images never leave your device.
-
-            </p>
-
-        </div>
-
-        <div class="feature-card">
-
-            <i class="fa-solid fa-sliders"></i>
-
-            <h3>
-
-                Full Control
-
-            </h3>
-
-            <p>
-
-                Adjust quality, format and target size with ease.
-
-            </p>
-
-        </div>
-
-        <div class="feature-card">
-
-            <i class="fa-solid fa-mobile-screen"></i>
-
-            <h3>
-
-                Mobile Friendly
-
-            </h3>
-
-            <p>
-
-                Works perfectly on desktop, tablet and mobile devices.
-
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ===========================
-      FAQ SECTION
-=========================== -->
-
-<section
-id="faqSection"
-class="faq-section">
-
-    <div class="section-title">
-
-        <h2>
-
-            Frequently Asked Questions
-
-        </h2>
-
-    </div>
-
-    <div class="faq-list">
-
-        <details>
-
-            <summary>
-
-                Does this tool reduce image quality?
-
-            </summary>
-
-            <p>
-
-                You can control the quality level. Higher quality keeps more details.
-
-            </p>
-
-        </details>
-
-        <details>
-
-            <summary>
-
-                Are my images uploaded?
-
-            </summary>
-
-            <p>
-
-                No. Everything is processed directly inside your browser.
-
-            </p>
-
-        </details>
-
-        <details>
-
-            <summary>
-
-                Which image formats are supported?
-
-            </summary>
-
-            <p>
-
-                JPG, JPEG, PNG and WEBP.
-
-            </p>
-
-        </details>
-
-    </div>
-
-</section>
-
-</main>
-
-<!-- ===========================
-      FOOTER
-=========================== -->
-
-<footer
-class="footer">
-
-<p>
-
-© 2026 SmartToolKits. All Rights Reserved.
-
-</p>
-
-</footer>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
-
 </html>

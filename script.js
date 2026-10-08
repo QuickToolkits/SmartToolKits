@@ -1,257 +1,364 @@
-/* =========================================
-   SMARTTOOLKITS
-   JAVASCRIPT PART 1 — MOBILE NAVIGATION
-   ========================================= */
+/* =========================================================
+   F2CONVERT — JAVASCRIPT PART 1
+   TOOL FILTER
+========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const menuToggle = document.querySelector(".menu-toggle");
-    const mobileNavigation = document.querySelector(".mobile-navigation");
+    const filterButtons = document.querySelectorAll(
+        ".tool-filter-button"
+    );
 
-    if (!menuToggle || !mobileNavigation) {
+    const toolCards = document.querySelectorAll(
+        ".tools-grid .tool-card"
+    );
+
+
+    /* ---------------------------------------------------------
+       SAFETY CHECK
+    --------------------------------------------------------- */
+
+    if (!filterButtons.length || !toolCards.length) {
         return;
     }
 
-    const mobileLinks = mobileNavigation.querySelectorAll("a");
 
-    function openMobileMenu() {
-        mobileNavigation.classList.add("active");
-        menuToggle.setAttribute("aria-expanded", "true");
-        menuToggle.setAttribute("aria-label", "Close navigation menu");
-    }
+    /* ---------------------------------------------------------
+       FILTER FUNCTION
+    --------------------------------------------------------- */
 
-    function closeMobileMenu() {
-        mobileNavigation.classList.remove("active");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.setAttribute("aria-label", "Open navigation menu");
-    }
+    function filterTools(selectedCategory) {
 
-    function toggleMobileMenu() {
-        const isOpen =
-            mobileNavigation.classList.contains("active");
+        toolCards.forEach((card) => {
 
-        if (isOpen) {
-            closeMobileMenu();
-        } else {
-            openMobileMenu();
-        }
-    }
+            const cardCategory =
+                card.getAttribute("data-category");
 
-    menuToggle.addEventListener(
-        "click",
-        toggleMobileMenu
-    );
 
-    mobileLinks.forEach((link) => {
-        link.addEventListener("click", () => {
-            closeMobileMenu();
+            if (
+                selectedCategory === "all" ||
+                cardCategory === selectedCategory
+            ) {
+
+                card.style.display = "";
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
         });
-    });
 
-});
-/* =========================================
-   JAVASCRIPT PART 2 — ALL TOOLS FILTER
-   ========================================= */
+    }
 
-const filterButtons = document.querySelectorAll(
-    ".filter-button"
-);
 
-const allToolCards = document.querySelectorAll(
-    ".all-tool-card"
-);
-
-if (filterButtons.length && allToolCards.length) {
+    /* ---------------------------------------------------------
+       BUTTON CLICK
+    --------------------------------------------------------- */
 
     filterButtons.forEach((button) => {
 
         button.addEventListener("click", () => {
 
-            const selectedFilter =
+            const selectedCategory =
                 button.getAttribute("data-filter");
 
-            /* Remove active state from all buttons */
+
+            /* Remove active state */
+
             filterButtons.forEach((item) => {
+
                 item.classList.remove("active");
+                item.setAttribute("aria-pressed", "false");
+
             });
 
-            /* Activate clicked button */
+
+            /* Add active state */
+
             button.classList.add("active");
+            button.setAttribute("aria-pressed", "true");
 
-            /* Filter tool cards */
-            allToolCards.forEach((card) => {
 
-                const category =
-                    card.getAttribute("data-category");
+            /* Filter cards */
 
-                if (
-                    selectedFilter === "all" ||
-                    category === selectedFilter
-                ) {
-                    card.style.display = "";
-                } else {
-                    card.style.display = "none";
-                }
-
-            });
+            filterTools(selectedCategory);
 
         });
 
     });
 
-}
-/* =========================================
-   JAVASCRIPT PART 3 — NAVIGATION
-   ========================================= */
 
-const navigationLinks = document.querySelectorAll(
-    ".main-navigation .nav-link"
-);
+    /* ---------------------------------------------------------
+       INITIAL STATE
+       All tools visible
+    --------------------------------------------------------- */
 
-const pageSections = document.querySelectorAll(
-    "main section[id]"
-);
+    filterTools("all");
 
-if (navigationLinks.length && pageSections.length) {
 
-    function updateActiveNavigation() {
+    /* Mark All Tools as active */
 
-        const scrollPosition =
-            window.scrollY + 140;
+    filterButtons.forEach((button) => {
 
-        let currentSection = "";
+        const category =
+            button.getAttribute("data-filter");
 
-        pageSections.forEach((section) => {
+        button.setAttribute(
+            "aria-pressed",
+            category === "all" ? "true" : "false"
+        );
 
-            const sectionTop =
-                section.offsetTop;
+    });
 
-            const sectionBottom =
-                sectionTop + section.offsetHeight;
+});
+/* =========================================================
+   F2CONVERT — JAVASCRIPT PART 2
+   MOBILE MENU
+========================================================= */
 
-            if (
-                scrollPosition >= sectionTop &&
-                scrollPosition < sectionBottom
-            ) {
-                currentSection = section.getAttribute("id");
-            }
+document.addEventListener("DOMContentLoaded", () => {
 
-        });
+    const menuToggle =
+        document.querySelector(".mobile-menu-toggle");
 
-        navigationLinks.forEach((link) => {
+    const menuOverlay =
+        document.querySelector(".mobile-menu-overlay");
 
-            const linkTarget =
-                link.getAttribute("href");
+    const menuClose =
+        document.querySelector(".mobile-menu-close");
 
-            if (
-                linkTarget === `#${currentSection}`
-            ) {
-                link.classList.add("active");
-            } else {
-                link.classList.remove("active");
-            }
+    const menuLinks =
+        document.querySelectorAll(
+            ".mobile-menu-panel a"
+        );
 
-        });
+
+    /* ---------------------------------------------------------
+       SAFETY CHECK
+    --------------------------------------------------------- */
+
+    if (
+        !menuToggle ||
+        !menuOverlay ||
+        !menuClose
+    ) {
+        return;
     }
 
-    window.addEventListener(
-        "scroll",
-        updateActiveNavigation,
-        { passive: true }
-    );
 
-    updateActiveNavigation();
-}
-/* =========================================
-   JAVASCRIPT PART 4 — MOBILE MENU OUTSIDE CLICK
-   ========================================= */
+    /* ---------------------------------------------------------
+       OPEN MENU
+    --------------------------------------------------------- */
 
-const outsideClickMenuToggle =
-    document.querySelector(".menu-toggle");
+    function openMenu() {
 
-const outsideClickMobileNavigation =
-    document.querySelector(".mobile-navigation");
+        menuOverlay.classList.add("active");
 
-if (
-    outsideClickMenuToggle &&
-    outsideClickMobileNavigation
-) {
-    document.addEventListener("click", (event) => {
+        menuOverlay.setAttribute(
+            "aria-hidden",
+            "false"
+        );
 
-        const clickedInsideMenu =
-            outsideClickMobileNavigation.contains(event.target);
+        menuToggle.setAttribute(
+            "aria-expanded",
+            "true"
+        );
 
-        const clickedMenuButton =
-            outsideClickMenuToggle.contains(event.target);
+        menuToggle.setAttribute(
+            "aria-label",
+            "Close menu"
+        );
 
-        const menuIsOpen =
-            outsideClickMobileNavigation.classList.contains("active");
+        document.body.style.overflow = "hidden";
 
-        if (
-            menuIsOpen &&
-            !clickedInsideMenu &&
-            !clickedMenuButton
-        ) {
-            outsideClickMobileNavigation.classList.remove("active");
+    }
 
-            outsideClickMenuToggle.setAttribute(
-                "aria-expanded",
-                "false"
-            );
 
-            outsideClickMenuToggle.setAttribute(
-                "aria-label",
-                "Open navigation menu"
-            );
+    /* ---------------------------------------------------------
+       CLOSE MENU
+    --------------------------------------------------------- */
+
+    function closeMenu() {
+
+        menuOverlay.classList.remove("active");
+
+        menuOverlay.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        menuToggle.setAttribute(
+            "aria-label",
+            "Open menu"
+        );
+
+        document.body.style.overflow = "";
+
+    }
+
+
+    /* ---------------------------------------------------------
+       TOGGLE MENU
+    --------------------------------------------------------- */
+
+    menuToggle.addEventListener("click", () => {
+
+        const isOpen =
+            menuOverlay.classList.contains("active");
+
+        if (isOpen) {
+
+            closeMenu();
+
+        } else {
+
+            openMenu();
+
         }
 
     });
-}
-/* =========================================
-   JAVASCRIPT PART 5 — ESCAPE KEY
-   ========================================= */
 
-const escapeMenuNavigation =
-    document.querySelector(".mobile-navigation");
 
-const escapeMenuToggle =
-    document.querySelector(".menu-toggle");
+    /* ---------------------------------------------------------
+       CLOSE BUTTON
+    --------------------------------------------------------- */
 
-if (escapeMenuNavigation && escapeMenuToggle) {
+    menuClose.addEventListener("click", () => {
+
+        closeMenu();
+
+    });
+
+
+    /* ---------------------------------------------------------
+       CLOSE WHEN CLICKING OUTSIDE PANEL
+    --------------------------------------------------------- */
+
+    menuOverlay.addEventListener("click", (event) => {
+
+        if (event.target === menuOverlay) {
+
+            closeMenu();
+
+        }
+
+    });
+
+
+    /* ---------------------------------------------------------
+       CLOSE AFTER CLICKING A MENU LINK
+    --------------------------------------------------------- */
+
+    menuLinks.forEach((link) => {
+
+        link.addEventListener("click", () => {
+
+            closeMenu();
+
+        });
+
+    });
+
+
+    /* ---------------------------------------------------------
+       CLOSE WITH ESCAPE KEY
+    --------------------------------------------------------- */
 
     document.addEventListener("keydown", (event) => {
 
         if (
             event.key === "Escape" &&
-            escapeMenuNavigation.classList.contains("active")
+            menuOverlay.classList.contains("active")
         ) {
-            escapeMenuNavigation.classList.remove("active");
 
-            escapeMenuToggle.setAttribute(
-                "aria-expanded",
-                "false"
-            );
+            closeMenu();
 
-            escapeMenuToggle.setAttribute(
-                "aria-label",
-                "Open navigation menu"
-            );
         }
 
     });
 
-}
-/* =========================================
-   JAVASCRIPT PART 6 — SMOOTH SCROLL
-   ========================================= */
+});
+/* =========================================================
+   F2CONVERT — JAVASCRIPT PART 3
+   HEADER SCROLL EFFECT
+========================================================= */
 
-const smoothScrollLinks = document.querySelectorAll(
-    'a[href^="#"]'
-);
+document.addEventListener("DOMContentLoaded", () => {
 
-if (smoothScrollLinks.length) {
+    const header =
+        document.querySelector(".site-header");
 
-    smoothScrollLinks.forEach((link) => {
+
+    /* ---------------------------------------------------------
+       SAFETY CHECK
+    --------------------------------------------------------- */
+
+    if (!header) {
+        return;
+    }
+
+
+    /* ---------------------------------------------------------
+       HEADER SCROLL FUNCTION
+    --------------------------------------------------------- */
+
+    function updateHeader() {
+
+        if (window.scrollY > 30) {
+
+            header.classList.add("scrolled");
+
+        } else {
+
+            header.classList.remove("scrolled");
+
+        }
+
+    }
+
+
+    /* ---------------------------------------------------------
+       SCROLL EVENT
+    --------------------------------------------------------- */
+
+    window.addEventListener(
+        "scroll",
+        updateHeader,
+        { passive: true }
+    );
+
+
+    /* ---------------------------------------------------------
+       INITIAL CHECK
+    --------------------------------------------------------- */
+
+    updateHeader();
+
+});
+/* =========================================================
+   F2CONVERT — JAVASCRIPT PART 4
+   SMOOTH SCROLLING
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const navigationLinks =
+        document.querySelectorAll(
+            'a[href^="#"]'
+        );
+
+    if (!navigationLinks.length) {
+        return;
+    }
+
+    navigationLinks.forEach((link) => {
 
         link.addEventListener("click", (event) => {
 
@@ -265,16 +372,16 @@ if (smoothScrollLinks.length) {
                 return;
             }
 
-            const targetElement =
+            const target =
                 document.querySelector(targetId);
 
-            if (!targetElement) {
+            if (!target) {
                 return;
             }
 
             event.preventDefault();
 
-            targetElement.scrollIntoView({
+            target.scrollIntoView({
                 behavior: "smooth",
                 block: "start"
             });
@@ -283,151 +390,313 @@ if (smoothScrollLinks.length) {
 
     });
 
-}
-/* =========================================
-   JAVASCRIPT PART 7 — HEADER SCROLL EFFECT
-   ========================================= */
+});
+/* =========================================================
+   F2CONVERT — JAVASCRIPT PART 5
+   ACTIVE NAVIGATION LINK
+========================================================= */
 
-const siteHeader = document.querySelector(".site-header");
+document.addEventListener("DOMContentLoaded", () => {
 
-if (siteHeader) {
+    const navLinks =
+        document.querySelectorAll(
+            '.main-nav .nav-link[href^="#"]'
+        );
 
-    function updateHeaderOnScroll() {
+    if (!navLinks.length) {
+        return;
+    }
 
-        if (window.scrollY > 20) {
-            siteHeader.classList.add("scrolled");
-        } else {
-            siteHeader.classList.remove("scrolled");
-        }
+    function updateActiveLink() {
+
+        const scrollPosition =
+            window.scrollY + 180;
+
+        navLinks.forEach((link) => {
+
+            const targetId =
+                link.getAttribute("href");
+
+            if (
+                !targetId ||
+                targetId === "#"
+            ) {
+                return;
+            }
+
+            const section =
+                document.querySelector(targetId);
+
+            if (!section) {
+                return;
+            }
+
+            const sectionTop =
+                section.offsetTop;
+
+            const sectionBottom =
+                sectionTop + section.offsetHeight;
+
+            if (
+                scrollPosition >= sectionTop &&
+                scrollPosition < sectionBottom
+            ) {
+                navLinks.forEach((item) => {
+                    item.classList.remove("active");
+                });
+
+                link.classList.add("active");
+            }
+
+        });
 
     }
 
     window.addEventListener(
         "scroll",
-        updateHeaderOnScroll,
+        updateActiveLink,
         { passive: true }
     );
 
-    updateHeaderOnScroll();
+    updateActiveLink();
 
-}
-/* =========================================
-   JAVASCRIPT PART 8 — INTERACTION SAFETY
-   ========================================= */
+});
+/* =========================================================
+   F2CONVERT — JAVASCRIPT PART 6
+   BACK TO TOP BUTTON
+========================================================= */
 
-const interactiveCards = document.querySelectorAll(
-    ".tool-card, .featured-tool-card, .all-tool-card"
-);
+document.addEventListener("DOMContentLoaded", () => {
 
-if (interactiveCards.length) {
+    const backToTop = document.createElement("button");
 
-    interactiveCards.forEach((card) => {
+    backToTop.type = "button";
+    backToTop.className = "back-to-top";
+    backToTop.setAttribute(
+        "aria-label",
+        "Back to top"
+    );
+    backToTop.innerHTML = "↑";
 
-        card.addEventListener("keydown", (event) => {
+    document.body.appendChild(backToTop);
 
-            if (
-                event.key === "Enter" ||
-                event.key === " "
-            ) {
-                const link = card.querySelector("a");
+    function updateBackToTop() {
 
-                if (link) {
-                    event.preventDefault();
-                    link.click();
-                }
-            }
-
-        });
-
-    });
-
-}
-/* =========================================
-   JAVASCRIPT PART 9 — TOOL CARD FOCUS
-   ========================================= */
-
-const toolCardLinks = document.querySelectorAll(
-    ".tool-card a, .featured-tool-card a, .all-tool-card a"
-);
-
-if (toolCardLinks.length) {
-
-    toolCardLinks.forEach((link) => {
-
-        link.addEventListener("focus", () => {
-
-            const parentCard =
-                link.closest(
-                    ".tool-card, .featured-tool-card, .all-tool-card"
-                );
-
-            if (parentCard) {
-                parentCard.classList.add("keyboard-focus");
-            }
-
-        });
-
-        link.addEventListener("blur", () => {
-
-            const parentCard =
-                link.closest(
-                    ".tool-card, .featured-tool-card, .all-tool-card"
-                );
-
-            if (parentCard) {
-                parentCard.classList.remove("keyboard-focus");
-            }
-
-        });
-
-    });
-
-}
-/* =========================================
-   JAVASCRIPT PART 10 — IMAGE LOADING
-   ========================================= */
-
-const pageImages = document.querySelectorAll(
-    "img"
-);
-
-if (pageImages.length) {
-
-    pageImages.forEach((image) => {
-
-        if (!image.hasAttribute("loading")) {
-            image.setAttribute("loading", "lazy");
+        if (window.scrollY > 500) {
+            backToTop.classList.add("visible");
+        } else {
+            backToTop.classList.remove("visible");
         }
 
-        if (!image.hasAttribute("decoding")) {
-            image.setAttribute("decoding", "async");
-        }
+    }
+
+    backToTop.addEventListener("click", () => {
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
 
     });
 
-}
-/* =========================================
-   JAVASCRIPT PART 11 — FINAL SAFETY
-   ========================================= */
+    window.addEventListener(
+        "scroll",
+        updateBackToTop,
+        { passive: true }
+    );
 
-window.addEventListener("error", (event) => {
+    updateBackToTop();
 
-    if (!event.target) {
+});
+/* =========================================================
+   F2CONVERT — JAVASCRIPT PART 7
+   TOOL CARD INTERACTION
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const toolCards =
+        document.querySelectorAll(".tool-card");
+
+    if (!toolCards.length) {
         return;
     }
 
-    if (event.target.tagName === "IMG") {
-        event.target.classList.add("image-load-error");
+    toolCards.forEach((card) => {
+
+        card.addEventListener("click", (event) => {
+
+            /*
+             * Agar card ke andar actual link par click hua hai,
+             * browser ko normal navigation karne do.
+             */
+            const link =
+                event.target.closest("a");
+
+            if (link) {
+                return;
+            }
+
+            /*
+             * Agar card khud clickable hai aur usme link hai,
+             * to us link par navigate karo.
+             */
+            const cardLink =
+                card.querySelector("a");
+
+            if (cardLink) {
+                cardLink.click();
+            }
+
+        });
+
+    });
+
+});
+/* =========================================================
+   F2CONVERT — JAVASCRIPT PART 8
+   FOOTER TOOL LINKS
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const footerLinks = {
+        "Image Compressor":
+            "Image/Image-compressor/image-compressor.html",
+
+        "Image Converter":
+            "Image/image-conversion/image-converter.html",
+
+        "Image Resizer":
+            "Image/image-resizer/image-resizer.html",
+
+        "Image Cropper":
+            "Image/image-cropper/image-cropper.html",
+
+        "Image to PDF":
+            "pdf/image-to-pdf/image-to-pdf.html",
+
+        "Merge PDF":
+            "pdf/Pdf-Merge/pdf-merge.html",
+
+        "Split PDF":
+            "pdf/pdf-split/pdf-split.html",
+
+        "PDF to Image":
+            "pdf/Pdf-to-image/pdf-to-image.html"
+    };
+
+    const links =
+        document.querySelectorAll(
+            ".site-footer a"
+        );
+
+    links.forEach((link) => {
+
+        const text =
+            link.textContent.trim();
+
+        if (footerLinks[text]) {
+            link.setAttribute(
+                "href",
+                footerLinks[text]
+            );
+        }
+
+    });
+
+});
+/* =========================================================
+   F2CONVERT — JAVASCRIPT PART 9
+   FAQ ACCORDION
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const faqItems =
+        document.querySelectorAll(".faq-item");
+
+    if (!faqItems.length) {
+        return;
     }
 
-}, true);
+    faqItems.forEach((item) => {
 
+        item.addEventListener("toggle", () => {
 
-/* Prevent empty links from jumping to the top */
-document.querySelectorAll('a[href="#"]').forEach((link) => {
+            if (!item.open) {
+                return;
+            }
 
-    link.addEventListener("click", (event) => {
-        event.preventDefault();
+            faqItems.forEach((otherItem) => {
+
+                if (otherItem !== item) {
+                    otherItem.open = false;
+                }
+
+            });
+
+        });
+
+    });
+
+});
+/* =========================================================
+   F2CONVERT — JAVASCRIPT PART 10
+   FAQ ICON STATE
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const faqItems =
+        document.querySelectorAll(".faq-item");
+
+    if (!faqItems.length) {
+        return;
+    }
+
+    faqItems.forEach((item) => {
+
+        const icon =
+            item.querySelector("summary i");
+
+        if (!icon) {
+            return;
+        }
+
+        function updateIcon() {
+
+            if (item.open) {
+
+                icon.classList.remove(
+                    "fa-plus"
+                );
+
+                icon.classList.add(
+                    "fa-minus"
+                );
+
+            } else {
+
+                icon.classList.remove(
+                    "fa-minus"
+                );
+
+                icon.classList.add(
+                    "fa-plus"
+                );
+
+            }
+
+        }
+
+        item.addEventListener(
+            "toggle",
+            updateIcon
+        );
+
+        updateIcon();
+
     });
 
 });
